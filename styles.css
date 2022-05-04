@@ -1,8 +1,95 @@
+:root {
+    --main-color: #6a5acd;
+    --light-color: #9d87ff;
+}
+
 .logo {
 	height: 70px;
     padding: 0.5em;
 }
 
 header.navbar {
-    background-color: #6a5acd;
+    background-color: var(--main-color);
+}
+
+div.search-bar {
+    display: none;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    background-color: var(--light-color);
+    transition: all 0.075s linear;
+    width: 80%;
+    margin: auto;
+}
+
+@media screen and (min-width: 601px) {
+    div.search-bar {
+        display: flex;
+    }
+}
+
+input.search-field {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: all 0.2s ease-out;
+    width: auto;
+    display: inline;
+    flex-grow: 1;
+    min-width: 0px;
+}
+
+div.search-bar > button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+/*    display: inline;*/
+    width: auto;
+}
+
+div.search-bar > button > i.material-icons {
+    font-size: 2em;
+}
+
+#filter-search-button {
+    transition: opacity 0.2s ease-out;
+    width: 0%;
+    opacity: 0%;
+    overflow: hidden;
+}
+
+a.profile-pic {
+    background-color: var(--light-color);
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+a.profile-pic > img {
+    height: 32px;
+}
+
+#filter-window-wrapper {
+    position: absolute;
+    width: 100%;
+/*    margin-top: -16px; */
+}
+
+#filter-window {
+    margin: auto;
+    width: 100%;
+    opacity: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    transition: all 0.2s ease-out;
+    box-shadow: 3px 3px 5px -3px;
+}
+
+.notransition {
+    transition: none !important;
 }
