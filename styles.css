@@ -1,6 +1,7 @@
 :root {
     --main-color: #6a5acd;
     --light-color: #9d87ff;
+    --dark-color: #34309b;
 }
 
 .logo {
@@ -22,6 +23,8 @@ div.search-bar {
     transition: all 0.075s linear;
     width: 80%;
     margin: auto;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (min-width: 601px) {
@@ -36,21 +39,21 @@ input.search-field {
     outline: none;
     transition: all 0.2s ease-out;
     width: auto;
-    display: inline;
+    display: flex;
     flex-grow: 1;
     min-width: 0px;
 }
 
-div.search-bar > button {
+.navbar-button {
     background-color: transparent;
     border: none;
     cursor: pointer;
     outline: none;
-/*    display: inline;*/
+    display: flex;
     width: auto;
 }
 
-div.search-bar > button > i.material-icons {
+.navbar-button > i.material-icons {
     font-size: 2em;
 }
 
@@ -68,6 +71,7 @@ a.profile-pic {
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
+    display: inline-block;
 }
 
 a.profile-pic > img {
@@ -92,4 +96,52 @@ a.profile-pic > img {
 
 .notransition {
     transition: none !important;
+}
+
+.login-popup {
+    position: absolute;
+    margin-top: 8px;
+    background-color: var(--light-color);
+    border-radius: 20px;
+    border-top-right-radius: 10px;
+    transform-origin: 81.5% 0;
+    transform: scale(0);
+    transition: 0.2s all 0s ease-out;
+}
+
+.login-popup:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 0%;
+    margin-right: 15px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--light-color) transparent;
+}
+
+.profile-wrapper {
+    display: flex;
+    justify-content: end;
+}
+
+div.search-button-mobile {
+    display: none;
+    justify-content: center;
+}
+
+div.search-button-mobile > button {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: var(--light-color);
+    box-shadow: 0px 0px 7px -1px;
+}
+
+@media screen and (max-width: 600px) {
+    div.search-button-mobile {
+        display: flex;
+    }
 }

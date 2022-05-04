@@ -58,4 +58,16 @@ $(document).ready(function(){
         }
     });
 
+    // TODO: Agregar que se pueda ver haciendo click (para celular, fundamentalmente)
+    // TODO: Que al tener el mouse sobre el cuadro, no se salga
+    var login_timeout;
+    $(".profile-pic").hover(
+        function() {
+            $(".login-popup").css({"transform": "scale(1)"});
+        }, function() {
+            login_timeout = setTimeout(function() {
+                $(".login-popup").css({"transform": ""});
+            }, 300);
+        }
+    );
 });
