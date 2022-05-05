@@ -39,7 +39,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#filter-search-button").mousedown(function(e){
+    $("#filter-search-button").click(function(e){
         if ($("#filter-window").css("opacity") == "0") {
             // Todo este lio solo para poder volver al ancho original sin transicion 
             $("#filter-window").addClass("notransition");
@@ -70,4 +70,8 @@ $(document).ready(function(){
             }, 300);
         }
     );
+
+    $("#search-button-mobile").click(function(){
+       // TODO: WIP 
+    });
 });

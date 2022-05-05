@@ -125,12 +125,12 @@ a.profile-pic > img {
     justify-content: end;
 }
 
-div.search-button-mobile {
+div.search-mobile {
     display: none;
     justify-content: center;
 }
 
-div.search-button-mobile > button {
+#search-button-mobile {
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -141,7 +141,13 @@ div.search-button-mobile > button {
 }
 
 @media screen and (max-width: 600px) {
-    div.search-button-mobile {
+    div.search-mobile {
         display: flex;
     }
+}
+
+#search-wrapper {
+    position: relative;
+    width: 50vw;
+    margin: auto;
 }
