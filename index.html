@@ -13,13 +13,17 @@
 
 	<body>
 		<header class="navbar w3-cell-row">
-			<div class="w3-container w3-cell w3-cell-middle" style="width: 20%;">
+			<div id="navbar-left-div" class="w3-container w3-cell w3-cell-middle" style="width: 20%;">
                 <a href="/">
                     <img class="logo" src="logo.svg" alt="Logo j2g" />
                 </a>
                 </div>
 			</div>
             <div class="w3-cell w3-cell-middle">
+                <button class="navbar-button">
+                    <i class="material-icons">close</i>
+                </button>
+
                 <div id="search-wrapper">
                     <div class="search-mobile">
                         <button id="search-button-mobile" class="navbar-button">
@@ -64,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="w3-container w3-cell w3-cell-middle" style="width: 20%;">
+            <div id="navbar-right-div" class="w3-container w3-cell w3-cell-middle" style="width: 20%;">
                 <div class="profile-wrapper">
                     <a class="profile-pic">
                         <img src="persona.svg"></img>

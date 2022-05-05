@@ -72,6 +72,12 @@ $(document).ready(function(){
     );
 
     $("#search-button-mobile").click(function(){
-       // TODO: WIP 
+        $("#navbar-left-div").css({"display": "none"});
+        $("#navbar-right-div").css({"display": "none"});
+        $("#search-wrapper").css({"width": "90vw"});
+        $("div.search-bar").css({"display": "flex"});
+        $("div.search-mobile").css({"display": "none"});
+        $("div.search-bar").mouseenter();
+        $("input.search-field").focusin();
     });
 });
