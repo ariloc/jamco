@@ -19,11 +19,13 @@ $(document).ready(function(){
     });
 
     function hideFilterWindow() {
-        $("div.search-bar").css({"border-radius": ""});
-        $("#filter-window").css({"opacity": ""});
+        $("#filter-window").slideUp(200, function(){
+            $("div.search-bar").animate({"border-radius": "20px"},50,function(){});
+	});
         $("div.search-bar").css("box-shadow","3px 3px 5px -3px");
     }
 
+    // TODO: Corregir animacion para cuando hago click afuera
     function searchBoxFocusOut() {
         search_bar_focused = false;
         hideFilterWindow();
@@ -40,18 +42,16 @@ $(document).ready(function(){
     });
 
     $("#filter-search-button").click(function(e){
-        if ($("#filter-window").css("opacity") == "0") {
-            // Todo este lio solo para poder volver al ancho original sin transicion 
-            $("#filter-window").addClass("notransition");
+        if ($("#filter-window").css("display") == "none") {
             $("#filter-window").css({"width": ""});
             $("#filter-window").outerHeight(); // fuerza a recargar, evita usar en cache
-            $("#filter-window").removeClass("notransition");
-            $("#filter-window").outerHeight();
 
-            $("#filter-window").css({opacity: "100%"});
-            $("div.search-bar").css({"border-bottom-left-radius": "0px",
-                                     "border-bottom-right-radius": "0px",
-                                     "box-shadow": "5px 11px 5px -5px, 8px -3px 5px -9px"});
+            $("div.search-bar").animate({
+	        "border-bottom-left-radius": "0px",                           "border-bottom-right-radius": "0px"
+	    }, 50, function(){
+                $("#filter-window").delay(50).slideDown(200);
+		$("div.search-bar").delay(200).css({"box-shadow": "5px 11px 5px -5px, 8px -3px 5px -9px"});
+	    }); 
         }
         else {
             hideFilterWindow();
@@ -71,13 +71,17 @@ $(document).ready(function(){
         }
     );
 
+    // TODO: Barra de busqueda en celular
     $("#search-button-mobile").click(function(){
         $("#navbar-left-div").css({"display": "none"});
         $("#navbar-right-div").css({"display": "none"});
-        $("#search-wrapper").css({"width": "90vw"});
+        $("#search-wrapper").css({"width": "80vw"});
         $("div.search-bar").css({"display": "flex"});
         $("div.search-mobile").css({"display": "none"});
         $("div.search-bar").mouseenter();
         $("input.search-field").focusin();
+	$("#search-btn-wrapper").css({"padding-left": "12px",
+		                     "padding-right": "12px"});
+        $("#search-close-mobile").css({"display": "flex"});
     });
 });
