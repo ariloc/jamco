@@ -14,15 +14,15 @@ $(document).ready(function(){
 
     $("input.search-field").focusin(function(){
         search_bar_focused = true;
-        $("div.search-bar").css("width", "100%");
+        $("div.search-bar").animate({width: "100%"},100,function(){});
         $("#filter-search-button").css({"width": "auto", "opacity": "100%"});
     });
 
     function hideFilterWindow() {
-        $("#filter-window").slideUp(200, function(){
-            $("div.search-bar").animate({"border-radius": "20px"},50,function(){});
-	});
-        $("div.search-bar").css("box-shadow","3px 3px 5px -3px");
+        $("#filter-window").slideUp({duration: 200, queue: false, complete: function(){
+            $("div.search-bar").css({"border-radius": "20px"});
+            $("div.search-bar").css("box-shadow","3px 3px 5px -3px");
+    	}});
     }
 
     // TODO: Corregir animacion para cuando hago click afuera
@@ -30,8 +30,8 @@ $(document).ready(function(){
         search_bar_focused = false;
         hideFilterWindow();
         $("div.search-bar").mouseleave();
-        $("div.search-bar").css({"width": ""});
-        $("#filter-window").css({"width": "80%"});
+        $("div.search-bar").animate({width: "80%"},100);
+        $("#filter-window").animate({width: "80%"},100,false,function(){});
         $("#filter-search-button").css({"width": "", "opacity": ""});
     }
     
@@ -46,12 +46,13 @@ $(document).ready(function(){
             $("#filter-window").css({"width": ""});
             $("#filter-window").outerHeight(); // fuerza a recargar, evita usar en cache
 
-            $("div.search-bar").animate({
-	        "border-bottom-left-radius": "0px",                           "border-bottom-right-radius": "0px"
-	    }, 50, function(){
-                $("#filter-window").delay(50).slideDown(200);
-		$("div.search-bar").delay(200).css({"box-shadow": "5px 11px 5px -5px, 8px -3px 5px -9px"});
-	    }); 
+            $("div.search-bar").css({"border-bottom-left-radius": "0px",
+                                     "border-bottom-right-radius": "0px"});
+            $("#filter-window").slideDown(200);
+    		$("div.search-bar").delay(50).queue(function(next) {
+                $(this).css({"box-shadow": "5px 11px 5px -5px, 8px -3px 5px -9px"});
+                next();
+            });
         }
         else {
             hideFilterWindow();
@@ -72,16 +73,36 @@ $(document).ready(function(){
     );
 
     // TODO: Barra de busqueda en celular
-    $("#search-button-mobile").click(function(){
-        $("#navbar-left-div").css({"display": "none"});
-        $("#navbar-right-div").css({"display": "none"});
+    $("#search-button-mobile").click(function() {
+        $("#navbar-left-div").hide(0)
+        $("#navbar-right-div").hide(0);
         $("#search-wrapper").css({"width": "80vw"});
-        $("div.search-bar").css({"display": "flex"});
-        $("div.search-mobile").css({"display": "none"});
+        $("div.search-bar").css({"display": "flex"}).hide(0).fadeIn(200);
+        $("div.search-mobile").hide(0);
         $("div.search-bar").mouseenter();
-        $("input.search-field").focusin();
-	$("#search-btn-wrapper").css({"padding-left": "12px",
-		                     "padding-right": "12px"});
-        $("#search-close-mobile").css({"display": "flex"});
+        $("input.search-field").focusin().focus();
+	    $("#search-btn-wrapper").css({"padding-left": "12px",
+		                              "padding-right": "12px"});
+        $("#search-close-mobile").css({"display": "flex"}).hide(0).fadeIn(200);
+    });
+
+    $("#search-close-mobile").click(function() {
+        $(this).queue(function(next){
+            searchBoxFocusOut();
+            next();
+        }).delay(200).queue(function(next){
+            $("#search-wrapper").animate({"width": "30vw"},100);
+            $("div.search-bar").fadeOut(100);
+            $("#search-close-mobile").hide(0);
+            next();
+        }).delay(200).queue(function(next){
+            $("#navbar-left-div").fadeIn();
+            $("#navbar-right-div").fadeIn();
+            $("div.search-mobile").fadeIn();
+            $("#search-btn-wrapper").css({"padding-left": "",
+                                          "padding-right": ""});
+            next();
+        });
+
     });
 });
