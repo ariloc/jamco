@@ -1,7 +1,11 @@
 :root {
-    --main-color: #6a5acd;
+    --main-color: #614fb4;
     --light-color: #9d87ff;
     --dark-color: #34309b;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .logo {
@@ -59,10 +63,9 @@ input.search-field {
 }
 
 #filter-search-button {
-    transition: opacity 0.2s ease-out;
-    width: 0%;
-    opacity: 0%;
+    width: 0;
     overflow: hidden;
+    display: none;
 }
 
 a.profile-pic {
@@ -123,6 +126,7 @@ a.profile-pic > img {
 .profile-wrapper {
     display: flex;
     justify-content: end;
+    
 }
 
 div.search-mobile {

@@ -15,7 +15,10 @@ $(document).ready(function(){
     $("input.search-field").focusin(function(){
         search_bar_focused = true;
         $("div.search-bar").animate({width: "100%"},100,function(){});
-        $("#filter-search-button").css({"width": "auto", "opacity": "100%"});
+        $("#filter-search-button").css({"display": "flex"}).animate({
+            width: "42px",
+            opacity: 1
+        },100);
     });
 
     function hideFilterWindow() {
@@ -32,7 +35,12 @@ $(document).ready(function(){
         $("div.search-bar").mouseleave();
         $("div.search-bar").animate({width: "80%"},100);
         $("#filter-window").animate({width: "80%"},100,false,function(){});
-        $("#filter-search-button").css({"width": "", "opacity": ""});
+        $("#filter-search-button").animate({
+            width: "0px",
+            opacity: 0
+        },100,function(){
+            $(this).hide(0);
+        });
     }
     
     $(document).mouseup(function(e) {
@@ -68,7 +76,7 @@ $(document).ready(function(){
         }, function() {
             login_timeout = setTimeout(function() {
                 $(".login-popup").css({"transform": ""});
-            }, 300);
+            },300);
         }
     );
 
@@ -80,7 +88,7 @@ $(document).ready(function(){
         $("div.search-bar").css({"display": "flex"}).hide(0).fadeIn(200);
         $("div.search-mobile").hide(0);
         $("div.search-bar").mouseenter();
-        $("input.search-field").focusin().focus();
+        $("input.search-field").focus();
 	    $("#search-btn-wrapper").css({"padding-left": "12px",
 		                              "padding-right": "12px"});
         $("#search-close-mobile").css({"display": "flex"}).hide(0).fadeIn(200);
