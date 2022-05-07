@@ -1,11 +1,12 @@
 :root {
-    --main-color: #614fb4;
-    --light-color: #9d87ff;
-    --dark-color: #34309b;
+    --main-color: #023061;
+    --light-color: #4995E6;
+    --dark-color: #1F3F61;
 }
 
 body {
     font-family: 'Ubuntu', sans-serif;
+    background-color: #011429;
 }
 
 .logo {
@@ -125,8 +126,16 @@ a.profile-pic > img {
 
 .profile-wrapper {
     display: flex;
-    justify-content: end;
-    
+    justify-content: end;   
+}
+
+.boton{ 
+    padding: 8px; 
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: var(--light-color);  
+    text-decoration: none; 
+    border-radius: 20px; 
 }
 
 div.search-mobile {
@@ -168,4 +177,57 @@ div.search-mobile {
         width: 30vw;
     }
 }
+
+.introduccion{
+    background-color: var(--dark-color) ;
+    font-size: 20px;
+    margin-top: 30px;
+    padding: 2%;
+    text-align: center;
+}
+
+.wrapper{
+    width: 100%;
+}
+
+.wrapper .carousel{
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 30px;
+}
+
+/*Arreglar altura y ancho para que sean iguales*/
+
+.carousel .card{
+    line-height: 450px;
+    line-height: 400px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 90px;
+    font-weight: 600;
+    margin: 40px 0;
+    border-radius: 50%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel .card-1{
+    background: #ed1c24;
+}
+
+.carousel .card-2{
+    background: #0072bc;
+}
+
+.carousel .card-3{
+    background: #39b54a;
+}
+
+.carousel .card-4{
+    background: #f26522;
+}
+
+.carousel .card-5{
+    background: #630460;
+}
+
 
