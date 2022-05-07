@@ -12,7 +12,7 @@ $(document).ready(function(){
         }
     });
 
-    $("input.search-field").focusin(function(){
+    $("input.search-field").focusin(function() {
         search_bar_focused = true;
         $("div.search-bar").animate({width: "100%"},100,function(){});
         $("#filter-search-button").css({"display": "flex"}).animate({
@@ -22,19 +22,24 @@ $(document).ready(function(){
     });
 
     function hideFilterWindow() {
-        $("#filter-window").slideUp({duration: 200, queue: false, complete: function(){
-            $("div.search-bar").css({"border-radius": "20px"});
-            $("div.search-bar").css("box-shadow","3px 3px 5px -3px");
-    	}});
+        $("#filter-window").slideUp(200, function() {
+            $("div.search-bar").css({"border-radius": "20px", "box-shadow": "3px 3px 5px -3px"});
+    	});
     }
 
-    // TODO: Corregir animacion para cuando hago click afuera
     function searchBoxFocusOut() {
         search_bar_focused = false;
+
         hideFilterWindow();
+        $("#filter-window").animate({
+            width: "80%"
+        }, {
+            duration: 100,
+            queue: false
+        });
+        
         $("div.search-bar").mouseleave();
         $("div.search-bar").animate({width: "80%"},100);
-        $("#filter-window").animate({width: "80%"},100,false,function(){});
         $("#filter-search-button").animate({
             width: "0px",
             opacity: 0
@@ -52,7 +57,6 @@ $(document).ready(function(){
     $("#filter-search-button").click(function(e){
         if ($("#filter-window").css("display") == "none") {
             $("#filter-window").css({"width": ""});
-            $("#filter-window").outerHeight(); // fuerza a recargar, evita usar en cache
 
             $("div.search-bar").css({"border-bottom-left-radius": "0px",
                                      "border-bottom-right-radius": "0px"});
@@ -67,8 +71,7 @@ $(document).ready(function(){
         }
     });
 
-    // TODO: Agregar que se pueda ver haciendo click (para celular, fundamentalmente)
-    // TODO: Que al tener el mouse sobre el cuadro, no se salga
+    /*
     var login_timeout;
     $(".profile-pic").hover(
         function() {
@@ -79,8 +82,8 @@ $(document).ready(function(){
             },300);
         }
     );
+    */
 
-    // TODO: Barra de busqueda en celular
     $("#search-button-mobile").click(function() {
         $("#navbar-left-div").hide(0)
         $("#navbar-right-div").hide(0);
