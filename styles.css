@@ -242,11 +242,6 @@ div.search-mobile {
     font-size: 1em;
 }
 
-.rating-td-wrapper, .rating-td-wrapper > * {
-    display: flex;
-    align-items: center;
-}
-
 .rating-author {
     padding-right: 15px;
     font-weight: bold;
@@ -254,11 +249,6 @@ div.search-mobile {
 
 .rating-star {
     padding-right: 10px;
-}
-
-.rating-description > p {
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
 .rating-song-album > img {
@@ -269,4 +259,41 @@ div.search-mobile {
 
 .rating-song-album {
     padding-right: 10px;
+}
+
+.rating-recent {
+    font-size: 1.15em;
+    overflow: hidden;
+}
+
+.rating-recent p {
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.rating-td-wrapper, .rating-td-wrapper > * {
+    display: flex;
+    align-items: center;
+}
+
+.rating-td-wrapper div:last-child {
+    min-width: 0;
+}
+
+.rating-td-wrapper div:last-child > p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.rating-recent .w3-row-padding {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid white;
+}
+
+.rating-recent .w3-row:last-child {
+    border-bottom: none;
 }
