@@ -4,9 +4,13 @@
     --dark-color: #1F3F61;
 }
 
-body {
+body, h1, h2, h3, h4, h5, h6 {
     font-family: 'Ubuntu', sans-serif;
+}
+
+body {
     background-color: #011429;
+    color: white;
 }
 
 .logo {
@@ -17,6 +21,7 @@ body {
 header.navbar {
     background-color: var(--main-color);
     height: 70px;
+    color: black;
 }
 
 div.search-bar {
@@ -182,7 +187,7 @@ div.search-mobile {
     background-color: var(--dark-color) ;
     font-size: 20px;
     margin-top: 30px;
-    padding: 2%;
+    padding: 2%; /* TODO: Che, esto no plz*/
     text-align: center;
 }
 
@@ -198,6 +203,7 @@ div.search-mobile {
 
 /*Arreglar altura y ancho para que sean iguales*/
 
+/* Carousel */
 .carousel .card{
     line-height: 450px;
     line-height: 400px;
@@ -230,4 +236,37 @@ div.search-mobile {
     background: #630460;
 }
 
+/* Ratings */
+.rating-star > i {
+    color: gold;
+    font-size: 1em;
+}
 
+.rating-td-wrapper, .rating-td-wrapper > * {
+    display: flex;
+    align-items: center;
+}
+
+.rating-author {
+    padding-right: 15px;
+    font-weight: bold;
+}
+
+.rating-star {
+    padding-right: 10px;
+}
+
+.rating-description > p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.rating-song-album > img {
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.rating-song-album {
+    padding-right: 10px;
+}

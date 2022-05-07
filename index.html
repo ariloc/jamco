@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="styles.css" />     
+        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
+        <link rel="stylesheet" type="text/css" href="styles.css" />     
 
         <link rel="preconnect" href="https://fonts.googleapis.com">  
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,8 +104,8 @@
 
 
         <div class="introduccion">
-            <h1 style="color: white;">Encontra compañia con tus mismos gustos musicales</h1>
-            <p style="color: white;">Jamco es un servicio que busca reunir personas de todas partes con gustos similares, aqui puedes convivir y descubrir nuevas personas</p>
+            <h1>Encontrá compañía con tus mismos gustos musicales</h1>
+            <p>Jamco es un servicio que busca reunir personas de todas partes del Internet con gustos musicales similares.<br>¡Regístrate y puedes formar parte de las comunidades que quieras!</p>
         </div>
 
         <div class="wrapper">
@@ -118,34 +118,79 @@
             </div>
         </div>
 
-        <!--meter esto en scripts.js-->
+        <div class="w3-row">
+            <div class="w3-col l6">
+                <div class="w3-container">
+                    <h2 style="text-align: center;">Reseñas más recientes</h2>
+                    
+                    <table class="w3-table w3-large rating-recent">
+                        <tr>
+                            <td>
+                                <div class="rating-td-wrapper">
+                                    <div class="rating-song-album">
+                                        <img src="we_will_rock_you.png"></img>
+                                    </div>
+                                    <div class="rating-song-name">
+                                        Queen - We Will Rock You
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating-td-wrapper">
+                                    <div class="rating-author">
+                                        ariloc:
+                                    </div>
+                                    <div class="rating-star">
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star_half</i>
+                                    </div>
+                                    <div class="rating-description">
+                                        <p>Un buen clásico!</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="rating-td-wrapper">
+                                    <div class="rating-song-album">
+                                        <img src="we_will_rock_you.png"></img>
+                                    </div>
+                                    <div class="rating-song-name">
+                                        Rick Astley - Never Gonna Give You Up
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="rating-td-wrapper">
+                                    <div class="rating-author">
+                                        some_random_internet_troll
+                                    </div>
+                                    <div class="rating-star">
+                                        <i class="material-icons">star_half</i>
+                                        <i class="material-icons">star_border</i>
+                                        <i class="material-icons">star_border</i>
+                                        <i class="material-icons">star_border</i>
+                                        <i class="material-icons">star_border</i>
+                                    </div>
+                                    <div class="rating-description">
+                                        <p>Rickrolled &#62;&#62;:((</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
-        <script>
-            $(".carousel").owlCarousel({
-                margin: 30,
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 2000,
-                autoplayHoverPause: true,
-                responsive: {
-
-                    0:{
-                        items:1,
-                        nav: false
-                    },
-
-                    600:{
-                        items:2,
-                        nav: false
-                    },
-
-                    1000:{
-                        items:3,
-                        nav: false
-                    }
-                }
-            });
-        </script>
-
+            <div class="w3-col l6">
+                <div class="w3-container">
+                    <h2 style="text-align: center;">Actividad reciente en las comunidades</h2>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>
