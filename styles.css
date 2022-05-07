@@ -187,7 +187,7 @@ div.search-mobile {
     background-color: var(--dark-color) ;
     font-size: 20px;
     margin-top: 30px;
-    padding: 2%; /* TODO: Che, esto no plz*/
+    padding: 40px; /* TODO: Che, esto no plz*/
     text-align: center;
 }
 
@@ -196,7 +196,7 @@ div.search-mobile {
 }
 
 .wrapper .carousel{
-    max-width: 1200px;
+    max-width: 2000px;
     margin: auto;
     padding: 0 30px;
 }
@@ -233,6 +233,26 @@ div.search-mobile {
 }
 
 .carousel .card-5{
+    background: #630460;
+}
+
+.carousel .card-6{
+    background: #ed1c24;
+}
+
+.carousel .card-7{
+    background: #0072bc;
+}
+
+.carousel .card-8{
+    background: #39b54a;
+}
+
+.carousel .card-9{
+    background: #f26522;
+}
+
+.carousel .card-10{
     background: #630460;
 }
 
