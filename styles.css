@@ -353,3 +353,66 @@ span.carousel-rank {
     right: 0;
     background: linear-gradient(to left, var(--background-color) 20px, rgba(0, 0, 0, 0));
 }
+
+/*de aca para abajo es el footer*/
+
+.pie-pagina{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #0a141d;
+}
+
+.pie-pagina .footer-1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.pie-pagina .footer-1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.pie-pagina .footer-1 .box figure img{
+    width: 200px;
+}
+
+.pie-pagina .footer-1 .red-social a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.pie-pagina .footer-1 .red-social a:hover{
+    color: aqua;
+}
+
+.pie-pagina .footer-2{
+    background-color: #0a1a2a;
+    padding: 15px 10px;
+    text-align: center;
+}
+
+/*no es totalmente responsive*/
+
+@media (max-width:675px){
+    .pie-pagina .footer-1{
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 35px 75px;
+    }
+}
+
+/*aca termina el footer*/
