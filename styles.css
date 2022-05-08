@@ -292,23 +292,31 @@ div.search-mobile {
     white-space: nowrap;
 }
 
-.rating-td-wrapper, .rating-td-wrapper > * {
+.rating-td-wrapper {
+    height: 32px;
+}
+
+.rating-td-wrapper, .rating-td-wrapper > div {
     display: flex;
     align-items: center;
 }
 
-.rating-td-wrapper div:last-child {
+.rating-td-wrapper > div {
     min-width: 0;
 }
 
-.rating-td-wrapper div:last-child > p {
+.rating-td-wrapper .rating-star, .rating-td-wrapper .rating-song-album {
+    min-width: fit-content;
+}
+
+.rating-td-wrapper div > p {
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 .rating-recent .w3-row-padding {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center;*/
     padding-bottom: 10px;
     padding-top: 10px;
     border-bottom: 1px solid white;
