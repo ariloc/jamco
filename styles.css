@@ -336,14 +336,14 @@ div.search-mobile {
     text-align: center;
 }
 
-/*no entiendo porque no anda(responsive)*/
+/*no es totalmente responsive*/
 
-@media screen and(max-width:800px){
+@media (max-width:675px){
     .pie-pagina .footer-1{
         width: 100%;
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 30px;
-        padding: 35px 0px;
+        padding: 35px 75px;
     }
 }
 
