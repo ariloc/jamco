@@ -32,7 +32,7 @@ div.search-bar {
     padding-right: 10px;
     border-radius: 20px;
     background-color: var(--light-color);
-    /*transition: all 0.075s linear;*/
+    transition: box-shadow 0.1s linear;
     width: 80%;
     margin: auto;
     align-items: center;
@@ -42,6 +42,10 @@ div.search-bar {
 @media screen and (min-width: 601px) {
     div.search-bar {
         display: flex;
+    }
+
+    .standalone-navbar-button:hover {
+        box-shadow: 3px 3px 5px -3px;
     }
 }
 
@@ -135,13 +139,15 @@ a.profile-pic > img {
     justify-content: end;   
 }
 
-.boton{ 
+.standalone-navbar-button { 
     padding: 8px; 
     padding-left: 20px;
     padding-right: 20px;
     background-color: var(--light-color);  
     text-decoration: none; 
-    border-radius: 20px; 
+    border-radius: 20px;
+    color: black;
+    transition: box-shadow 0.1s linear;
 }
 
 div.search-mobile {
@@ -172,6 +178,7 @@ div.search-mobile {
 
 #search-close-mobile {
     display: none;
+    color: white;
 }
 
 @media screen and (max-width: 600px) {
@@ -181,6 +188,10 @@ div.search-mobile {
 
     #search-wrapper {
         width: 30vw;
+    }
+
+    .standalone-navbar-button {
+        box-shadow: 0px 0px 7px -1px;
     }
 }
 
@@ -307,6 +318,7 @@ a.music-tag {
 .tags-carousel {
     margin-top: 12px;
     margin-bottom: 12px;
+    line-height: 2.25em;
 }
 
 .carousel-img {

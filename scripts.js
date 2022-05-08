@@ -116,7 +116,7 @@ $(document).ready(function(){
         });
     });
 
-
+    // -- CAROUSEL --
     $(".carousel").owlCarousel({
         margin: 50,
         loop: true,
@@ -156,8 +156,9 @@ $(document).ready(function(){
         }
     });
 
-
     $(".carousel").trigger('next.owl'); // Avoids the first 6s waiting time
+    
+    // -- END CAROUSEL --
 });
 
 /*const carousel = document.querySelector(".carousel owl-carousel");
