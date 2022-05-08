@@ -153,6 +153,23 @@ $(document).ready(function(){
     });
 });
 
+/*const carousel = document.querySelector(".carousel owl-carousel");
+
+let intervalo = null;
+
+const start = () => {
+    intervalo = setInterval(function(){
+        carousel.scrollLeft = carousel.scrollLeft + 5;
+    },10)
+};
+
+const stop = () => {
+
+};
+
+start();*/
+
+
 
 
 
