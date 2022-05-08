@@ -321,7 +321,7 @@ div.search-mobile {
     border-bottom: 1px solid white;
 }
 
-.rating-recent .w3-row:last-child {
+.rating-recent .w3-row-padding:last-child {
     border-bottom: none;
 }
 
