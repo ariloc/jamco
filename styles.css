@@ -187,7 +187,7 @@ div.search-mobile {
     background-color: var(--dark-color) ;
     font-size: 20px;
     margin-top: 30px;
-    padding: 40px; /* TODO: Che, esto no plz*/
+    padding: 30px; /* TODO: Che, esto no plz (solucionado)*/
     text-align: center;
 }
 
@@ -205,13 +205,12 @@ div.search-mobile {
 
 /* Carousel */
 .carousel .card{
-    line-height: 450px;
-    line-height: 400px;
+    line-height: 3em;
     text-align: center;
     color: #ffffff;
     font-size: 90px;
     font-weight: 600;
-    margin: 40px 0;
+    margin: 40px 15px;
     border-radius: 50%;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -325,3 +324,4 @@ div.search-mobile {
 .rating-recent .w3-row:last-child {
     border-bottom: none;
 }
+
