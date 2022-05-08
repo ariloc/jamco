@@ -118,11 +118,15 @@ $(document).ready(function(){
 
 
     $(".carousel").owlCarousel({
-        margin: 30,
+        margin: 50,
         loop: true,
         autoplay: true,
-        autoplayTimeout: 2000,
-        autoplayHoverPause: true,
+        autoplayTimeout: 6000,
+        smartSpeed: 6000,
+        slideTransition: 'linear',
+        autoplayHoverPause: false,
+        mouseDrag: false,
+        center: true,
         responsive: {
 
             0:{
@@ -151,6 +155,9 @@ $(document).ready(function(){
             }
         }
     });
+
+
+    $(".carousel").trigger('next.owl'); // Avoids the first 6s waiting time
 });
 
 /*const carousel = document.querySelector(".carousel owl-carousel");
