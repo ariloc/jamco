@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Generator: Adobe Illustrator 25.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 960 560" style="enable-background:new 0 0 960 560;" xml:space="preserve">
+<svg width="351.7" height="351.7" version="1.1" viewBox="0 0 351.7 351.7" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 <style type="text/css">
 	.st0{display:none;fill:#FFFFFF;}
 	.st1{display:none;fill:#001C31;}
@@ -10,14 +8,12 @@
 	.st3{fill:#F09B4E;}
 	.st4{fill:#FBA700;}
 </style>
-<circle class="st0" cx="480.2" cy="279.6" r="105.7"/>
-<circle class="st1" cx="480.2" cy="279.6" r="105.7"/>
-<circle class="st2" cx="443.8" cy="131.2" r="27.1"/>
-<path class="st3" d="M597.4,293.5h-56.7c0-29.9-25.4-54.1-56.7-54.1v-54.1C546.6,185.3,597.4,233.8,597.4,293.5z"/>
-<path class="st2" d="M470.9,185.3v189.4c0,7.9-1.1,15.5-3.2,22.7c-9.8,33.8-41,58.4-77.9,58.4c-9.5,0-18.6-1.6-27.1-4.6v-49.5h27.1
-	c15,0,27.1-12.1,27.1-27.1V185.3H470.9z"/>
-<circle class="st4" cx="443.8" cy="131.2" r="27.1"/>
-<path class="st4" d="M597.4,293.5h-56.7c0-29.9-25.4-54.1-56.7-54.1v-54.1C546.6,185.3,597.4,233.8,597.4,293.5z"/>
-<path class="st4" d="M470.9,185.3v189.4c0,7.9-1.1,15.5-3.2,22.7c-9.8,33.8-41,58.4-77.9,58.4c-9.5,0-18.6-1.6-27.1-4.6v-49.5h27.1
-	c15,0,27.1-12.1,27.1-27.1V185.3H470.9z"/>
+<circle class="st0" cx="117.5" cy="175.5" r="105.7"/>
+<circle class="st1" cx="117.5" cy="175.5" r="105.7"/>
+<circle class="st2" cx="139.6" cy="27.1" r="27.1"/>
+<path class="st3" d="m293.2 189.4h-56.7c0-29.9-25.4-54.1-56.7-54.1v-54.1c62.6 0 113.4 48.5 113.4 108.2z"/>
+<path class="st2" d="m166.7 81.2v189.4c0 7.9-1.1 15.5-3.2 22.7-9.8 33.8-41 58.4-77.9 58.4-9.5 0-18.6-1.6-27.1-4.6v-49.5h27.1c15 0 27.1-12.1 27.1-27.1v-189.3z"/>
+<circle class="st4" cx="139.6" cy="27.1" r="27.1"/>
+<path class="st4" d="m293.2 189.4h-56.7c0-29.9-25.4-54.1-56.7-54.1v-54.1c62.6 0 113.4 48.5 113.4 108.2z"/>
+<path class="st4" d="m166.7 81.2v189.4c0 7.9-1.1 15.5-3.2 22.7-9.8 33.8-41 58.4-77.9 58.4-9.5 0-18.6-1.6-27.1-4.6v-49.5h27.1c15 0 27.1-12.1 27.1-27.1v-189.3z"/>
 </svg>
