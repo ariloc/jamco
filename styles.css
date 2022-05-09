@@ -358,6 +358,11 @@ a.music-tag {
     margin-left: 2px;
     margin-right: 2px;
     text-decoration: none;
+    font-size: 15px;
+}
+
+a.music-tag:hover {
+    color: inherit !important;
 }
 
 .tags-carousel {
@@ -474,3 +479,7 @@ span.carousel-rank {
 }
 
 /*aca termina el footer*/
+
+.evlist-container a:hover {
+    color: orange;
+}
