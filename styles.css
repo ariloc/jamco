@@ -14,6 +14,10 @@ body {
     color: white;
 }
 
+a { /* We really don't need links underlined in our website... */
+    text-decoration: none;
+}
+
 .logo {
     height: 70px;
     padding: 0.5em;
@@ -208,6 +212,7 @@ div.search-mobile {
     .standalone-navbar-button {
         box-shadow: 0px 0px 7px -1px;
     }
+
 }
 
 .introduccion{
@@ -244,7 +249,7 @@ div.search-mobile {
 }
 
 /* Ratings */
-.rating-star > i {
+.rating-stars > i {
     color: gold;
     font-size: 1em;
 }
@@ -254,54 +259,74 @@ div.search-mobile {
     font-weight: bold;
 }
 
-.rating-star {
+.rating-stars {
     padding-right: 10px;
 }
 
-.rating-song-album > img {
+/* evlist comes from "event list" which is used for showing top songs and artists, recent ratings and community activity, amongst others */
+.evlist-pic img {
     height: 32px;
     border-radius: 50%;
     border: 1px solid white;
 }
 
-.rating-song-album {
+.evlist-pic {
     padding-right: 10px;
 }
 
-.rating-recent {
+.evlist-container {
     font-size: 1.15em;
     overflow: hidden;
+    position: relative;
+    width: 90%;
+    margin: auto;
 }
 
-.rating-recent p {
+@media screen and (max-width: 600px) {
+    .evlist-container {
+        width: 95%;
+    }
+}
+
+.evlist-container p {
     margin-top: 0;
     margin-bottom: 0;
     white-space: nowrap;
 }
 
-.rating-td-wrapper {
+.evlist-gradient-bottom:after {
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 80%, var(--background-color));
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    content: "";
+    pointer-events: none;
+}
+
+.evlist-td-wrapper {
     height: 32px;
 }
 
-.rating-td-wrapper, .rating-td-wrapper > div {
+.evlist-td-wrapper, .evlist-td-wrapper > div {
     display: flex;
     align-items: center;
 }
 
-.rating-td-wrapper > div {
+.evlist-td-wrapper > div {
     min-width: 0;
 }
 
-.rating-td-wrapper .rating-star, .rating-td-wrapper .rating-song-album {
+.evlist-td-wrapper .rating-stars, .evlist-td-wrapper .evlist-pic {
     min-width: fit-content;
 }
 
-.rating-td-wrapper div > p {
+.evlist-td-wrapper div > p {
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
-.rating-recent .w3-row-padding {
+.evlist-container .w3-row-padding {
     /* display: flex;
     align-items: center;*/
     padding-bottom: 10px;
@@ -309,8 +334,13 @@ div.search-mobile {
     border-bottom: 1px solid white;
 }
 
-.rating-recent .w3-row-padding:last-child {
+.evlist-container .w3-row-padding:last-child {
     border-bottom: none;
+}
+
+.evlist-updated {
+    height: 300px;
+    overflow-y: hidden;
 }
 
 .carousel h4 {
