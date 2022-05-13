@@ -1,0 +1,73 @@
+:root {
+    --main-color: #023061;
+    --background-color: #011429;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: white;
+}
+
+.logo {
+    height: 70px;
+    padding: 0.5em;
+}
+
+header.navbar {
+    background-color: var(--main-color);
+    height: 70px;
+    color: black;
+}
+
+.form{
+    background-color:#1F3F61;
+    margin-top: 150px;
+    padding: 5px;
+    text-align: center;
+}
+
+.form .cosa{
+    width: 100%;
+    padding: 40px;
+}
+
+input[type="text"],input[type="password"]{
+    font-size: 20px;
+    width: 80%;
+    padding: 8px;
+    border: none;
+}
+
+.input-container{
+    margin-bottom: 20px;
+}
+
+.form .cosa .button{
+    border: none;
+    width: 80%;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form .cosa .button:hover{
+    background: aqua;
+}
+@media(max-width:500){
+    .form{
+        margin-top: 50px;
+    }
+}
+
+@media(min-width:500px){
+    .form{
+        margin: auto;
+        width: 450px;
+        margin-top: 150px;
+        border-radius: 5px;
+    }
+}
