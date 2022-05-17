@@ -227,7 +227,7 @@ div.search-mobile {
     width: 100%;
 }
 
-.wrapper .carousel{
+.wrapper .main-carousel{
     max-width: 2000px;
     margin: auto;
     padding: 0 30px;
@@ -236,11 +236,11 @@ div.search-mobile {
 /*Arreglar altura y ancho para que sean iguales*/
 
 /* Carousel */
-.carousel{
+.main-carousel{
     display: flex;
 }
 
-.card-items img{
+.main-carousel .carousel-card img{
     margin-top: 40px;
     width: 100%;
     height: 100%;
