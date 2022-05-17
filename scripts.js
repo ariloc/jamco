@@ -118,15 +118,57 @@ $(document).ready(function(){
 
 
     // -- NEW CAROUSEL -- (WIP)
-    var carousel = $('.main-carousel'),
+
+    // TODO: Establece el ancho (hacer responsive)
+    // TODO: Hacer que se actualice al resizear (PD: podría aplicarse también al navbar)
+
+    var carousel_items = 5;
+    var carousel = $('.main-carousel-cards'),
     threshold = 150,
-    slideWidth = 500,
+    slideWidth = 300,
     dragStart, 
     dragEnd;
+    var carousel_card = $('.main-carousel-cards .carousel-card');
+
+    function refreshCarouselViewport() {
+        carousel_items = 1 + ($(this).width() > 600) +
+                                  ($(this).width() > 800) +
+                                  ($(this).width() > 1000) +
+                                  ($(this).width() > 1200);
+
+        var carousel_card_width = (carousel.width() / carousel_items);
+        carousel_card.css("min-width", carousel_card_width + "px");
+        slideWidth = carousel_card_width;
+        carousel.css("left", "-" + ((carousel[0].scrollWidth / 2) - (carousel.width() / 2)) + "px");
+    }
+
+    $(window).on('resize', function() {
+        refreshCarouselViewport(); // when the viewport is resized
+    });
+    refreshCarouselViewport(); // when the page loads
+
+    function dragMainCarousel() {
+        var carousel = $(".main-carousel-cards");
+        var current_drag = parseFloat(carousel.css("transform").split(',')[4]);
+        carousel.animate({
+            duration: 6000,
+            step: function(now, fn) {
+                //fn.start = current_drag;
+                //fn.end = current_drag + slideWidth;
+                //carousel.css("transform", "translateX(" + now + "px)");
+                console.log("EEEH");
+            },
+            done: function(){console.log("EHY");}
+        })
+    }
+
+    var interval = setInterval(dragMainCarousel,6000);
+    dragMainCarousel();
 
     $('#next').click(function(){ shiftSlide(-1) })
     $('#prev').click(function(){ shiftSlide(1) })
 
+    
     carousel.on('mousedown', function(){
         if (carousel.hasClass('transition')) return;
         dragStart = event.pageX;
@@ -144,6 +186,8 @@ $(document).ready(function(){
     function dragPos() {
         return dragEnd - dragStart;
     }
+
+
 
     function shiftSlide(direction) {
         if (carousel.hasClass('transition')) return;
