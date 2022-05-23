@@ -9,7 +9,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
 body {
     background-color: var(--background-color);
-    background-image: url("logo_texture.svg");
+    background-image: url("../img/assets/logo_texture.svg");
     color: white;
 }
 
