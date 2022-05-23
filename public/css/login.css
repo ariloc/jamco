@@ -13,17 +13,6 @@ body {
     color: white;
 }
 
-.logo {
-    height: 70px;
-    padding: 0.5em;
-}
-
-header.navbar {
-    background-color: var(--main-color);
-    height: 70px;
-    color: black;
-}
-
 .login {
     background-color:#1F3F61;
     margin-top: 150px;
