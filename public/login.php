@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <link rel="stylesheet" type="text/css" href="css/login.css" />
-        <link rel="stylesheet" type="text/css" href="css/navbar.css" />
-        <link rel="icon" type="image/x-icon" href="img/assets/favicon.ico">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-
-        <script src="js/navbar.js"></script> 
-
-        <title>Jamco</title>
-    </head>
-
+    <?php include "header.php"; ?>
 
     <body>
-        <?php include "navbar.html"; ?>
-        <form class="login" style="margin-bottom: 150px;">
-            <h1 style="margin-top: 40px;margin-bottom: 0px;">Iniciar sesión</h1>
-            <div class="cosa">
-    
-                    <div class="input-container">
-                        <input type="username" placeholder="Nombre de usuario">
-                    </div>
-                    
-                    <div class="input-container">
-                        <input type="password" placeholder="Contraseña">
-                    </div>
+
+        <div class="main-wrapper">
+            <?php include "navbar.html"; ?>
+            
+            <form class="login">
+                <h1 style="margin-top: 40px;margin-bottom: 0px;">Iniciar sesión</h1>
+                <div class="cosa">
         
-                    <input type="submit" value="Iniciar sesión" class="button" style="margin-top: 20px;margin-bottom: 20px;">
-                    <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-                    <p>
-                        ¿No tienes una cuenta?
-                        <a class="link" href="register.html">Registrate!</a>
-                    </p>
-            </div>
-        </form>
+                        <div class="input-container">
+                            <input type="username" placeholder="Nombre de usuario">
+                        </div>
+                        
+                        <div class="input-container">
+                            <input type="password" placeholder="Contraseña">
+                        </div>
+            
+                        <input type="submit" value="Iniciar sesión" class="button" style="margin-top: 20px;margin-bottom: 20px;">
+                        <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+                        <p>
+                            ¿No tienes una cuenta?
+                            <a class="link" href="register.html">Registrate!</a>
+                        </p>
+                </div>
+            </form>
+        </div>
     </body>
 </html>
