@@ -21,8 +21,8 @@ $(document).ready(function(){
         },100);
     });
 
-    function hideFilterWindow() {
-        $("#filter-window").slideUp(200, function() {
+    function hideFilterWindow(delay = true) {
+        $("#filter-window").slideUp(delay ? 200 : 0, function() {
             $("div.search-bar").css({"border-radius": "20px", "box-shadow": "3px 3px 5px -3px"});
     	});
     }
@@ -102,10 +102,21 @@ $(document).ready(function(){
        resizing the viewport (i.e. the window of your browser in a desktop) */
     $(window).on('resize', function() {
         if ($(this).width() > 600) {
-            $("div.search-bar").show(0);
+            $("#search-close-mobile").hide(0);
+            $("div.search-bar").css("display", "flex");
+            $("#navbar-left-div").show(0);
+            $("#navbar-right-div").show(0);
             $("#search-wrapper").css("width","");
         }
-        else $("div.search-bar").hide(0);
+        else {
+            if ($("#search-close-mobile").css('display') == 'none') {
+                hideFilterWindow(false);
+                $("div.search-bar").hide(0);
+                $("div.search-mobile").show(0);
+                $("#navbar-left-div").show(0);
+                $("#navbar-right-div").show(0);
+            }
+        }
     });
 
     $("#search-close-mobile").click(function() {

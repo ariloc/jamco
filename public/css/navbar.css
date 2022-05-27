@@ -5,7 +5,7 @@
 
 header.navbar {
     background-color: var(--main-color);
-    height: 70px;
+    min-height: 70px;
     color: black;
 }
 
