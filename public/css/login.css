@@ -19,6 +19,10 @@ body {
     height: 100vh;
 }
 
+.form_login_register{
+    margin-top: 150px;
+}
+
 .login {
     background-color:#1F3F61;
     padding: 5px;
@@ -83,5 +87,73 @@ body {
 }
 
 .login input:focus, .login input:hover {
+    box-shadow: 3px 3px 5px -3px;
+}
+
+.register{
+    display: none;
+}
+
+.register {
+    background-color:#1F3F61;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+}
+
+.register .cosa {
+    width: 100%;
+    padding: 40px;
+}
+
+.register input[type="username"], .login input[type="password"]{
+    font-size: 1.2em;
+}
+
+.register .button{
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    width: 60%;
+}
+
+.register .button:hover{
+    background-color: orange;
+}
+
+.register a {
+    transition: all 0.1s ease-out;
+    text-decoration: underline;
+}
+
+.register a:hover {
+    color: orange;
+}
+
+@media(min-width:500px){
+    .register {
+        width: 450px;
+        border-radius: 5px;
+    }
+}
+
+.register input, .login button {
+    border-radius: 9999px;
+}
+
+.register input {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: all 0.1s ease-out;
+    font-size: 1.2em;
+}
+
+.register input:focus, .login input:hover {
     box-shadow: 3px 3px 5px -3px;
 }
