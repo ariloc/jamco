@@ -20,7 +20,9 @@ body {
 }
 
 .form_login_register{
-    margin-top: 150px;
+    margin: auto;
+    display: flex;
+    flex: 1 1 auto;
 }
 
 .login {
@@ -35,13 +37,14 @@ body {
     padding: 40px;
 }
 
-.login input[type="username"], .login input[type="password"]{
+input[type="text"], input[type="password"], input[type="text"]{
     font-size: 1.2em;
 }
 
 .input-container{
     margin-bottom: 20px;
 }
+
 .login .button{
     border: none;
     padding: 15px;
@@ -86,16 +89,13 @@ body {
     font-size: 1.2em;
 }
 
-.login input:focus, .login input:hover {
+.register input:focus, .register input:hover, .login input:focus, .login input:hover {
     box-shadow: 3px 3px 5px -3px;
-}
-
-.register{
-    display: none;
 }
 
 .register {
     background-color:#1F3F61;
+    display: none;
     padding: 5px;
     text-align: center;
     margin: auto;
@@ -154,6 +154,10 @@ body {
     font-size: 1.2em;
 }
 
-.register input:focus, .login input:hover {
-    box-shadow: 3px 3px 5px -3px;
+#register-lnk {
+    cursor: pointer;
+}
+
+.register .input-container {
+    margin-bottom: 15px;
 }

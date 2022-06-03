@@ -1,9 +1,8 @@
 $(document).ready(function(){
 
-    $(".link").click(function(){
+    $("#register-lnk").click(function(){
         $(".login").hide();
         $(".register").show(200);
     });
 
-    
 });

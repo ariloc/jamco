@@ -13,7 +13,7 @@
                     <div class="cosa">
         
                         <div class="input-container">
-                            <input type="username" placeholder="Nombre de usuario">
+                            <input type="text" placeholder="Nombre de usuario">
                         </div>
                         
                         <div class="input-container">
@@ -25,7 +25,7 @@
                         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
                         <p>
                             ¿No tienes una cuenta?
-                            <a class="link">Registrate!</a>
+                            <a id="register-lnk">Registrate!</a>
                         </p>
                     </div>
                 </form>
@@ -35,11 +35,11 @@
                     <div class="cosa">
         
                         <div class="input-container">
-                            <input type="username" placeholder="Nombre de usuario">
+                            <input type="text" placeholder="Nombre de usuario">
                         </div>
 
                         <div class="input-container">
-                            <input type="username" placeholder="Correo electrónico">
+                            <input type="email" placeholder="Correo electrónico">
                         </div>
                         
                         <div class="input-container">

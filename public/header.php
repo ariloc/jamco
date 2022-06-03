@@ -13,7 +13,6 @@
     <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
 
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/login.css" />
     <link rel="stylesheet" type="text/css" href="css/navbar.css" />
     <?php $f = 'css/'.$filename_no_ext.'.css'; if(file_exists($f)) echo '<link rel="stylesheet" type="text/css" href="'.$f.'" />'; ?>
     
