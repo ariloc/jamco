@@ -723,15 +723,15 @@
                         </a>
                     </figure>
                 </div>
-                <div class="box">
-                    <h2>SOBRE NOSOTROS</h2>
+                <div class="box-2">
+                    <h2 style="text-align: center;">SOBRE NOSOTROS</h2>
                     <p style="text-align: justify;">
                     <b>Jamco</b> es un proyecto realizado por cuatro alumnos de secundaria que tiene el fin de que las personas se encuentren a través de la música.<br>
                     Se centra en la participación en comunidades con gustos o intereses comunes.<br>
                     Alentamos a que uses <b>Jamco</b> como más lo prefieras!
                     </p>
                 </div>
-                <div class="box">
+                <div class="box-3">
                     <h2>REDES SOCIALES</h2>
                     <div class="red-social">
                         <a href="#" class="fa fa-facebook"></a>
