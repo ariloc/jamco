@@ -715,30 +715,28 @@
         <!-- TODO: Añadir playlists populares esta semana -->
 
         <footer class="pie-pagina">
-            <div class="footer-1">
-                <div class="box">
-                    <figure>
-                        <a href="#">
-                            <img src="img/assets/logo.svg">
-                        </a>
-                    </figure>
+            <div class="footer-1 w3-row">
+                <div class="box w3-col l4">
+                    <a href="#">
+                        <img src="img/assets/logo.svg">
+                    </a>
                 </div>
-                <div class="box-2">
-                    <h2 style="text-align: center;">SOBRE NOSOTROS</h2>
-                    <p style="text-align: justify;">
+                <div class="box w3-col l4">
+                    <h2>SOBRE NOSOTROS</h2>
+                    <p>
                     <b>Jamco</b> es un proyecto realizado por cuatro alumnos de secundaria que tiene el fin de que las personas se encuentren a través de la música.<br>
                     Se centra en la participación en comunidades con gustos o intereses comunes.<br>
                     Alentamos a que uses <b>Jamco</b> como más lo prefieras!
                     </p>
                 </div>
-                <div class="box-3">
+                <div class="box w3-col l4">
                     <h2>REDES SOCIALES</h2>
-                    <div class="red-social">
+                    <p class="red-social">
                         <a href="#" class="fa fa-facebook"></a>
                         <a href="#" class="fa fa-instagram"></a>
                         <a href="#" class="fa fa-twitter"></a>
                         <a href="#" class="fa fa-youtube"></a>
-                    </div>
+                    </p>
                 </div>
             </div>
             <div class="footer-2">
