@@ -1,0 +1,163 @@
+:root {
+    --main-color: #023061;
+    --background-color: #011429;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    background-image: url("../img/assets/logo_texture.svg");
+    color: white;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.form_login_register{
+    margin: auto;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.login {
+    background-color:#1F3F61;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+}
+
+.login .cosa {
+    width: 100%;
+    padding: 40px;
+}
+
+input[type="text"], input[type="password"], input[type="text"]{
+    font-size: 1.2em;
+}
+
+.input-container{
+    margin-bottom: 20px;
+}
+
+.login .button{
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    width: 60%;
+}
+
+.login .button:hover{
+    background-color: orange;
+}
+
+.login a {
+    transition: all 0.1s ease-out;
+    text-decoration: underline;
+}
+
+.login a:hover {
+    color: orange;
+}
+
+@media(min-width:500px){
+    .login {
+        width: 450px;
+        border-radius: 5px;
+    }
+}
+
+.login input, .login button {
+    border-radius: 9999px;
+}
+
+.login input {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: all 0.1s ease-out;
+    font-size: 1.2em;
+}
+
+.register input:focus, .register input:hover, .login input:focus, .login input:hover {
+    box-shadow: 3px 3px 5px -3px;
+}
+
+.register {
+    background-color:#1F3F61;
+    display: none;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+}
+
+.register .cosa {
+    width: 100%;
+    padding: 40px;
+}
+
+.register input[type="username"], .login input[type="password"]{
+    font-size: 1.2em;
+}
+
+.register .button{
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    width: 60%;
+}
+
+.register .button:hover{
+    background-color: orange;
+}
+
+.register a {
+    transition: all 0.1s ease-out;
+    text-decoration: underline;
+}
+
+.register a:hover {
+    color: orange;
+}
+
+@media(min-width:500px){
+    .register {
+        width: 450px;
+        border-radius: 5px;
+    }
+}
+
+.register input, .login button {
+    border-radius: 9999px;
+}
+
+.register input {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: all 0.1s ease-out;
+    font-size: 1.2em;
+}
+
+#register-lnk {
+    cursor: pointer;
+}
+
+.register .input-container {
+    margin-bottom: 15px;
+}

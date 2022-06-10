@@ -21,8 +21,8 @@ $(document).ready(function(){
         },100);
     });
 
-    function hideFilterWindow() {
-        $("#filter-window").slideUp(200, function() {
+    function hideFilterWindow(delay = true) {
+        $("#filter-window").slideUp(delay ? 200 : 0, function() {
             $("div.search-bar").css({"border-radius": "20px", "box-shadow": "3px 3px 5px -3px"});
     	});
     }
@@ -97,6 +97,28 @@ $(document).ready(function(){
         $("#search-close-mobile").css({"display": "flex"}).hide(0).fadeIn(200);
     });
 
+    /* even though we have css for this, the way we reuse the desktop search bar
+       may lead into a situation where the search bar isn't visible anymore after
+       resizing the viewport (i.e. the window of your browser in a desktop) */
+    $(window).on('resize', function() {
+        if ($(this).width() > 600) {
+            $("#search-close-mobile").hide(0);
+            $("div.search-bar").css("display", "flex");
+            $("#navbar-left-div").show(0);
+            $("#navbar-right-div").show(0);
+            $("#search-wrapper").css("width","");
+        }
+        else {
+            if ($("#search-close-mobile").css('display') == 'none') {
+                hideFilterWindow(false);
+                $("div.search-bar").hide(0);
+                $("div.search-mobile").show(0);
+                $("#navbar-left-div").show(0);
+                $("#navbar-right-div").show(0);
+            }
+        }
+    });
+
     $("#search-close-mobile").click(function() {
         $(this).queue(function(next){
             searchBoxFocusOut();
@@ -115,69 +137,4 @@ $(document).ready(function(){
             next();
         });
     });
-
-    // -- CAROUSEL --
-    $(".carousel").owlCarousel({
-        margin: 50,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 6000,
-        smartSpeed: 6000,
-        slideTransition: 'linear',
-        autoplayHoverPause: false,
-        mouseDrag: false,
-        center: true,
-        responsive: {
-
-            0:{
-                items:1,
-                nav: false
-            },
-
-            600:{
-                items:2,
-                nav: false
-            },
-
-            800:{
-                items:3,
-                nav: false
-            },
-
-            1000:{
-                items:4,
-                nav: false
-            },
-
-            1200:{
-                items:5,
-                nav: false
-            }
-        }
-    });
-
-    $(".carousel").trigger('next.owl'); // Avoids the first 6s waiting time
-    
-    // -- END CAROUSEL --
 });
-
-/*const carousel = document.querySelector(".carousel owl-carousel");
-
-let intervalo = null;
-
-const start = () => {
-    intervalo = setInterval(function(){
-        carousel.scrollLeft = carousel.scrollLeft + 5;
-    },10)
-};
-
-const stop = () => {
-
-};
-
-start();*/
-
-
-
-
-

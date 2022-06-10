@@ -1,233 +1,135 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
-        <link rel="stylesheet" type="text/css" href="styles.css" />
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">  
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-        <script src="scripts.js"></script>
-
-		<title>Jamco</title>
-	</head>
+    <?php include "header.php"; ?>    
 
     <body>
-        <header class="navbar w3-cell-row">
-            <div id="navbar-left-div" class="w3-container w3-cell w3-cell-middle" style="width: 30%;">
-                <a href="">
-                    <img class="logo" src="logo.svg" alt="Logo j2g" />
-                </a>
-                </div>
-			</div>
-            <div class="w3-cell w3-cell-middle">
-                <div id="search-btn-wrapper">
-                    <button id="search-close-mobile" class="navbar-button">
-                        <i class="material-icons">close</i>
-                    </button>
-
-                    <div id="search-wrapper">
-                        <div class="search-mobile">
-                            <button id="search-button-mobile" class="navbar-button">
-                                <i class="material-icons">search</i>
-                            </button>    
-                        </div>
-
-                        <div class="search-bar">
-                            <input class="search-field w3-input" type="text" placeholder="Búsqueda..." />
-                            <button class="navbar-button" id="filter-search-button">
-                                <i class="material-icons">filter_alt</i>
-                            </button>
-                            <button class="navbar-button">
-                                <i class="material-icons">search</i>
-                            </button>    
-                        </div>
-                        
-                        <div id="filter-window-wrapper">
-                            <div id="filter-window" style="background-color: var(--light-color);">
-                                <div class="w3-container">
-                                    <!-- TODO: Agregar filtros por tags, rating, etc, cuando sea posible -->
-                                    <h4>Filtrar por:</h4>
-                                    <div class="w3-row">
-                                        <div class="w3-col l3 m6 filter-container">
-                                            <input class="w3-check" type="checkbox" id="cbox-filter-communities">
-                                            <label for="cbox-filter-communities">Comunidades</label>
-                                        </div>
-                                        <div class="w3-col l3 m6 filter-container">
-                                            <input class="w3-check" type="checkbox" id="cbox-filter-songs">
-                                            <label for="cbox-filter-songs">Canciones</label>
-                                        </div>
-                                        <div class="w3-col l3 m6 filter-container">
-                                            <input class="w3-check" type="checkbox" id="cbox-filter-albums">
-                                            <label for="cbox-filter-albums">Álbumes</label>
-                                        </div>
-                                        <div class="w3-col l3 m6 filter-container">
-                                            <input class="w3-check" type="checkbox" id="cbox-filter-artists">
-                                            <label for="cbox-filter-artists">Artistas</label>
-                                        </div>
-                                    </div>
-                                    <p></p> 
+        <?php include "navbar.html"; ?> 
+        
+        <!-- TODO: Añadir botones de pausa, controles manuales? -->
+        <div class="wrapper">
+            <div class="introduccion">
+                <h1>Encontrá compañía con tus mismos gustos musicales</h1>
+                <p>Jamco es un servicio que busca reunir personas de todas partes del Internet con gustos musicales similares.<br>¡Regístrate y puedes formar parte de las comunidades que quieras!</p>
+            </div>
+            <div class="main-carousel">
+                <div class="main-carousel-window">
+                    <div class="main-carousel-cards">
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">1º</span>
+                                <a href="communities/rock-nacional"><img src="img/communities/charly.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/rock-nacional"><h4>Rock Nacional!</h4></a>
+                                <p>36,748 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/rock" class="music-tag">rock</a> <a href="tags/Argentina" class="music-tag">Argentina</a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="navbar-right-div" class="w3-container w3-cell w3-cell-middle" style="width: 30%;">
-
-                <div class="profile-wrapper">
-                    <a href="login/login.html" class="standalone-navbar-button">Login</a>
-                </div>
-
-            <!--
-                <div class="profile-wrapper">
-                    <a class="profile-pic">
-                        <img src="persona.svg"></img>
-                    </a>
-                </div>
-
-            
-                <div class="profile-wrapper">
-                    <div class="w3-container login-popup">
-                        <p style="text-align: center;"><a href="login">Login / Registrarse</a></p>
-                    </div>
-                </div>
-            -->
-            </div>
-		</header>
-
-
-        <div class="introduccion">
-            <h1>Encontrá compañía con tus mismos gustos musicales</h1>
-            <p>Jamco es un servicio que busca reunir personas de todas partes del Internet con gustos musicales similares.<br>¡Regístrate y puedes formar parte de las comunidades que quieras!</p>
-        </div>
-
-        <div class="wrapper">
-            <div class="carousel owl-carousel">
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">1º</span>
-                        <a href="communities/rock-nacional"><img src="images_carousel/charly.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/rock-nacional"><h4>Rock Nacional!</h4></a>
-                        <p>36,748 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/rock" class="music-tag">rock</a> <a href="tags/Argentina" class="music-tag">Argentina</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">2º</span>
+                                <a href="communities/musica-clasica"><img src="img/communities/beethoven.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/musica-clasica"><h4>Música Clásica</h4></a>
+                                <p>14,341 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">2º</span>
-                        <a href="communities/musica-clasica"><img src="images_carousel/beethoven.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/musica-clasica"><h4>Música Clásica</h4></a>
-                        <p>14,341 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">6º</span>
+                                <a href="communities/evangelion"><img src="img/communities/evangelion.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/evangelion"><h4>Evangelion</h4></a>
+                                <p>10,999 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/anime" class="music-tag">anime</a> <a href="tags/soundtrack" class="music-tag">soundtrack</a> <a href="tags/j-pop" class="music-tag">J-pop</a> <a href="tags/Japon" class="music-tag">Japón</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">6º</span>
-                        <a href="communities/evangelion"><img src="images_carousel/evangelion.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/evangelion"><h4>Evangelion</h4></a>
-                        <p>10,999 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/anime" class="music-tag">anime</a> <a href="tags/soundtrack" class="music-tag">soundtrack</a> <a href="tags/j-pop" class="music-tag">J-pop</a> <a href="tags/Japon" class="music-tag">Japón</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">9º</span>
+                                <a href="communities/fans-de-wos"><img src="img/communities/wos.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/fans-de-wos"><h4>Fans de Wos</h4></a>
+                                <p>6,769 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/rap" class="music-tag">rap</a> <a href="tags/freestyle" class="music-tag">freestyle</a> <a href="tags/Argentina" class="music-tag">Argentina</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">9º</span>
-                        <a href="communities/fans-de-wos"><img src="images_carousel/wos.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/fans-de-wos"><h4>Fans de Wos</h4></a>
-                        <p>6,769 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/rap" class="music-tag">rap</a> <a href="tags/freestyle" class="music-tag">freestyle</a> <a href="tags/Argentina" class="music-tag">Argentina</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">3º</span>
+                                <a href="communities/led-zeppelin"><img src="img/communities/led_zeppelin.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/led-zeppelin"><h4>Led Zeppelin</h4></a>
+                                <p>13,847 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/rock" class="music-tag">rock</a> <a href="tags/70s" class="music-tag">'70s</a> <a href="tags/Inglaterra" class="music-tag">Inglaterra</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">3º</span>
-                        <a href="communities/led-zeppelin"><img src="images_carousel/led_zeppelin.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/led-zeppelin"><h4>Led Zeppelin</h4></a>
-                        <p>13,847 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/rock" class="music-tag">rock</a> <a href="tags/70s" class="music-tag">'70s</a> <a href="tags/Inglaterra" class="music-tag">Inglaterra</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">10º</span>
+                                <a href="communities/los-palmeras"><img src="img/communities/los_palmeras.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/los-palmeras"><h4>Los Palmeras</h4></a>
+                                <p>5,814 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/cumbia" class="music-tag">cumbia</a> <a href="tags/Argentina" class="music-tag">Argentina</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">10º</span>
-                        <a href="communities/los-palmeras"><img src="images_carousel/los_palmeras.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/los-palmeras"><h4>Los Palmeras</h4></a>
-                        <p>5,814 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/cumbia" class="music-tag">cumbia</a> <a href="tags/Argentina" class="music-tag">Argentina</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">4º</span>
+                                <a href="communities/queen"><img src="img/communities/queen.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/queen"><h4>Queen</h4></a>
+                                <p>12,768 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/rock" class="music-tag">rock</a> <a href="tags/70s" class="music-tag">'70s</a ><a href="tags/Inglaterra" class="music-tag">Inglaterra</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">4º</span>
-                        <a href="communities/queen"><img src="images_carousel/queen.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/queen"><h4>Queen</h4></a>
-                        <p>12,768 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/rock" class="music-tag">rock</a> <a href="tags/70s" class="music-tag">'70s</a ><a href="tags/Inglaterra" class="music-tag">Inglaterra</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">8º</span>
+                                <a href="communities/canciones-infantiles-argentina"><img src="img/communities/tito_y_pelusa.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/canciones-infantiles-argentina"><h4>Canciones infantiles Argentina</h4></a>
+                                <p>8,293 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/infantil" class="music-tag">infantil</a> <a href="tags/Inglaterra" class="music-tag">Argentina</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">8º</span>
-                        <a href="communities/canciones-infantiles-argentina"><img src="images_carousel/tito_y_pelusa.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/canciones-infantiles-argentina"><h4>Canciones infantiles Argentina</h4></a>
-                        <p>8,293 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/infantil" class="music-tag">infantil</a> <a href="tags/Inglaterra" class="music-tag">Argentina</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-items">
-                    <div class="carousel-img">
-                        <span class="carousel-rank">5º</span>
-                        <a href="communities/twenty-one-pilots"><img src="images_carousel/twenty_one.png"></a>
-                    </div>
-                    <div class="w3-center">
-                        <a href="communities/twenty-one-pilots"><h4>Twenty One Pilots</h4></a>
-                        <p>10,620 miembros</p>
-                        <div class="tags-carousel">
-                            <a href="tags/hip-hop-alternativo" class="music-tag">hip hop</a> <a href="tags/rap" class="music-tag">rap</a> <a href="tags/alternativo" class="music-tag">alternativo</a> <a href="tags/EEUU" class="music-tag">EE.UU.</a>
+                        <div class="carousel-card">
+                            <div class="carousel-img">
+                                <span class="carousel-rank">5º</span>
+                                <a href="communities/twenty-one-pilots"><img src="img/communities/twenty_one.png"></a>
+                            </div>
+                            <div class="w3-center">
+                                <a href="communities/twenty-one-pilots"><h4>Twenty One Pilots</h4></a>
+                                <p>10,620 miembros</p>
+                                <div class="tags-carousel">
+                                    <a href="tags/hip-hop-alternativo" class="music-tag">hip hop</a> <a href="tags/rap" class="music-tag">rap</a> <a href="tags/alternativo" class="music-tag">alternativo</a> <a href="tags/EEUU" class="music-tag">EE.UU.</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,7 +147,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="artists/rick-astley/albums/whenever-you-need-somebody">
-                                            <img src="fotos/never_gonna_give_you_up.png"></img>
+                                            <img src="img/albums/never_gonna_give_you_up.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -276,7 +178,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="artists/大原ゆい子/albums/オンリー">
-                                            <img src="fotos/only.png"></img>
+                                            <img src="img/albums/only.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -307,7 +209,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="artists/stromae/albums/multitude">
-                                            <img src="fotos/stromae.jpg"></img>
+                                            <img src="img/albums/stromae.jpg"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -338,7 +240,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="artists/rick-astley/albums/whenever-you-need-somebody">
-                                            <img src="fotos/never_gonna_give_you_up.png"></img>
+                                            <img src="img/albums/never_gonna_give_you_up.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -369,7 +271,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="artists/rick-astley/albums/whenever-you-need-somebody">
-                                            <img src="fotos/never_gonna_give_you_up.png"></img>
+                                            <img src="img/albums/never_gonna_give_you_up.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -400,7 +302,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="artists/rick-astley/albums/whenever-you-need-somebody">
-                                            <img src="fotos/never_gonna_give_you_up.png"></img>
+                                            <img src="img/albums/never_gonna_give_you_up.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -441,7 +343,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="communities/rock-nacional">
-                                            <img src="images_carousel/charly.png"></img>
+                                            <img src="img/communities/charly.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -462,7 +364,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="communities/chainsmokers">
-                                            <img src="fotos/chainsmoker.png"></img>
+                                            <img src="img/communities/chainsmoker.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -483,7 +385,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="communities/metal-gear-rising">
-                                            <img src="fotos/metalgear.png"></img>
+                                            <img src="img/communities/metalgear.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -504,7 +406,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="communities/undertale">
-                                            <img src="fotos/frisk.png"></img>
+                                            <img src="img/communities/frisk.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -525,7 +427,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="communities/steins-gate">
-                                            <img src="fotos/steinsgate.png"></img>
+                                            <img src="img/communities/steinsgate.png"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -546,7 +448,7 @@
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
                                         <a href="communities/adoradores-de-schujman">
-                                            <img src="fotos/adoradores-de-shugman.jpg"></img>
+                                            <img src="img/communities/adoradores-de-shugman.jpg"></img>
                                         </a>
                                     </div>
                                     <div class="evlist-name">
@@ -584,7 +486,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/rick-astley"><img src="fotos/rick-astley-2.png"></img></a>
+                                        <a href="artists/rick-astley"><img src="img/artists/rick-astley-2.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/rick-astley">Rick Astley</a></p>
@@ -606,7 +508,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/sim"><img src="fotos/sim.png"></img></a>
+                                        <a href="artists/sim"><img src="img/artists/sim.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/sim">SiM</a></p>
@@ -628,7 +530,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/nene-malo"><img src="fotos/nenemalo.png"></img></a>
+                                        <a href="artists/nene-malo"><img src="img/artists/nenemalo.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/nene-malo">Nene Malo</a></p>
@@ -650,7 +552,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/madonna"><img src="fotos/madonna.png"></img></a>
+                                        <a href="artists/madonna"><img src="img/artists/madonna.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/madonna">Madonna</a></p>
@@ -672,7 +574,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/toto"><img src="fotos/toto.png"></img></a>
+                                        <a href="artists/toto"><img src="img/artists/toto.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/toto">Toto</a></p>
@@ -704,7 +606,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/rick-astley/albums/whenever-you-need-somebody"><img src="fotos/never_gonna_give_you_up.png"></img></a>
+                                        <a href="artists/rick-astley/albums/whenever-you-need-somebody"><img src="img/albums/never_gonna_give_you_up.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/rick-astley">Rick Astley</a> - <a href="artists/rick-astley/songs/never-gonna-give-you-up">Never Gonna Give You Up</a></p>
@@ -726,7 +628,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/tyson-yen/albums/the-only-thing-i-know-for-real"><img src="fotos/the-only-thing-i-know-for-real.png"></img></a>
+                                        <a href="artists/tyson-yen/albums/the-only-thing-i-know-for-real"><img src="img/albums/the-only-thing-i-know-for-real.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/tyson-yen">Tyson Yen</a> - <a href="artists/tyson-yen/the-only-thing-i-know-for-real">The Only Thing I Know For Real</a></p>
@@ -748,7 +650,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/men-at-work/albums/business-as-usual"><img src="fotos/who-can-it-be-now.png"></img></a>
+                                        <a href="artists/men-at-work/albums/business-as-usual"><img src="img/albums/who-can-it-be-now.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/men-at-work">Men At Work</a> - <a href="artists/men-at-work/songs/who-can-it-be-now">Who Can It Be Now?</a></p>
@@ -770,7 +672,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/fripside/albums/sisters-noise"><img src="fotos/sisters-noise.jpg"></img></a>
+                                        <a href="artists/fripside/albums/sisters-noise"><img src="img/albums/sisters-noise.jpg"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/fripside">fripSide</a> - <a href="artists/fripside/songs/sisters-noise">sister's noise</a></p>
@@ -792,7 +694,7 @@
                             <div class="w3-col m8 s7">
                                 <div class="evlist-td-wrapper">
                                     <div class="evlist-pic">
-                                        <a href="artists/duke-dumont/albums/ocean-drive"><img src="fotos/duke-dumont.png"></img></a>
+                                        <a href="artists/duke-dumont/albums/ocean-drive"><img src="img/albums/duke-dumont.png"></img></a>
                                     </div>
                                     <div class="evlist-name">
                                         <p><a href="artists/duke-dumont">Duke Dumont</a> - <a href="artists/duke-dumont/songs/ocean-drive">Ocean Drive</a></p>
@@ -813,30 +715,28 @@
         <!-- TODO: Añadir playlists populares esta semana -->
 
         <footer class="pie-pagina">
-            <div class="footer-1">
-                <div class="box">
-                    <figure>
-                        <a href="#">
-                            <img src="logo.svg">
-                        </a>
-                    </figure>
+            <div class="footer-1 w3-row">
+                <div class="box w3-col l4">
+                    <a href="#">
+                        <img src="img/assets/logo.svg">
+                    </a>
                 </div>
-                <div class="box">
+                <div class="box w3-col l4">
                     <h2>SOBRE NOSOTROS</h2>
-                    <p style="text-align: justify;">
+                    <p>
                     <b>Jamco</b> es un proyecto realizado por cuatro alumnos de secundaria que tiene el fin de que las personas se encuentren a través de la música.<br>
                     Se centra en la participación en comunidades con gustos o intereses comunes.<br>
                     Alentamos a que uses <b>Jamco</b> como más lo prefieras!
                     </p>
                 </div>
-                <div class="box">
+                <div class="box w3-col l4">
                     <h2>REDES SOCIALES</h2>
-                    <div class="red-social">
-                        <a href="#" class="fa fa-facebook" style="font-size:36px; border-radius: 10px;"></a>
-                        <a href="#" class="fa fa-instagram" style="font-size:36px"></a>
-                        <a href="#" class="fa fa-twitter" style="font-size:36px"></a>
-                        <a href="#" class="fa fa-youtube" style="font-size:36px"></a>
-                    </div>
+                    <p class="red-social">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-youtube"></a>
+                    </p>
                 </div>
             </div>
             <div class="footer-2">
