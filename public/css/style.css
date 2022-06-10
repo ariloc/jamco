@@ -1,0 +1,19 @@
+:root {
+    --main-color: #023061;
+    --light-color: #4995E6;
+    --dark-color: #174b8f;
+    --background-color: #011429;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: white;
+}
+
+a { /* We really don't need links underlined in our website... */
+    text-decoration: none;
+}

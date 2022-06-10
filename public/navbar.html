@@ -1,0 +1,82 @@
+<header class="navbar w3-cell-row">
+    <div id="navbar-left-div" class="w3-container w3-cell w3-cell-middle" style="width: 30%;">
+        <a href="/">
+            <img class="logo" src="img/assets/logo.svg" alt="Logo Jamco" />
+        </a>
+    </div>
+    <div class="w3-cell w3-cell-middle">
+        <div id="search-btn-wrapper">
+            <button id="search-close-mobile" class="navbar-button">
+                <i class="material-icons">close</i>
+            </button>
+
+            <div id="search-wrapper">
+                <div class="search-mobile">
+                    <button id="search-button-mobile" class="navbar-button">
+                        <i class="material-icons">search</i>
+                    </button>    
+                </div>
+
+                <div class="search-bar">
+                    <input class="search-field w3-input" type="text" placeholder="Búsqueda..." />
+                    <button class="navbar-button" id="filter-search-button">
+                        <i class="material-icons">filter_alt</i>
+                    </button>
+                    <button class="navbar-button">
+                        <i class="material-icons">search</i>
+                    </button>    
+                </div>
+                
+                <div id="filter-window-wrapper">
+                    <div id="filter-window" style="background-color: var(--light-color);">
+                        <div class="w3-container">
+                            <!-- TODO: Agregar filtros por tags, rating, etc, cuando sea posible -->
+                            <h4>Filtrar por:</h4>
+                            <div class="w3-row">
+                                <div class="w3-col l3 m6 filter-container">
+                                    <input class="w3-check" type="checkbox" id="cbox-filter-communities">
+                                    <label for="cbox-filter-communities">Comunidades</label>
+                                </div>
+                                <div class="w3-col l3 m6 filter-container">
+                                    <input class="w3-check" type="checkbox" id="cbox-filter-songs">
+                                    <label for="cbox-filter-songs">Canciones</label>
+                                </div>
+                                <div class="w3-col l3 m6 filter-container">
+                                    <input class="w3-check" type="checkbox" id="cbox-filter-albums">
+                                    <label for="cbox-filter-albums">Álbumes</label>
+                                </div>
+                                <div class="w3-col l3 m6 filter-container">
+                                    <input class="w3-check" type="checkbox" id="cbox-filter-artists">
+                                    <label for="cbox-filter-artists">Artistas</label>
+                                </div>
+                            </div>
+                            <p></p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="navbar-right-div" class="w3-container w3-cell w3-cell-middle" style="width: 30%;">
+
+        <div class="profile-wrapper">
+            <a href="login" class="standalone-navbar-button">Login</a>
+        </div>
+
+    <!--
+        <div class="profile-wrapper">
+            <a class="profile-pic">
+                <img src="persona.svg"></img>
+            </a>
+        </div>
+
+    
+        <div class="profile-wrapper">
+            <div class="w3-container login-popup">
+                <p style="text-align: center;"><a href="login">Login / Registrarse</a></p>
+            </div>
+        </div>
+    -->
+    </div>
+</header>
