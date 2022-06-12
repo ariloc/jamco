@@ -729,7 +729,7 @@
                     Alentamos a que uses <b>Jamco</b> como más lo prefieras!
                     </p>
                 </div>
-                <div class="box w3-codl l4">
+                <div class="box w3-col l4">
                     <h2>REDES SOCIALES</h2>
                     <p class="red-social">
                         <a href="#" class="fa fa-facebook"></a>
