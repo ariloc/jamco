@@ -1,20 +1,12 @@
 <?php
 
-include '../src/db_connect.php';
+include '../src/process_activate.php';
 
-function back_to_login(int $code) {
-    
-}
+// one or more missing arguments
+if (empty($_GET['user_id']) ||
+    empty($_GET['token']) || 
+    !intval($_GET['user_id'])) back_to_login(2);
 
-if (empty($_POST['user_id']) || empty($_POST['token']))
-    back_to_login(2);
-
-if(!($db = db_connect())) back_to_login(1);
-
-
-$stmt = $db->prepare("SELECT COUNT(*) FROM users WHERE id = ? AND activation_key = ?");
-$stmt->bind_param('ss', $_POST['user_id'], $_POST['token']);
-
-
+activate(intval($_GET['user_id']), $_GET['token']);
 
 ?>

@@ -25,18 +25,6 @@ body {
     flex: 1 1 auto;
 }
 
-#login-form {
-    background-color:#1F3F61;
-    padding: 5px;
-    text-align: center;
-    margin: auto;
-}
-
-#login-form .cosa {
-    width: 100%;
-    padding: 40px;
-}
-
 input[type="text"], input[type="password"], input[type="text"]{
     font-size: 1.2em;
 }
@@ -45,38 +33,38 @@ input[type="text"], input[type="password"], input[type="text"]{
     margin-bottom: 20px;
 }
 
-#login-form .button{
+.input-form .button{
     border: none;
     padding: 15px;
     cursor: pointer;
     width: 60%;
 }
 
-#login-form .button:hover{
+.input-form .button:hover{
     background-color: orange;
 }
 
-#login-form a {
+.input-form a {
     transition: all 0.1s ease-out;
     text-decoration: underline;
 }
 
-#login-form a:hover {
+.input-form a:hover {
     color: orange;
 }
 
 @media(min-width:500px){
-    #login-form {
+    .input-form {
         width: 450px;
         border-radius: 5px;
     }
 }
 
-#login-form input, #login-form button {
+.input-form input, .input-form button {
     border-radius: 9999px;
 }
 
-#login-form input {
+.input-form input {
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 10px;
@@ -93,64 +81,18 @@ input[type="text"], input[type="password"], input[type="text"]{
     box-shadow: 3px 3px 5px -3px;
 }
 
-#register-form {
+.input-form {
     background-color:#1F3F61;
-    display: none;
-    padding: 5px;
     text-align: center;
     margin: auto;
     padding: 40px;
 }
 
-#register-form .cosa {
-    width: 100%;
+#register-form {
+    display: none;
 }
 
 #register-form input[type="username"], #login-form input[type="password"]{
-    font-size: 1.2em;
-}
-
-#register-form .button{
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    width: 60%;
-}
-
-#register-form .button:hover{
-    background-color: orange;
-}
-
-#register-form a {
-    transition: all 0.1s ease-out;
-    text-decoration: underline;
-}
-
-#register-form a:hover {
-    color: orange;
-}
-
-@media(min-width:500px){
-    #register-form {
-        width: 450px;
-        border-radius: 5px;
-    }
-}
-
-#register-form input, #login-form button {
-    border-radius: 9999px;
-}
-
-#register-form input {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 100%;
-    text-align: center;
-    border: none;
-    outline: none;
-    transition: all 0.1s ease-out;
     font-size: 1.2em;
 }
 
@@ -167,5 +109,4 @@ input[type="text"], input[type="password"], input[type="text"]{
     margin-bottom: 20px;
     padding: 15px 15px;
     border-radius: 20px;
-    display: none;
 }

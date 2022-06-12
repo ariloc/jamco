@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
     $("#register-lnk").click(function(){
+        $(".login-alert").hide();
         $("#login-form").hide();
         $("#register-form").show(200);
     });
@@ -49,7 +50,7 @@ $(document).ready(function(){
             },
             complete: function() {
                 var alertClass = isError ? 'w3-pale-red' : 'w3-pale-green';
-                var formAlert = form.find('.login-alert');
+                var formAlert = form.find('.login-alert.native-alert');
                 formAlert.removeClass(['w3-pale-green','w3-pale-red']);
                 formAlert.addClass(alertClass).html(message).slideDown(250);
 
