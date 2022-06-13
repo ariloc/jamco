@@ -1,6 +1,6 @@
 <?php
 
-include '../src/process_activate.php';
+include_once '../src/process_activate.php';
 
 // one or more missing arguments
 if (empty($_GET['user_id']) ||

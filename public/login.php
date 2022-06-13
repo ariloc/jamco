@@ -1,6 +1,5 @@
 <?php
 
-
 $login_display1 = 'block';
 $login_display2 = 'none';
 $alert1 = '';
@@ -42,11 +41,11 @@ if (!empty($_GET['message'])) {
                     <div class="cosa">
         
                         <div class="input-container">
-                            <input type="text" placeholder="Nombre de usuario">
+                            <input name="username" type="text" placeholder="Nombre de usuario">
                         </div>
                         
                         <div class="input-container">
-                            <input type="password" placeholder="Contraseña">
+                            <input name="password" type="password" placeholder="Contraseña">
                         </div>
 
                         <input type="submit" value="Iniciar sesión" class="button" style="margin-top: 20px;margin-bottom: 20px;">

@@ -1,7 +1,7 @@
 <?php
 
-#include '../src/process_login.php'
-include '../src/process_register.php';
+include_once '../src/process_login.php';
+include_once '../src/process_register.php';
 
 if (empty($_POST['username']) || 
     empty($_POST['password']) || 
@@ -13,17 +13,25 @@ if (empty($_POST['username']) ||
 
 $resp_code = 500;
 if ($_POST['form'] == 'register') {
+    // TODO: Should register just return the response_code instead? Should we use a switch statement?
     $status = register($_POST['username'], $_POST['email'], $_POST['password']);
-    if ($status == 3) $resp_code = 409; // conflict
-    if ($status == 2) $resp_code = 400; // invalid input (i.e. incorrectly formatted mail)
-    if ($status == 1) $resp_code = 500; // db error
-    if ($status == 0) $resp_code = 200; // OK
+    switch ($status) {
+        case 0:     $resp_code = 200; break; // OK
+        case -1:    $resp_code = 500; break; // db error
+        case -2:    $resp_code = 400; break; // invalid input (i.e. incorrectly formatted mail)
+        case -3:    $resp_code = 309; break; // conflict (i.e. existing user/mail)
+    }
     // TODO: Add more codes?
 
 }
 else {
-    // TODO: login may return a number whether it succeeded or not 
-    # login($_POST['username'], $_POST['email']);
+    $status = login($_POST['username'], $_POST['password']);
+    switch ($status) {
+        case 0:     $resp_code = 200; break; // OK
+        case -1:    $resp_code = 500; break; // db error
+        case -2:    $resp_code = 404; break; // inexistent username
+        case -3:    $resp_code = 403; break; // user and password don't match
+    }
 }
 
 http_response_code($resp_code);
