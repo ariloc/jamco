@@ -8,7 +8,7 @@ if (empty($_POST['username']) ||
     empty($_POST['form']) || 
     ($_POST['form'] != 'register' && $_POST['form'] != 'login') || 
     ($_POST['form'] == 'register' && empty($_POST['email']))) {
-    http_response_code(400); exit; 
+    http_response_code(400); exit(); 
 }
 
 // TODO: refactor
@@ -33,5 +33,5 @@ else {
 }
 
 http_response_code($resp_code);
-exit;
+exit();
 ?>

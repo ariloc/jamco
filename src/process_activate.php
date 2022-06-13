@@ -30,7 +30,7 @@ function back_to_login (int $code) {
 
     header("Location: /login?register=" . $targetRegister . 
            "&message=" . $message . "&msg_iserror=" . $msg_iserror);
-    exit;
+    exit();
 }
 
 function activate_by_id ($db, int $id) {

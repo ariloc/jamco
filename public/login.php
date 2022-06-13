@@ -5,7 +5,7 @@ include_once '../src/session.php';
 list($id, $usr) = retrieve_session();
 if ($id > 0) {
     header('Location: /profile');
-    exit;    
+    exit();    
 }
 
 // TODO: Put all the following code inside a function?

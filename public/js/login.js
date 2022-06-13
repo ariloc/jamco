@@ -41,7 +41,7 @@ $(document).ready(function(){
         if (form.attr('id') === 'register-form') {
             $.ajax({
                 method: "POST",
-                url: '/handler_login.php',
+                url: 'handler_login.php',
                 data: serializedData + "&form=register",
                 error: function(xhr, ajaxOptions, thrownError) {
                     isError = 1;
@@ -68,7 +68,7 @@ $(document).ready(function(){
         else {
             $.ajax({
                 method: "POST",
-                url: '/handler_login.php',
+                url: 'handler_login.php',
                 data: serializedData + "&form=login",
                 error: function(xhr, ajaxOptions, thrownError) {
                     isError = 1;

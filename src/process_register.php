@@ -17,8 +17,8 @@ function register (string $username, string $email, string $password) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
         return -2;
 
-    // https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username
-    if (!preg_match('/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/', $username))
+    // TODO: Document? Make a consistent criteria? 
+    if (!preg_match('/^[A-Za-z][A-Za-z0-9_]{4,30}[A-Za-z]$/', $username))
         return -2;
 
     $activation_token = generate_activation_code();
