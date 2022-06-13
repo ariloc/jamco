@@ -17,8 +17,8 @@ function register (string $username, string $email, string $password) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
         return -2;
 
-    // 6-32, starts with letter, alphanumeric
-    if (!preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $username))
+    // https://stackoverflow.com/questions/12018245/regular-expression-to-validate-username
+    if (!preg_match('/^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/', $username))
         return -2;
 
     $activation_token = generate_activation_code();
@@ -39,7 +39,7 @@ function register (string $username, string $email, string $password) {
 
     if (!$stmt->execute()) {
         if ($stmt->errno == 1062) return -3; // duplicate entry 
-        return 1; // error with database
+        return -1; // error with database
     }
 
     // TODO: revert changes in database?

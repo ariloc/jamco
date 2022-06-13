@@ -77,8 +77,12 @@ $(document).ready(function(){
                             message = "Uno o más argumentos no fueron enviados o son inválidos. Intente la solicitud nuevamente.";
                             break;
 
-                        case 403:
+                        case 401:
                             message = "El usuario y la contraseña ingresados no coinciden.";
+                            break;
+
+                        case 403:
+                            message = "Su cuenta se encuentra deshabilitada. Verifique su correo electrónico si no lo ha hecho, o contáctese con el administrador.";
                             break;
 
                         case 404:

@@ -1,5 +1,14 @@
 <?php
 
+include_once '../src/session.php';
+
+list($id, $usr) = retrieve_session();
+if ($id > 0) {
+    header('Location: /profile');
+    exit;    
+}
+
+// TODO: Put all the following code inside a function?
 $login_display1 = 'block';
 $login_display2 = 'none';
 $alert1 = '';
@@ -28,7 +37,7 @@ if (!empty($_GET['message'])) {
     <body>
 
         <div class="main-wrapper">
-            <?php include "navbar.html"; ?>
+            <?php include "navbar.php"; ?>
 
             <div class="form_login_register">
                 <form class="input-form" id="login-form" style="display: <?php echo $login_display1 ?>">
