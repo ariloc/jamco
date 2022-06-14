@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 include_once 'db_connect.php';
 
 function create_session (int $id, $db = NULL) {
-    if ((!$db || $db->conn_error) && !($db = db_connect())) return -1;
+    if ((!$db || $db->connect_errno) && !($db = db_connect())) return -1;
 
     $stmt = $db->prepare('SELECT username FROM users WHERE id = ?');
     $stmt->bind_param('d', $id);

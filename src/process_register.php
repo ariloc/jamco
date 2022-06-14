@@ -11,7 +11,7 @@ function generate_activation_code() : string {
 }
 
 function register (string $username, string $email, string $password) {
-    if (($db = db_connect()) == NULL) return -1; // database error
+    if (!($db = db_connect())) return -1; // database error
 
     // invalid email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))

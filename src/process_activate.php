@@ -33,7 +33,9 @@ function back_to_login (int $code) {
     exit();
 }
 
-function activate_by_id ($db, int $id) {
+function activate_by_id (int $id, $db = NULL) {
+    if ((!$db || $db->connect_errno) && !($db = db_connect())) return false;
+
     $stmt = $db->prepare('UPDATE users SET activation_token = NULL, activation_expiry = NULL, valid_state = 1 WHERE id = ?');
     
     print_r($db->error_list);
@@ -41,7 +43,9 @@ function activate_by_id ($db, int $id) {
     return $stmt->execute();
 }
 
-function delete_by_id ($db, int $id) {
+function delete_by_id (int $id, $db = NULL) {
+    if ((!$db || $db->connect_errno) && !($db = db_connect())) return false;
+
     $stmt = $db->prepare('DELETE FROM users WHERE id = ?');
     $stmt->bind_param('i', $id);
     return $stmt->execute();
@@ -69,10 +73,10 @@ function activate_db (int $id, string $token) {
 
     if (password_verify($token, $hashed_token)) {
         if ($expired) {
-            delete_by_id($db, $id);
+            delete_by_id($id, $db);
             return -3; // expired, try registering again
         }
-        activate_by_id($db, $id);
+        activate_by_id($id, $db);
         return 0; // ok
     }
 
@@ -84,6 +88,5 @@ function activate (int $id, string $token) {
     $ret_code = activate_db($id, $token);
     back_to_login($ret_code);
 }
-
 
 ?>

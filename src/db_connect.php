@@ -11,7 +11,6 @@ function db_connect() {
 
     // TODO: Manage errors in a better way?
     if ($conn->connect_error) {
-        echo "Connection failed: " . $conn->connect_error;
         return NULL;
     }
 

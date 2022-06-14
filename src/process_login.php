@@ -4,10 +4,10 @@ include_once 'db_connect.php';
 include_once 'session.php';
 
 function check_creds_username (string $username, string $password, $db = NULL) {
-    if ((!$db || $db->conn_error) && !($db = db_connect())) return -1;
+    if ((!$db || $db->connect_errno) && !($db = db_connect())) return -1;
 
     // login by email
-    $stmt = new mysqli_stmt();
+    $stmt = new stdClass();
     if (filter_var($username, FILTER_VALIDATE_EMAIL))
         $stmt = $db->prepare("SELECT id, password, valid_state FROM users WHERE email = ?");
     else // login by username
