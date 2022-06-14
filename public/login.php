@@ -15,7 +15,7 @@ $alert1 = '';
 $alert2 = '';
 
 if (!empty($_GET['message'])) {
-    $alert_color = !empty($_GET['msg_iserror']) && $_GET['msg_iserror'] == '1' ? 'w3-pale-red' : 'w3-pale-blue';
+    $alert_color = !empty($_GET['msg_iserror']) && $_GET['msg_iserror'] == '1' ? 'w3-pale-red' : 'w3-pale-green';
     $msg = $_GET['message'];
     $alert_div = " 
         <div class=\"login-alert w3-panel $alert_color\">

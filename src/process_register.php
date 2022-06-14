@@ -34,7 +34,7 @@ function register (string $username, string $email, string $password) {
                                $email,
                                $hashed_pass,
                                $hashed_token,
-                               $expiry_timestamp,
+                               $expiry_timestamp
     );
 
     if (!$stmt->execute()) {
