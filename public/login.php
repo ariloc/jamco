@@ -1,10 +1,11 @@
 <?php
 
 include_once '../src/session.php';
+include_once '../src/load_env.php';
 
 list($id, $usr) = retrieve_session();
 if ($id > 0) {
-    header('Location: /profile');
+    header('Location: ' . URL_ROOT . '/profile');
     exit();    
 }
 

@@ -5,7 +5,7 @@ include_once '../src/session.php';
 function profile_pic_path_id (int $id) {
     $path = "img/profile_pic/$id"; // it shouldn't be mandatory to have an extension, right?
     if (file_exists($path)) return $path;
-    return '/img/profile_pic/0';
+    return 'img/profile_pic/0';
 }
 
 list($id, $usr) = retrieve_session();
@@ -80,7 +80,7 @@ if ($id > 0)
 
             <?php if (isset($profile_pic_path)) : ?>
                 <div class="profile-pic">
-                    <a href="/profile">
+                    <a href="profile">
                         <img src="<?php echo $profile_pic_path; ?>" ></img>
                     </a>
                 </div>

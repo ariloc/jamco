@@ -96,7 +96,7 @@ $(document).ready(function(){
                 success: function(data, textStatus, xhr) {
                     isError = 0;
                     message = '';
-                    window.location.replace('/'); // redirect to main page on success
+                    window.location.replace(window.location.href); // redirect to profile page on success (session should redirect)
                 },
                 complete: function() {ajax_complete(form, message, isError);}
             });

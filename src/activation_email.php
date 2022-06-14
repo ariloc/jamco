@@ -12,7 +12,7 @@ function send_activation_email (int $id, string $to, string $token) {
     $smtp_mail = $ini_array['smtp_mail'];
     $smtp_password = $ini_array['smtp_password'];
 
-    $url = $_SERVER['SERVER_NAME'] . '/activate?user_id=' . $id . '&token=' . $token;
+    $url = $_SERVER['SERVER_NAME'] . URL_ROOT . '/activate?user_id=' . $id . '&token=' . $token;
 
     $mail = new PHPMailer;
     $mail->isSMTP();

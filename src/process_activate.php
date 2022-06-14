@@ -28,7 +28,7 @@ function back_to_login (int $code) {
             $message = "Se ha producido un error desconocido. Inténtelo nuevamente";
     }
 
-    header("Location: /login?register=" . $targetRegister . 
+    header("Location: " . URL_ROOT . "/login?register=" . $targetRegister . 
            "&message=" . $message . "&msg_iserror=" . $msg_iserror);
     exit();
 }

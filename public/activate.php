@@ -1,5 +1,6 @@
 <?php
 
+include_once '../src/load_env.php';
 include_once '../src/process_activate.php';
 
 // one or more missing arguments

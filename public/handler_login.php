@@ -1,5 +1,6 @@
 <?php
 
+include_once '../src/load_env.php';
 include_once '../src/process_login.php';
 include_once '../src/process_register.php';
 
