@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="profile-data">
-                    <h4>Nombre de usuario</h4>
+                    <h3>Nombre de usuario</h3>
                     <ul class="profile-data-info">
                         <li>134 Comunidades</li>
                         <li>134 Comunidades</li>
@@ -26,23 +26,48 @@
         </div>
         
         <div class="profile-communities">
+            <p>Comunidades</p>
             <div class="profile-communities-bubble">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
+                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
+                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
+                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
+                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
             </div>
         </div>
-        
-        <div class="profile-communities">
-            <div class="profile-communities-bubble">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
-                <img src="img/communities/chainsmoker.png" alt="">
+
+        <div class="profile-songs">
+            <p></p>
+        </div>
+
+        <div class="profile-review">
+            <div class="profile-review-left">
+                <div class="profile-review-header">
+                    <div class="profile-review-header-data">
+                        <a href="/review">Ultimas reseña</a>
+                        <a href="/profile">Nombre_de_Usuario</a>
+                    </div>
+                </div>
+                <div class="profile-review-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum aspernatur doloremque animi impedit consequuntur est nisi error ipsum, mollitia doloribus 
+                    autem repellat, tenetur itaque, ut quo ea blanditiis dignissimos distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur hic, facere
+                    exercitationem dolores eveniet distinctio! Tempora, commodi. Laudantium enim cum, corporis quas eius consequuntur illum voluptatibus aspernatur ut nulla voluptatum!</p>
+                </div>
+            </div>
+            
+            <div class="profile-review-right">
+                <div class="profile-review-header">
+                    <div class="profile-review-header-data">
+                        <a href="/review">Ultimas reseña</a>
+                        <a href="/profile">Nombre_de_Usuario</a>
+                    </div>
+                </div>
+                <div class="profile-review-text">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum aspernatur doloremque animi impedit consequuntur est nisi error ipsum, mollitia doloribus 
+                    autem repellat, tenetur itaque, ut quo ea blanditiis dignissimos distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur hic, facere
+                    exercitationem dolores eveniet distinctio! Tempora, commodi. Laudantium enim cum, corporis quas eius consequuntur illum voluptatibus aspernatur ut nulla voluptatum!</p>
+                </div>
             </div>
         </div>
+
     </body>
 </html>
