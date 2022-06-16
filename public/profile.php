@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <?php include "header.php"; ?>
-    <?php include "navbar.html"; ?>
     <body>
+    <?php include "navbar.html"; ?>
         <div class="profile-header">
 
             <div class="profile-banner">
@@ -24,19 +24,53 @@
                 </div>
             </div>
         </div>
-        
-        <div class="profile-communities">
-            <p>Comunidades</p>
-            <div class="profile-communities-bubble">
-                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
-                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
-                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
-                <a href="/chainsmoker"><img src="img/communities/chainsmoker.png" alt=""></a>
-            </div>
-        </div>
 
-        <div class="profile-songs">
-            <p></p>
+        <div class="profile-songs-wrapper">
+            <div class="profile-songs">
+                <div>
+                    <div class="profile-slide-content">
+                        <a href="/chainsmoker">
+                            <img src="img/communities/chainsmoker.png">
+                        </a>
+                        <h6>Chainsmokers</h6>
+                    </div>
+                </div>
+                <div>
+                    <div class="profile-slide-content">
+                        <a href="/chainsmoker">
+                            <img src="img/communities/chainsmoker.png">
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="profile-slide-content">
+                        <a href="/chainsmoker">
+                            <img src="img/communities/chainsmoker.png">
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="profile-slide-content">
+                        <a href="/chainsmoker">
+                            <img src="img/communities/chainsmoker.png">
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="profile-slide-content">
+                        <a href="/chainsmoker">
+                            <img src="img/communities/chainsmoker.png">
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="profile-slide-content">
+                        <a href="/chainsmoker">
+                            <img src="img/communities/chainsmoker.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="profile-review">

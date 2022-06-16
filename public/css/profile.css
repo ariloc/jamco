@@ -68,11 +68,29 @@
     border-radius: 25px;
 }
 
-.profile-communities-bubble img{
+.profile-songs-wrapper {
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-songs {
+    max-width: 1000px;
+    width: 90%;
+}
+
+.profile-slide-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-slide-content img {
     display: inline;
-    width: 150px;
+    width: 125px;
     border-radius: 999px;
-    margin: 40px 25px 50px 25px;
+    /* margin: 40px 25px 50px 25px; */
     box-shadow: 0px 0px 10px black;
 }
 
@@ -81,10 +99,15 @@
     font-size: 20px;
 }
 
+.slick-dots li button:before, .slick-dots li.slick-active button:before {
+    color: white;
+}
+
+
 /*-------------*/
 
 .profile-review{
-    margin-top: 50px;
+    /* margin-top: 50px; */
     display: flex;
     justify-content: center;
 }
@@ -95,6 +118,7 @@
     border-radius: 25px;
     padding: 25px;
     margin: 10px;
+    margin-bottom: 0px;
 }
 
 .profile-review-right{
@@ -103,6 +127,7 @@
     border-radius: 25px;
     padding: 25px;
     margin: 10px;
+    margin-bottom: 0px;
 }
 
 @media(max-width:600px){
