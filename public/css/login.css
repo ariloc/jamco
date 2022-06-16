@@ -29,18 +29,25 @@ input[type="text"], input[type="password"], input[type="text"]{
     font-size: 1.2em;
 }
 
-.input-container{
+#login-form .input-container{
     margin-bottom: 20px;
 }
 
 .input-form .button{
     border: none;
     padding: 15px;
-    cursor: pointer;
     width: 60%;
 }
 
-.input-form .button:hover{
+.input-form .button:enabled {
+    cursor: pointer;
+}
+
+.input-form .button:disabled {
+    cursor: not-allowed;
+}
+
+.input-form .button:hover:enabled {
     background-color: orange;
 }
 
@@ -109,4 +116,46 @@ input[type="text"], input[type="password"], input[type="text"]{
     margin-bottom: 20px;
     padding: 15px 15px;
     border-radius: 20px;
+}
+
+.tooltip-top {
+    display: none;
+    background-color: var(--light-color);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    width: 100%;
+    margin-left: -50%;
+    font-size: .9em;
+}
+
+.tooltip-top::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--light-color) transparent transparent transparent;
+}
+
+@media (min-width:500px) {
+    .tooltip-top {
+        width: 80%;
+        margin-left: -40%;
+    }
+}
+
+#reg-usr-tooltip span, #reg-pass-tooltip span {
+    text-decoration: underline;
+}
+
+.input-container {
+    position: relative;
 }

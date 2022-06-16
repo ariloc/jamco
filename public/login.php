@@ -78,22 +78,42 @@ if (!empty($_GET['message'])) {
                     <div class="cosa">
         
                         <div class="input-container">
-                            <input name="username" type="text" placeholder="Nombre de usuario">
+                            <div class="tooltip-top" id="reg-usr-tooltip">
+                                <span id="chars">6-32 caracteres</span>
+                                <br>
+                                <span id="typchars">Alfanuméricos o guiones bajos</span>
+                                <br>
+                                <span id="stndchars">El primer y último caracter deben ser letras</span>
+                            </div>
+                            <input name="username" type="text" placeholder="Nombre de usuario" autocomplete="off">
                         </div>
 
                         <div class="input-container">
-                            <input name="email" type="email" placeholder="Correo electrónico">
+                            <div class="tooltip-top" id="reg-email-tooltip">
+                                Ingrese un correo electrónico válido
+                            </div>
+                            <input name="email" type="email" placeholder="Correo electrónico" autocomplete="off">
                         </div>
                         
                         <div class="input-container">
-                            <input name="password" id="password" type="password" placeholder="Contraseña">
+                            <div class="tooltip-top" id="reg-pass-tooltip">
+                                <span id="min-chars">8 caracteres mínimo</span>
+                                <br>
+                                <span id="letter-check">Al menos 1 letra</span>
+                                <br>
+                                <span id="num-check">Al menos 1 número</span>
+                            </div>
+                            <input id="password" name="password" type="password" placeholder="Contraseña">
                         </div>
 
                         <div class="input-container">
+                            <div class="tooltip-top" id="reg-confirm-pass-tooltip">
+                                Las contaseñas no coinciden
+                            </div>
                             <input id="confirm-password" type="password" placeholder="Confirmar contraseña">
                         </div>
             
-                        <input type="submit" value="Registrarse" class="button" style="margin: 20px auto;">
+                        <input type="submit" value="Registrarse" class="button" disabled="disabled" style="margin: 20px auto;">
                         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
                     </div>
                 </form>

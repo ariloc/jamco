@@ -1,3 +1,158 @@
+function register_validation() {
+    var form = $('#register-form');
+    var usr_chars_cond = false, usr_typchars_cond = false, usr_stndchars_cond = false;
+    var email_cond = false;
+    var pass_min_chars_cond = false, pass_letter_check_cond = false, pass_num_check_cond = false;
+    var confirm_pass_cond = false;
+
+    $('#register-form input').on('keyup input', function() {
+        var register_button = $('#register-form input[type="submit"]');
+
+        if (usr_chars_cond && usr_typchars_cond && usr_stndchars_cond && 
+            email_cond && pass_min_chars_cond && pass_letter_check_cond &&
+            pass_num_check_cond && confirm_pass_cond) {
+            
+            register_button.prop("disabled", false);
+        }
+        else
+            register_button.prop("disabled", true);
+    });
+
+    var username_tooltip = form.find('#reg-usr-tooltip');
+    var username_field = form.find('input[name="username"]');
+    username_field.focus(function() {
+        username_tooltip.show(150,"linear");
+        $(this).css('background-color', '');
+    });
+    username_field.blur(function() {
+        username_tooltip.hide(150,"linear");
+        if (!usr_chars_cond || !usr_typchars_cond || !usr_stndchars_cond)
+            $(this).css('background-color', '#ff7961');
+    });
+    username_field.on('keyup input', function() {
+        if ($(this).val().length >= 6 && $(this).val().length <= 32) {
+            username_tooltip.children('#chars').css('text-decoration','none');
+            usr_chars_cond = true;
+        }
+        else {
+            username_tooltip.children('#chars').css('text-decoration','underline');
+            usr_chars_cond = false;
+        }
+
+        if ($(this).val().match(/^[a-zA-Z0-9_]+$/)) {
+            username_tooltip.children('#typchars').css('text-decoration','none');
+            usr_typchars_cond = true;
+        }
+        else {
+            username_tooltip.children('#typchars').css('text-decoration','underline');
+            usr_typchars_cond = false;
+        }
+
+        if ($(this).val().match(/^[a-zA-Z].*[a-zA-Z]$/)) {
+            username_tooltip.children('#stndchars').css('text-decoration','none');
+            usr_stndchars_cond = true;
+        }
+        else {
+            username_tooltip.children('#stndchars').css('text-decoration','underline');
+            usr_stndchars_cond = false;
+        }
+    });
+
+    var email_tooltip = form.find('#reg-email-tooltip');
+    var email_field = form.find('input[name="email"]');
+    email_field.focus(function() {
+        $(this).css('background-color','');
+        if (!email_cond)
+            email_tooltip.show(150,"linear");
+    });
+    email_field.blur(function() {
+        email_tooltip.hide(150,"linear");
+        if (!email_cond)
+            $(this).css('background-color','#ff7961');
+    });
+    email_field.on('keyup input', function() {
+        if ($(this).val().match(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/)) {
+            email_tooltip.hide(150,"linear");
+            email_cond = true;
+        }
+        else {
+            email_tooltip.show(150,"linear");
+            email_cond = false;
+        }
+    });
+
+    var pass_tooltip = form.find('#reg-pass-tooltip');
+    var pass_field = form.find('#password');
+    pass_field.focus(function() {
+        pass_tooltip.show(150,"linear");
+        $(this).css('background-color','');
+    });
+    pass_field.blur(function() {
+        pass_tooltip.hide(150,"linear");
+        if (!pass_min_chars_cond || !pass_letter_check_cond || !pass_num_check_cond)
+            $(this).css('background-color','#ff7961');
+    })
+    pass_field.on('keyup input', function() {
+        if ($(this).val().length >= 8) {
+            pass_tooltip.children('#min-chars').css('text-decoration', 'none');
+            pass_min_chars_cond = true;
+        }
+        else {
+            pass_tooltip.children('#min-chars').css('text-decoration', 'underline');
+            pass_min_chars_cond = false;
+        }
+
+        if ($(this).val().match(/.*[A-Za-z]+.*/)) {
+            pass_tooltip.children('#letter-check').css('text-decoration', 'none');
+            pass_letter_check_cond = true;
+        }
+        else {
+            pass_tooltip.children('#letter-check').css('text-decoration', 'underline');
+            pass_letter_check_cond = false;
+        }
+        
+        if ($(this).val().match(/.*[0-9]+.*/)) {
+            pass_tooltip.children('#num-check').css('text-decoration', 'none');
+            pass_num_check_cond = true;
+        }
+        else {
+            pass_tooltip.children('#num-check').css('text-decoration', 'underline');
+            pass_num_check_cond = false;
+        }
+    });
+
+    var confirm_pass_tooltip = form.find('#reg-confirm-pass-tooltip');
+    var confirm_pass_field = form.find('#confirm-password');
+    var confirm_field_focused = false;
+    confirm_pass_field.focus(function() {
+        if (!confirm_pass_cond)
+            confirm_pass_tooltip.show(150,"linear");
+        $(this).css('background-color','');
+        confirm_field_focused = true;
+        console.log("BRUH");
+    });
+    confirm_pass_field.blur(function() {
+        confirm_pass_tooltip.hide(150,"linear");
+        confirm_field_focused = false;
+        if (!confirm_pass_cond)
+            $(this).css('background-color', '#ff7961');
+    });
+    pass_field.add(confirm_pass_field).on('keyup input', function() {
+        if (pass_field.val() == confirm_pass_field.val()) {
+            confirm_pass_field.css('background-color', '');
+            confirm_pass_tooltip.hide(150,"linear");
+            confirm_pass_cond = true;
+        }
+        else {
+            if (confirm_field_focused)
+                confirm_pass_tooltip.show(150,"linear");
+            else
+                confirm_pass_field.css('background-color', '#ff7961');
+            confirm_pass_cond = false;
+        }
+    });
+}
+
 $(document).ready(function(){
 
     $("#register-lnk").click(function(){
@@ -6,14 +161,7 @@ $(document).ready(function(){
         $("#register-form").show(200);
     });
 
-    $('#register #password, #register #confirm-password').on('keyup input', function() {
-        if ($('#register #password').val() == $('#register #confirm-password').val()) {
-           // TODO: Format when passwords don't match 
-        }
-        else {
-            
-        }
-    });
+    register_validation();
 
     $('#login-form, #register-form').submit(function(e) {
         e.preventDefault();
