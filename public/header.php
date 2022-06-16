@@ -11,11 +11,11 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/navbar.css" />
-    <link rel="stylesheet" href="lib/slick-master/slick/slick.css" />
-    <link rel="stylesheet" href="lib/slick-master/slick/slick-theme.css" />
     <?php $f = 'css/'.$filename_no_ext.'.css'; if(file_exists($f)) echo '<link rel="stylesheet" type="text/css" href="'.$f.'" />'; ?>
     
     <link rel="icon" type="image/x-icon" href="img/assets/favicon.ico">
@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="lib/slick-master/slick/slick.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="js/navbar.js"></script>
     <?php $f = 'js/'.$filename_no_ext.'.js'; if(file_exists($f)) echo '<script src="'.$f.'" ></script>'; ?>
 
