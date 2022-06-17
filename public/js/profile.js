@@ -8,13 +8,38 @@ $(document).ready(function() {
         slidesToShow: 5,
         responsive: [
             {
-                breakpoint: 1024,
+              breakpoint: 1100,
+              settings: {
+                slidesToShow: 5,
+                slidesToScroll: 2,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+                breakpoint: 900,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 2
+                  slidesToShow: 4,
+                  slidesToScroll: 1,
+                  infinite: true,
+                  dots: true
                 }
+              },
+            {
+              breakpoint: 700,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1
+              }
+            },
+            {
+              breakpoint: 520,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
             }
-        ],
+          ]
     });
 });
 
