@@ -163,14 +163,16 @@
 /*----------------*/
 
 .wrap{
-	width: 800px;
+	width: 950px;
 	max-width: 90%;
 	margin: 30px auto;
 }
 
 .tabs{
     border-radius: 25px;
+    justify-content: center;
 }
+
 ul.tabs{
 	width: 100%;
 	background: #363636;
@@ -179,7 +181,7 @@ ul.tabs{
 }
 
 ul.tabs li{
-	width: 18%;
+	width: calc(100% / 3);
 }
 
 ul.tabs li a{
@@ -193,6 +195,7 @@ ul.tabs li a{
 
 .active{
 	background: #174b8f;
+    border-radius: 25px;
 }
 
 ul.tabs li a .tab-text{
