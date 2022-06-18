@@ -91,8 +91,16 @@
                         <div class="profile-review-left">
                             <div class="profile-review-header">
                                 <div class="profile-review-header-data">
-                                    <a href="/review">Ultimas reseña</a>
-                                    <a href="/profile">Nombre_de_Usuario</a>
+                                    <div class="profile-review-header-data-user">
+                                        <a style="text-align: right" href="/profile">Nombre_de_Usuario</a>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star_border</i>
+                                        <i class="material-icons">star_border</i>
+                                    </div>
                                 </div>
                             </div>
                             <div class="profile-review-text">
@@ -103,12 +111,20 @@
                         </div>
             
                         <div class="profile-review-right">
-                            <div class="profile-review-header">
-                                <div class="profile-review-header-data">
-                                    <a href="/review">Ultimas reseña</a>
-                                    <a href="/profile">Nombre_de_Usuario</a>
+                        <div class="profile-review-header">
+                            <div class="profile-review-header-data">
+                                <div class="profile-review-header-data-user">
+                                    <a style="text-align: right" href="/profile">Nombre_de_Usuario</a>
                                 </div>
-                            </div>
+                                <div class="rating-stars">
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star</i>
+                                    <i class="material-icons">star_border</i>
+                                    <i class="material-icons">star_border</i>
+                                </div>
+                            </div>3
+                        </div>
                             <div class="profile-review-text">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum aspernatur doloremque animi impedit consequuntur est nisi error ipsum, mollitia doloribus 
                                 autem repellat, tenetur itaque, ut quo ea blanditiis dignissimos distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur hic, facere
