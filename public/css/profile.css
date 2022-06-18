@@ -147,13 +147,17 @@
 
 /*-----------*/
 
-.profile-review-header-data{
-    padding-bottom: 10px;
+
+.profile-review-header-data-user{
+    display: inline-flex;
 }
 
-.profile-review-header-data a{
-    padding-right: 10px;
+.profile-review-header-data-user a{
     font-size: 20px;
+}
+
+.rating-stars{
+    text-align: left;
 }
 
 .profile-review-text{
