@@ -1,25 +1,5 @@
-function register_validation() {
-    var form = $('#register-form');
-    var usr_chars_cond = false, usr_typchars_cond = false, usr_stndchars_cond = false;
-    var email_cond = false;
-    var pass_min_chars_cond = false, pass_letter_check_cond = false, pass_num_check_cond = false;
-    var confirm_pass_cond = false;
-
-    $('#register-form input').on('keyup input', function() {
-        var register_button = $('#register-form input[type="submit"]');
-
-        if (usr_chars_cond && usr_typchars_cond && usr_stndchars_cond && 
-            email_cond && pass_min_chars_cond && pass_letter_check_cond &&
-            pass_num_check_cond && confirm_pass_cond) {
-            
-            register_button.prop("disabled", false);
-        }
-        else
-            register_button.prop("disabled", true);
-    });
-
-    var username_tooltip = form.find('#reg-usr-tooltip');
-    var username_field = form.find('input[name="username"]');
+var usr_chars_cond = false, usr_typchars_cond = false, usr_stndchars_cond = false;
+function username_field_ev (username_field, username_tooltip) {
     username_field.focus(function() {
         username_tooltip.show(150,"linear");
         $(this).css('background-color', '');
@@ -57,9 +37,10 @@ function register_validation() {
             usr_stndchars_cond = false;
         }
     });
+}
 
-    var email_tooltip = form.find('#reg-email-tooltip');
-    var email_field = form.find('input[name="email"]');
+var email_cond = false;
+function email_field_ev (email_field, email_tooltip) {
     email_field.focus(function() {
         $(this).css('background-color','');
         if (!email_cond)
@@ -80,9 +61,10 @@ function register_validation() {
             email_cond = false;
         }
     });
+}
 
-    var pass_tooltip = form.find('#reg-pass-tooltip');
-    var pass_field = form.find('#password');
+var pass_min_chars_cond = false, pass_letter_check_cond = false, pass_num_check_cond = false;
+function pass_field_ev (pass_field, pass_tooltip) {
     pass_field.focus(function() {
         pass_tooltip.show(150,"linear");
         $(this).css('background-color','');
@@ -120,9 +102,10 @@ function register_validation() {
             pass_num_check_cond = false;
         }
     });
+}
 
-    var confirm_pass_tooltip = form.find('#reg-confirm-pass-tooltip');
-    var confirm_pass_field = form.find('#confirm-password');
+var confirm_pass_cond = false;
+function confirm_pass_field_ev (pass_field, confirm_pass_field, confirm_pass_tooltip) {
     var confirm_field_focused = false;
     confirm_pass_field.focus(function() {
         if (!confirm_pass_cond)
@@ -150,6 +133,39 @@ function register_validation() {
             confirm_pass_cond = false;
         }
     });
+}
+
+function register_validation() {
+    var form = $('#register-form');
+
+    $('#register-form input').on('keyup input', function() {
+        var register_button = $('#register-form input[type="submit"]');
+
+        if (usr_chars_cond && usr_typchars_cond && usr_stndchars_cond && 
+            email_cond && pass_min_chars_cond && pass_letter_check_cond &&
+            pass_num_check_cond && confirm_pass_cond) {
+            
+            register_button.prop("disabled", false);
+        }
+        else
+            register_button.prop("disabled", true);
+    });
+
+    var username_tooltip = form.find('#reg-usr-tooltip');
+    var username_field = form.find('input[name="username"]');
+    username_field_ev(username_field, username_tooltip);
+
+    var email_tooltip = form.find('#reg-email-tooltip');
+    var email_field = form.find('input[name="email"]');
+    email_field_ev(email_field, email_tooltip);
+
+    var pass_tooltip = form.find('#reg-pass-tooltip');
+    var pass_field = form.find('#password');
+    pass_field_ev(pass_field, pass_tooltip);
+
+    var confirm_pass_tooltip = form.find('#reg-confirm-pass-tooltip');
+    var confirm_pass_field = form.find('#confirm-password');
+    confirm_pass_field_ev(pass_field, confirm_pass_field, confirm_pass_tooltip);
 }
 
 $(document).ready(function(){

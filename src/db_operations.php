@@ -13,4 +13,6 @@ function delete_by_id (int $id, $db = NULL) {
     return $stmt->execute();
 }
 
+// Given an id, wipes the token and expiry, while also turning an account as valid (valid_state = 1)
+
 ?>

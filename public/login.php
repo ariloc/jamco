@@ -1,7 +1,7 @@
 <?php
 
-include_once '../src/session.php';
 include_once '../src/load_env.php';
+include_once '../src/session.php';
 
 list($id, $usr) = retrieve_session();
 if ($id > 0) {
@@ -24,7 +24,7 @@ if (!empty($_GET['message'])) {
         </div>
     ";
     $alert1 = $alert_div;
-    if (!empty($_GET['register'] && $_GET['register'] == '1')) {
+    if (!empty($_GET['register']) && $_GET['register'] == '1') {
         $login_display1 = 'none'; $alert1 = '';
         $login_display2 = 'block'; $alert2 = $alert_div;
     }

@@ -3,6 +3,7 @@
 include_once 'db_connect.php';
 include_once 'activation_email.php';
 include_once 'generate_random_token.php';
+include_once 'field_compliance.php';
 
 /*
 // TODO: Setup a better way to resend an email (timer on screen) if the user doesn't 
@@ -32,11 +33,11 @@ function register (string $username, string $email, string $password) {
         return -2;
 
     // check user format 
-    if (!preg_match('/^[A-Za-z][A-Za-z0-9_]{4,30}[A-Za-z]$/', $username))
+    if (!username_complies($username))
         return -2;
 
     // enforce password requirements
-    if (!preg_match('/^(?=.*[A-Za-z])(?=.*[0-9]).{8,}$/', $password))
+    if (!password_complies($password))
         return -2;
 
     $activation_token = generate_random_token();

@@ -39,6 +39,15 @@ function check_creds_username (string $username, string $password, $db = NULL) {
     return -3;
 }
 
+// true-false if successful or not
+function update_login_stats (int $id, $db = NULL) {
+    if ((!$db || $db->connect_errno) && !($db = db_connect())) return false;
+
+    $stmt = $db->prepare('UPDATE users SET last_login = now(), login_times = login_times + 1 WHERE id = ?');
+    $stmt->bind_param('i', $id);
+    return $stmt->execute();
+}
+
 // returns >= 0 if successful, < 0 otherwise (with certain error codes)
 function login(string $username, string $password) {
     if (!($db = db_connect())) return -1;
@@ -49,7 +58,16 @@ function login(string $username, string $password) {
     if ($usr_id < 0) return $usr_id;
 
     // valid credentials, create session
-    return create_session($usr_id, $db);
+    $session = create_session($usr_id, $db);
+
+    // error while creating session
+    if ($session < 0) return $session;
+
+    // if successful, TRY to update database with login date and
+    // last logged in time
+    update_login_stats($usr_id, $db);
+
+    return 0; // everything OK
 }
 
 ?>

@@ -14,7 +14,7 @@ body {
     flex: 1 1 auto;
 }
 
-#login-form .input-container, #forgot-pass-form .input-container {
+#login-form .input-container {
     margin-bottom: 20px;
 }
 
