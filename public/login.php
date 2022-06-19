@@ -40,7 +40,7 @@ if (!empty($_GET['message'])) {
         <div class="main-wrapper">
             <?php include "navbar.php"; ?>
 
-            <div class="form_login_register">
+            <div class="site-centered-form">
                 <form class="input-form" id="login-form" style="display: <?php echo $login_display1 ?>">
                     <?php echo $alert1; ?>
 
@@ -48,8 +48,7 @@ if (!empty($_GET['message'])) {
                     </div>
 
                     <h1 style="margin-top: 0px; margin-bottom: 40px;">Iniciar sesión</h1>
-                    <div class="cosa">
-        
+                    <div>
                         <div class="input-container">
                             <input name="username" type="text" placeholder="Nombre de usuario">
                         </div>
@@ -60,10 +59,12 @@ if (!empty($_GET['message'])) {
 
                         <input type="submit" value="Iniciar sesión" class="button" style="margin-top: 20px;margin-bottom: 20px;">
 
-                        <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+                        <p>
+                            <a href="forgot_password">¿Olvidaste tu contraseña?</a>
+                        </p>
                         <p>
                             ¿No tienes una cuenta?
-                            <a id="register-lnk">Registrate!</a>
+                            <a class="lnk-pointer" id="register-lnk">Registrate!</a>
                         </p>
                     </div>
                 </form>
@@ -115,6 +116,10 @@ if (!empty($_GET['message'])) {
             
                         <input type="submit" value="Registrarse" class="button" disabled="disabled" style="margin: 20px auto;">
                         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+                        <p>
+                            ¿Ya tienes una cuenta?
+                            <a class="lnk-pointer" id="login-lnk">Logueate!</a>
+                        </p>
                     </div>
                 </form>
             </div>

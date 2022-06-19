@@ -1,6 +1,7 @@
 <?php
 
 include_once 'db_connect.php';
+include_once 'db_operations.php';
 
 function back_to_login (int $code) {
     $msg_iserror = 1;
@@ -38,15 +39,6 @@ function activate_by_id (int $id, $db = NULL) {
 
     $stmt = $db->prepare('UPDATE users SET activation_token = NULL, activation_expiry = NULL, valid_state = 1 WHERE id = ?');
     
-    print_r($db->error_list);
-    $stmt->bind_param('i', $id);
-    return $stmt->execute();
-}
-
-function delete_by_id (int $id, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect())) return false;
-
-    $stmt = $db->prepare('DELETE FROM users WHERE id = ?');
     $stmt->bind_param('i', $id);
     return $stmt->execute();
 }

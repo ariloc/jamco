@@ -129,7 +129,6 @@ function register_validation() {
             confirm_pass_tooltip.show(150,"linear");
         $(this).css('background-color','');
         confirm_field_focused = true;
-        console.log("BRUH");
     });
     confirm_pass_field.blur(function() {
         confirm_pass_tooltip.hide(150,"linear");
@@ -159,6 +158,12 @@ $(document).ready(function(){
         $(".login-alert").hide();
         $("#login-form").hide();
         $("#register-form").show(200);
+    });
+
+    $("#login-lnk").click(function(){
+        $(".login-alert").hide();
+        $("#register-form").hide();
+        $("#login-form").show(200);
     });
 
     register_validation();

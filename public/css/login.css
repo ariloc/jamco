@@ -1,16 +1,5 @@
-:root {
-    --main-color: #023061;
-    --background-color: #011429;
-}
-
-body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Ubuntu', sans-serif;
-}
-
 body {
-    background-color: var(--background-color);
     background-image: url("../img/assets/logo_texture.svg");
-    color: white;
 }
 
 .main-wrapper {
@@ -19,17 +8,13 @@ body {
     height: 100vh;
 }
 
-.form_login_register{
+.site-centered-form {
     margin: auto;
     display: flex;
     flex: 1 1 auto;
 }
 
-input[type="text"], input[type="password"], input[type="text"]{
-    font-size: 1.2em;
-}
-
-#login-form .input-container{
+#login-form .input-container, #forgot-pass-form .input-container {
     margin-bottom: 20px;
 }
 
@@ -60,12 +45,6 @@ input[type="text"], input[type="password"], input[type="text"]{
     color: orange;
 }
 
-@media(min-width:500px){
-    .input-form {
-        width: 450px;
-        border-radius: 5px;
-    }
-}
 
 .input-form input, .input-form button {
     border-radius: 9999px;
@@ -93,17 +72,21 @@ input[type="text"], input[type="password"], input[type="text"]{
     text-align: center;
     margin: auto;
     padding: 40px;
+    width: 100vw;
+}
+
+@media (min-width: 500px) {
+    .input-form {
+        width: 450px;
+        border-radius: 5px;
+    }
 }
 
 #register-form {
     display: none;
 }
 
-#register-form input[type="username"], #login-form input[type="password"]{
-    font-size: 1.2em;
-}
-
-#register-lnk {
+.lnk-pointer {
     cursor: pointer;
 }
 
