@@ -68,18 +68,23 @@ input.search-field {
     display: none;
 }
 
-a.profile-pic {
+.profile-pic {
+    height: 48px;
+}
+
+.profile-pic a {
     background-color: var(--light-color);
     outline: none;
     border: none;
-    border-radius: 50%;
-    padding: 5px;
-    cursor: pointer;
+    padding: 2px;
     display: inline-block;
+    border-radius: 50%;
+    height: 100%;
 }
 
-a.profile-pic > img {
-    height: 32px;
+.profile-pic img {
+    height: 100%;
+    border-radius: 50%;
 }
 
 #filter-window-wrapper {

@@ -1,0 +1,9 @@
+[db_creds]
+servername = "localhost"
+username = "db_username"
+password = "db_password"
+dbname = "db_name"
+
+[mail_creds]
+smtp_mail = "mail@example.com"
+smtp_password = "secure-mail-password"
