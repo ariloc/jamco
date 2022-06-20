@@ -3,7 +3,7 @@
 include_once 'send_email.php';
 
 function send_recover_email (int $id, string $to, string $token) {
-    $url = $_SERVER['SERVER_NAME'] . URL_ROOT . '/forgot_password?user_id=' . $id . '&token=' . $token;
+    $url = 'https://' . $_SERVER['SERVER_NAME'] . URL_ROOT . '/forgot_password?user_id=' . $id . '&token=' . $token;
     $subject = 'Recuperación de cuenta';
     $msg = '
     <html>
