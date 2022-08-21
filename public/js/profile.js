@@ -58,3 +58,16 @@ $(document).ready(function() {
     	return false;
     });
 });
+
+/*const parentContainer = document.querySelector('profile-review-text');
+
+parentContainer.addEventListener('click',event>={
+  
+  const current = event.target;
+
+  const isReadMoreBtn = current.className.includes('read-more-btn');
+
+  if(isReadMoreBtn) return;
+
+  const currenttext = event.target.parentNode.querySelector('.read-more-text');
+})*/

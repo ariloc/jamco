@@ -130,7 +130,7 @@
     margin-bottom: 0px;
 }
 
-@media(max-width:600px){
+@media(max-width:800px){
     .profile-review{
         display: block;
         text-align: left;
@@ -156,12 +156,49 @@
     font-size: 20px;
 }
 
-.rating-stars{
-    text-align: left;
+/*----------------*/
+
+.profile-review-image img{
+    height: 80px;
+    width: 80px;
+    border-radius:  999px; 
+
 }
+
+.profile-review-image{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.profile-review-header-data{
+    display: flex;
+    justify-content: center;
+}
+
+.profile-review-header-container{
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+/*----------------*/
 
 .profile-review-text{
     text-align: justify;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-container{
+    padding: 1.5rem;
+    line-height: 1.4rem;
+}
+
+.read-more-text{
+    display: none;
+}
+
+.read-more-text--show{
+    display: inline;
 }
 
 /*----------------*/
@@ -243,3 +280,5 @@ ul.tabs li a .tab-text{
 		padding: 20px;
 	}
 }
+
+/*----------------*/

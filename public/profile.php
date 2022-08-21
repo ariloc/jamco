@@ -91,8 +91,12 @@
                         <div class="profile-review-left">
                             <div class="profile-review-header">
                                 <div class="profile-review-header-data">
+                                    <div class="profile-review-image">
+                                        <img src="img/communities/chainsmoker.png">
+                                    </div>
+                                    <div class="profile-review-header-container">
                                     <div class="profile-review-header-data-user">
-                                        <a style="text-align: right" href="/profile">Nombre_de_Usuario</a>
+                                        <a style="text-align: right" href="/profile">Nombre_De_La_Canción</a>
                                     </div>
                                     <div class="rating-stars">
                                         <i class="material-icons">star</i>
@@ -101,34 +105,62 @@
                                         <i class="material-icons">star_border</i>
                                         <i class="material-icons">star_border</i>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="profile-review-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum aspernatur doloremque animi impedit consequuntur est nisi error ipsum, mollitia doloribus 
-                                autem repellat, tenetur itaque, ut quo ea blanditiis dignissimos distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur hic, facere
-                                exercitationem dolores eveniet distinctio! Tempora, commodi. Laudantium enim cum, corporis quas eius consequuntur illum voluptatibus aspernatur ut nulla voluptatum!</p>
+                                <div class="text-container">
+                                    
+                                    <p>
+                                        <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
+                                           <i>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, harum? Omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
+                                           </i>
+                                        <span class="read-more-text">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. Libero aperiam minima adipisci dolorem
+                                        </span>
+                                        <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                                    </p>
+                                        <span class="read-more-btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                </div>
                             </div>
                         </div>
             
                         <div class="profile-review-right">
                         <div class="profile-review-header">
                             <div class="profile-review-header-data">
-                                <div class="profile-review-header-data-user">
-                                    <a style="text-align: right" href="/profile">Nombre_de_Usuario</a>
-                                </div>
-                                <div class="rating-stars">
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star</i>
-                                    <i class="material-icons">star_border</i>
-                                    <i class="material-icons">star_border</i>
-                                </div>
-                            </div>3
+                                    <div class="profile-review-image">
+                                        <img src="img/communities/chainsmoker.png">
+                                    </div>
+                                    <div class="profile-review-header-container">
+                                    <div class="profile-review-header-data-user">
+                                        <a style="text-align: right" href="/profile">Nombre_De_La_Canción</a>
+                                    </div>
+                                    <div class="rating-stars">
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star</i>
+                                        <i class="material-icons">star_border</i>
+                                        <i class="material-icons">star_border</i>
+                                    </div>
+                                    </div>
+                            </div>
                         </div>
-                            <div class="profile-review-text">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum aspernatur doloremque animi impedit consequuntur est nisi error ipsum, mollitia doloribus 
-                                autem repellat, tenetur itaque, ut quo ea blanditiis dignissimos distinctio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur hic, facere
-                                exercitationem dolores eveniet distinctio! Tempora, commodi. Laudantium enim cum, corporis quas eius consequuntur illum voluptatibus aspernatur ut nulla voluptatum!</p>
+                        <div class="profile-review-text">
+                                <div class="text-container">
+                                    
+                                    <p>
+                                        <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
+                                           <i>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, harum? Omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
+                                           </i>
+                                        <span class="read-more-text">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. Libero aperiam minima adipisci dolorem
+                                        </span>
+                                        <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                                    </p>
+                                        <span class="read-more-btn"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+                                </div>
                             </div>
                         </div>
                     </div>
