@@ -106,42 +106,23 @@
 /*-------------*/
 
 .profile-review{
-    /* margin-top: 50px; */
+    min-height: 100%;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: center;
 }
 
-.profile-review-left{
+.profile-review-card{
+    display: flex; 
+    flex-basis: calc(50% - 40px);  
+    justify-content: center;
+    flex-direction: column;
     width: 450px;
     background-color: #023061;
     border-radius: 25px;
     padding: 25px;
     margin: 10px;
-    margin-bottom: 0px;
-}
-
-.profile-review-right{
-    width: 450px;
-    background-color: #023061;
-    border-radius: 25px;
-    padding: 25px;
-    margin: 10px;
-    margin-bottom: 0px;
-}
-
-@media(max-width:800px){
-    .profile-review{
-        display: block;
-        text-align: left;
-    }
-    .profile-review-left{
-        width: 80%;
-        margin: auto;
-    }
-    .profile-review-right{
-        width: 80%;
-        margin: 10px auto;
-    }
 }
 
 /*-----------*/
