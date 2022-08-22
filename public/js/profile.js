@@ -4,6 +4,10 @@ $(document).ready(function() {
         infinite: true,
         arrows: true,
         speed: 300,
+        autoplay: true,
+        autoplaySpeed: 2500,
+        prevArrow: '<button type="button" class="slick-arrow slick-prev fa-solid fa-chevron-left"></button>',
+        nextArrow: '<button type="button" class="slick-arrow slick-next fa-solid fa-chevron-right"></button>',
         slidesToScroll: 1,
         slidesToShow: 5,
         responsive: [
@@ -49,11 +53,11 @@ $(document).ready(function() {
 
     $('.tabs > div').each(function(i) {
         $(this).click(function() {
-            $('.tab-indicator').css("left", `calc(calc(calc(100% / 3) * ${i}) + ${initial_left})`);
+            $('.tab-indicator').css("left", `calc(calc(calc(100% / var(--tab-count)) * ${i}) + ${initial_left})`);
 
             active_tab.empty();
             var selected = inactive_tabs.children().eq(i);
-            var copy = selected.clone().appendTo(active_tab);
+            var copy = selected.clone(true, true).appendTo(active_tab);
 
             copy.animate({opacity: 1}, {duration: 300, queue: false});
             $({y:-10}).animate({y:0}, {
@@ -79,4 +83,19 @@ $(document).ready(function() {
     inactive_tabs.children().eq(0).clone().appendTo(active_tab);
     secciones.css({"height": active_tab[0].scrollHeight});
     active_tab.children().eq(0).css({"opacity": 1, "transform": "translateY(0px)"});
+
+
+    $('.read-more-btn > i').click(function() {
+        var respective_quote = $(this).closest('.profile-review-text').find('.text-container .review-quote');
+        var card = $(this).closest('.profile-review-card-wrapper');
+        $('.text-container .review-quote').not(respective_quote).removeClass('expanded');
+        respective_quote.toggleClass('expanded');
+        secciones.css("height", active_tab[0].scrollHeight);
+        card[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+        /*
+        $('html, body').animate({
+            scrollTop: card.offset().top - $(window).height() + card.height()
+        }, {duration: 200});
+        */
+    });
 });

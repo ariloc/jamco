@@ -732,10 +732,10 @@
                 <div class="box w3-col l4">
                     <h2>REDES SOCIALES</h2>
                     <p class="red-social">
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-instagram"></a>
-                        <a href="#" class="fa fa-twitter"></a>
-                        <a href="#" class="fa fa-youtube"></a>
+                        <a href="#" class="fa-brands fa-facebook"></a>
+                        <a href="#" class="fa-brands fa-instagram"></a>
+                        <a href="#" class="fa-brands fa-twitter"></a>
+                        <a href="#" class="fa-brands fa-youtube"></a>
                     </p>
                 </div>
             </div>
