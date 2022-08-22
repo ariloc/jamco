@@ -84,14 +84,28 @@ $(document).ready(function() {
     secciones.css({"height": active_tab[0].scrollHeight});
     active_tab.children().eq(0).css({"opacity": 1, "transform": "translateY(0px)"});
 
-
     $('.read-more-btn > i').click(function() {
         var respective_quote = $(this).closest('.profile-review-text').find('.text-container .review-quote');
-        var card = $(this).closest('.profile-review-card-wrapper');
-        $('.text-container .review-quote').not(respective_quote).removeClass('expanded');
-        respective_quote.toggleClass('expanded');
+        var quote_container = respective_quote.closest('.text-container');
+        var my_card = $(this).closest('.profile-review-card-wrapper');
+
+        $('.read-more-btn > i.expanded').not($(this)).each(function() {
+            $(this).click();
+        });
+        if (respective_quote.hasClass('expanded')) {
+            quote_container.removeClass('expanded');
+            quote_container.one('transitionend', function() {
+                respective_quote.removeClass('expanded');
+            });
+        }
+        else {
+            quote_container.addClass('expanded');
+            respective_quote.addClass('expanded');
+        }
+        $(this).toggleClass('expanded');
+
+        my_card[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         secciones.css("height", active_tab[0].scrollHeight);
-        card[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         /*
         $('html, body').animate({
             scrollTop: card.offset().top - $(window).height() + card.height()
