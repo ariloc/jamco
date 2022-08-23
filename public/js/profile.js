@@ -101,15 +101,21 @@ $(document).ready(function() {
         else {
             quote_container.addClass('expanded');
             respective_quote.addClass('expanded');
+
+            // preferably scroll on expand only
+            my_card[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         }
         $(this).toggleClass('expanded');
 
-        my_card[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-        secciones.css("height", active_tab[0].scrollHeight);
-        /*
-        $('html, body').animate({
-            scrollTop: card.offset().top - $(window).height() + card.height()
-        }, {duration: 200});
-        */
+        // secciones.css("height", active_tab[0].scrollHeight);
+    });
+
+    $(document).mouseup(function(e) { // dismiss reviews when clicking away
+        $('.read-more-btn > i.expanded').each(function() {
+            var my_card = $(e.target).closest(".profile-review-card-wrapper");
+            if (my_card.length === 0 || !$(this).closest('.profile-review-card-wrapper').is(my_card)) { 
+                $(this).click();
+            }
+        });
     });
 });

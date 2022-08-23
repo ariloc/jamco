@@ -128,20 +128,19 @@
     background-color: #023061;
     border-radius: 25px;
     margin: 10px;
-    padding: 20px 0;
-}
-
-.profile-review-card p {
-    margin: 0 auto;
+    padding: 25px;
+    padding-bottom: 15px;
+    box-shadow: 3px 3px 10px -4px black;
 }
 
 .review-quote {
-    padding: 0 15px;
     font-style: italic;
+    padding-right: 3px; /* AVOID ITALICS FONT CLIPPING */
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+    margin: 0;
 }
 
 .review-quote.expanded {
@@ -149,8 +148,7 @@
 }
 
 .profile-review-card-wrapper {
-    width: 50%;
-    min-width: 400px;
+    width: 100%;
 }
 
 /*-----------*/
@@ -162,6 +160,19 @@
 
 .profile-review-header-data-user a{
     font-size: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.profile-review-card .rating-stars {
+    user-select: none;
+    color: gold;
+}
+
+@media screen and (max-width: 500px) {
+    .profile-review-card .rating-stars > i {
+        font-size: 20px;
+    }
 }
 
 /*----------------*/
@@ -169,24 +180,30 @@
 .profile-review-image img{
     height: 80px;
     width: 80px;
-    border-radius:  999px; 
+    margin: auto;
+    border-radius: 9999px; 
+}
 
+@media screen and (max-width: 500px) {
+    .profile-review-image img {
+        height: 60px;
+        width: 60px;
+    }
 }
 
 .profile-review-image{
-    max-width: 100%;
-    max-height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .profile-review-header-data{
     display: flex;
-    padding: 0 20px;
 }
 
 .profile-review-header-container{
-    width: 100%;
     min-height: 100%;
-    padding: 0 20px;
+    overflow: hidden;
+    margin-left: 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -205,10 +222,10 @@
 }
 
 .text-container{
-    margin: 1rem;
     line-height: 1.4rem;
     overflow: hidden;
     max-height: 1.4em;
+    margin: 1em 10px;
     transition: all 0.3s ease-in-out;
     box-sizing: content-box;
 }
@@ -228,7 +245,7 @@
 .read-more-btn {
     display: block;
     text-align: right;
-    padding: 0 25px;
+    padding-top: 5px;
 }
 
 .read-more-btn i {
@@ -237,6 +254,7 @@
     user-select: none;
     opacity: .5;
     transition: all .3s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .read-more-btn i.expanded {
@@ -281,6 +299,7 @@
 	text-align: center;
     z-index: 1;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .tabs .tab-text {
@@ -316,7 +335,7 @@
 }
 
 .secciones > div {
-	padding: 30px;
+	padding: 10px;
 }
 
 .secciones > div > p {
