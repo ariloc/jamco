@@ -2,7 +2,7 @@
 <html>
     <?php include "header.php"; ?>
     <body>
-    <?php include "navbar.html"; ?>
+    <?php include "navbar.php"; ?>
         <div class="profile-header">
 
             <div class="profile-banner">

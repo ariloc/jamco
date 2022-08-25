@@ -18,13 +18,13 @@
 
 /*PIC-DATA*/
 
-.profile-pic-data{
+.profile-header .profile-pic-data{
     margin-top: -120px;
     z-index: 10;
     text-align: center;
 }
 
-.profile-pic img{
+.profile-header .profile-pic img{
     border-radius: 9999px;
     max-width: 180px ;
     /*outline: solid white 5px;*/
@@ -32,29 +32,29 @@
 }
 
 @media(max-width:600px){
-    .profile-pic img {
+    .profile-header .profile-pic img {
         width: 150px;
         margin-top: 30px;
     }
 }
 
-.profile-data{
+.profile-header .profile-data {
     margin-top: 30px;
     margin-bottom: 20px;
 }
 
-.profile-data-info {
+.profile-header .profile-data-info {
     padding: 0;
 }
 
-.profile-data-info li{
+.profile-header .profile-data-info li{
     display: inline;
     padding-left: 5px;
     padding-right: 5px;
 }
 
 @media(max-width:500px){
-    .profile-data-info li {
+    .profile-header .profile-data-info li {
         display: inline-table;
     }
 }
