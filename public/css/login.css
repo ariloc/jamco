@@ -1,16 +1,5 @@
-:root {
-    --main-color: #023061;
-    --background-color: #011429;
-}
-
-body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Ubuntu', sans-serif;
-}
-
 body {
-    background-color: var(--background-color);
     background-image: url("../img/assets/logo_texture.svg");
-    color: white;
 }
 
 .main-wrapper {
@@ -19,60 +8,49 @@ body {
     height: 100vh;
 }
 
-.form_login_register{
+.site-centered-form {
     margin: auto;
     display: flex;
     flex: 1 1 auto;
 }
 
-.login {
-    background-color:#1F3F61;
-    padding: 5px;
-    text-align: center;
-    margin: auto;
-}
-
-.login .cosa {
-    width: 100%;
-    padding: 40px;
-}
-
-.input-container{
+#login-form .input-container {
     margin-bottom: 20px;
 }
 
-.login .button{
+.input-form .button{
     border: none;
     padding: 15px;
-    cursor: pointer;
     width: 60%;
 }
 
-.login .button:hover{
+.input-form .button:enabled {
+    cursor: pointer;
+}
+
+.input-form .button:disabled {
+    cursor: not-allowed;
+}
+
+.input-form .button:hover:enabled {
     background-color: orange;
 }
 
-.login a {
+.input-form a {
     transition: all 0.1s ease-out;
     text-decoration: underline;
 }
 
-.login a:hover {
+.input-form a:hover {
     color: orange;
 }
 
-@media(min-width:500px){
-    .login {
-        width: 450px;
-        border-radius: 5px;
-    }
-}
 
-.login input, .login button {
+.input-form input, .input-form button {
     border-radius: 9999px;
 }
 
-.login input {
+.input-form input {
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 10px;
@@ -85,71 +63,82 @@ body {
     font-size: 1.2em;
 }
 
-.register input:focus, .register input:hover, .login input:focus, .login input:hover {
+#register-form input:focus, #register-form input:hover, #login-form input:focus, #login-form input:hover {
     box-shadow: 3px 3px 5px -3px;
 }
 
-.register {
+.input-form {
     background-color:#1F3F61;
-    display: none;
-    padding: 5px;
     text-align: center;
     margin: auto;
-}
-
-.register .cosa {
-    width: 100%;
     padding: 40px;
+    width: 100vw;
 }
 
-.register .button{
-    border: none;
-    padding: 15px;
-    cursor: pointer;
-    width: 60%;
-}
-
-.register .button:hover{
-    background-color: orange;
-}
-
-.register a {
-    transition: all 0.1s ease-out;
-    text-decoration: underline;
-}
-
-.register a:hover {
-    color: orange;
-}
-
-@media(min-width:500px){
-    .register {
+@media (min-width: 500px) {
+    .input-form {
         width: 450px;
         border-radius: 5px;
     }
 }
 
-.register input, .login button {
-    border-radius: 9999px;
+#register-form {
+    display: none;
 }
 
-.register input {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 100%;
-    text-align: center;
-    border: none;
-    outline: none;
-    transition: all 0.1s ease-out;
-    font-size: 1.2em;
-}
-
-#register-lnk {
+.lnk-pointer {
     cursor: pointer;
 }
 
-.register .input-container {
+#register-form .input-container {
     margin-bottom: 15px;
+}
+
+.login-alert {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 15px 15px;
+    border-radius: 20px;
+}
+
+.tooltip-top {
+    display: none;
+    background-color: var(--light-color);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    width: 100%;
+    margin-left: -50%;
+    font-size: .9em;
+}
+
+.tooltip-top::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--light-color) transparent transparent transparent;
+}
+
+@media (min-width:500px) {
+    .tooltip-top {
+        width: 80%;
+        margin-left: -40%;
+    }
+}
+
+#reg-usr-tooltip span, #reg-pass-tooltip span {
+    text-decoration: underline;
+}
+
+.input-container {
+    position: relative;
 }

@@ -3,7 +3,7 @@
     <?php include "header.php"; ?>    
 
     <body>
-        <?php include "navbar.html"; ?> 
+        <?php include "navbar.php"; ?> 
         
         <!-- TODO: Añadir botones de pausa, controles manuales? -->
         <div class="wrapper">
