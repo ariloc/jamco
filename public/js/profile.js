@@ -72,17 +72,36 @@ $(document).ready(function() {
             $('html, body').animate({
                 scrollTop: $(".tabs-container").offset().top - 30
             }, {duration: 400, queue: false});
+
+            refresh_reviews_dropdown_visibility();
         });
     });
+
+    function refresh_reviews_dropdown_visibility() {
+        // disable expand for short reviews
+        $('.review-quote').each(function() {
+            var btn = $(this).closest('.profile-review-card').find('.read-more-btn');
+            console.log("UH");
+            if ($(this)[0].offsetWidth < $(this)[0].scrollWidth) {
+                btn.css("visibility", "visible");
+            }
+            else {
+                btn.css("visibility", "hidden");
+            }
+        });
+    }
     
     $(window).resize(function(){
         secciones.css("height", active_tab[0].scrollHeight);
+        refresh_reviews_dropdown_visibility();
     });
+
 
     // show first tab on load
     inactive_tabs.children().eq(0).clone().appendTo(active_tab);
     secciones.css({"height": active_tab[0].scrollHeight});
     active_tab.children().eq(0).css({"opacity": 1, "transform": "translateY(0px)"});
+    refresh_reviews_dropdown_visibility();
 
     $('.read-more-btn > i').click(function() {
         var respective_quote = $(this).closest('.profile-review-text').find('.text-container .review-quote');

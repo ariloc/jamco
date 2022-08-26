@@ -4,6 +4,11 @@
         return substr($name, 0, strrpos($name, '.'));
     }
     $filename_no_ext = noExtension(basename(get_included_files()[0])); // get the topmost included file
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?> 
 <head>
     <meta charset="UTF-8">

@@ -1,3 +1,14 @@
+<?php 
+
+include_once '../src/url_getters.php';
+include_once '../src/session.php';
+include_once '../src/profile_operations.php';
+
+list($user_id, $username) = retrieve_session();
+$data = get_profile_data();
+
+?>
+
 <!DOCTYPE html>
 <html>
     <?php include "header.php"; ?>
@@ -11,72 +22,36 @@
 
             <div class="profile-pic-data">
                 <div class="profile-pic">
-                    <img src="img/communities/chainsmoker.png" alt="perfil">
+                <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
                 </div>
 
                 <div class="profile-data">
-                    <h3>Nombre de usuario</h3>
+                <h3><?php echo $data['nickname'] ?? "Nickname"; ?></h3>
                     <ul class="profile-data-info">
+                        <li><?php echo $data['review_cnt']; ?> Reviews</li>
                         <li>134 Comunidades</li>
-                        <li>134 Comunidades</li>
-                        <li>134 Comunidades</li>
+                        <li>134 Playlists</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <?php if (!empty($data['song_exb'])): ?>
         <div class="profile-songs-wrapper">
             <div class="profile-songs">
+                <?php foreach ($data['song_exb'] as $song): ?>
                 <div>
                     <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
+                    <a href="<?php echo song_url($song['song_id']); ?>">
+                            <img src="<?php echo album_cover_url($song['album_id']); ?>">
                         </a>
-                        <h6>Chainsmokers</h6>
+                        <h6><?php echo $song['song_name']; ?></h6>
                     </div>
                 </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Chainsmokers</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Chainsmokers</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Me dueles</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>La vecinita</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Never Gonna Give You Up</h6>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
+        <?php endif; ?>
 
         <div class="tabs-container">
             <div class="tabs-wrapper">
@@ -99,140 +74,50 @@
                 <div class="inactive">
                     <div>
                         <div class="profile-review w3-row">
-
-                        <div class="profile-review-card-wrapper w3-col l6">
-                            <div class="profile-review-card">
-                                
-                                <div class="profile-review-header">
-                                    <div class="profile-review-header-data">
-                                        <div class="profile-review-image">
-                                            <img src="img/communities/chainsmoker.png">
-                                        </div>
-                                        <div class="profile-review-header-container">
-                                            <div class="profile-review-header-data-user">
-                                                <a style="text-align: right" href="/profile">nombre_de_la_canción</a>
+                            <?php foreach($data['reviews'] as $row): ?>
+                            <div class="profile-review-card-wrapper w3-col l6">
+                                <div class="profile-review-card">
+                                    <div class="profile-review-header">
+                                        <div class="profile-review-header-data">
+                                            <div class="profile-review-image">
+                                                <img src="<?php echo album_cover_url($row['album_id']); ?>">
                                             </div>
-                                            <div class="rating-stars">
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star_border</i>
-                                                <i class="material-icons">star_border</i>
+                                            <div class="profile-review-header-container">
+                                                <div class="profile-review-header-data-user">
+                                                <a href="<?php echo song_url($row['song_id']); ?>">
+                                                        <?php echo $row['song_name']; ?>
+                                                    </a>
+                                                </div>
+                                                <div class="rating-stars">
+                                                    <?php for ($star = 1; $star <= 5; $star++): ?>
+                                                    <i class="material-icons">
+                                                        <?php $v = ($row['stars']-$star); ?>
+                                                        <?php echo ($v >= 0) ? "star" : (($v > -1) ? "star_half" : "star_border"); ?>
+                                                    </i>
+                                                    <?php endfor; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="profile-review-text">
-                                    <div class="text-container">
-                                        <p class="review-quote">
-                                            lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                        </p>
-                                            <!--
-                                            <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
+                                    <div class="profile-review-text">
+                                        <div class="text-container">
                                             <p class="review-quote">
-                                                    lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
+                                                <?php if (isset($row['title'])): ?>
+                                                <b class="review-quote-title">
+                                                    <?php echo $row['title']; ?>
+                                                </b>
+                                                <?php endif; ?>
+                                                <?php echo $row['body']; ?>
                                             </p>
-                                            <span class="read-more-text">
-                                                lorem ipsum dolor sit amet consectetur adipisicing elit. delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. libero aperiam minima adipisci dolorem
-                                            </span>
-                                            <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                                            !-->
-                                    </div>
-                                    <div class="read-more-btn">
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                                        </div>
+                                        <div class="read-more-btn">
+                                            <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php endforeach; ?>
                         </div>
-                        <div class="profile-review-card-wrapper w3-col l6">
-                            <div class="profile-review-card">
-                                
-                                <div class="profile-review-header">
-                                    <div class="profile-review-header-data">
-                                        <div class="profile-review-image">
-                                            <img src="img/communities/chainsmoker.png">
-                                        </div>
-                                        <div class="profile-review-header-container">
-                                            <div class="profile-review-header-data-user">
-                                                <a style="text-align: right" href="/profile">nombre_de_la_canción</a>
-                                            </div>
-                                            <div class="rating-stars">
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star_border</i>
-                                                <i class="material-icons">star_border</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile-review-text">
-                                    <div class="text-container">
-                                        <p class="review-quote">
-                                            lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                        </p>
-                                            <!--
-                                            <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
-                                            <p class="review-quote">
-                                                    lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                            </p>
-                                            <span class="read-more-text">
-                                                lorem ipsum dolor sit amet consectetur adipisicing elit. delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. libero aperiam minima adipisci dolorem
-                                            </span>
-                                            <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                                            !-->
-                                    </div>
-                                    <div class="read-more-btn">
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="profile-review-card-wrapper w3-col l6">
-                            <div class="profile-review-card">
-                                
-                                <div class="profile-review-header">
-                                    <div class="profile-review-header-data">
-                                        <div class="profile-review-image">
-                                            <img src="img/communities/chainsmoker.png">
-                                        </div>
-                                        <div class="profile-review-header-container">
-                                            <div class="profile-review-header-data-user">
-                                                <a style="text-align: right" href="/profile">nombre_de_la_canción</a>
-                                            </div>
-                                            <div class="rating-stars">
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star_border</i>
-                                                <i class="material-icons">star_border</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile-review-text">
-                                    <div class="text-container">
-                                        <p class="review-quote">
-                                            lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                        </p>
-                                            <!--
-                                            <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
-                                            <p class="review-quote">
-                                                    lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                            </p>
-                                            <span class="read-more-text">
-                                                lorem ipsum dolor sit amet consectetur adipisicing elit. delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. libero aperiam minima adipisci dolorem
-                                            </span>
-                                            <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                                            !-->
-                                    </div>
-                                    <div class="read-more-btn">
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     </div>
                     <div style="padding: 10px;">
                         <h1>Comunidades</h1>

@@ -1,6 +1,8 @@
 <?php
 
-// TODO: refactor? en otro lugar?
+// Even though this is in header.php as well,
+// pages like the login handler don't include it.
+// The if statement should be enough to avoid issues.
 if (session_status() === PHP_SESSION_NONE) { 
     session_start(); 
 }
@@ -31,7 +33,7 @@ function create_session (int $id, $db = NULL) {
     // https://stackoverflow.com/questions/10165424/how-secure-are-php-sessions
     // https://www.php.net/manual/en/function.session-regenerate-id.php
     $_SESSION['id'] = $id;
-    $_SESSION['username'] = $username;
+    $_SESSION['username'] = $username; // TODO: Is this really necessary? Use nickname?
 
     return 0;
 }
