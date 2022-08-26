@@ -235,8 +235,48 @@
                     </div>
                     </div>
                     <div style="padding: 10px;">
-                        <h1>Comunidades</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel voluptates unde, consequuntur aliquid architecto rem numquam expedita minima dolorem pariatur recusandae, eius quod quia aspernatur id impedit, tenetur! Aspernatur incidunt molestiae dolores animi ea praesentium ipsam tenetur voluptas cupiditate perspiciatis eum nihil, natus exercitationem libero earum fuga dignissimos impedit numquam, quasi, placeat officiis voluptates, ad reprehenderit fugiat? Fugiat aperiam et magni, molestiae, numquam consectetur vitae sapiente cupiditate totam laboriosam voluptate obcaecati, aliquam placeat? Suscipit dolores fuga laudantium sed, qui magni iusto dolore quia. Quis fugit exercitationem porro. Rerum nihil omnis recusandae ratione fuga alias eligendi, earum sunt veritatis praesentium eum perspiciatis. Molestias deserunt, iure neque animi quod! Impedit reprehenderit cumque, numquam velit quae cum eius quidem similique laudantium hic deleniti!</p>
+                    <div class ="profile-communities">
+
+                    <div class="profile-communities-cards">
+                            <div class="profile-communities-banner">
+                                <img src="img/communities/chainsmoker.png">
+                            </div>
+                            <div class="profile-communities-header">
+                                <h3>Nombre_Comunidad</h3>
+                                <span class="fa fa-user"></span><span class="tab-text">1625</span>
+                                <div class="tags-carousel">
+                                    <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-communities-cards">
+                            <div class="profile-communities-banner">
+                                <img src="img/communities/chainsmoker.png">
+                            </div>
+                            <div class="profile-communities-header">
+                                <h3>Nombre_Comunidad</h3>
+                                <span class="fa fa-user"></span><span class="tab-text">1625</span>
+                                <div class="tags-carousel">
+                                    <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="profile-communities-cards">
+                            <div class="profile-communities-banner">
+                                <img src="img/communities/chainsmoker.png">
+                            </div>
+                            <div class="profile-communities-header">
+                                <h3>Nombre_Comunidad</h3>
+                                <span class="fa fa-user"></span><span class="tab-text">1625</span>
+                                <div class="tags-carousel">
+                                    <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                     <div style="padding: 10px;">
                         <h1>Playlists</h1>
