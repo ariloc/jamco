@@ -55,6 +55,7 @@ $(document).ready(function() {
         $(this).click(function() {
             $('.tab-indicator').css("left", `calc(calc(calc(100% / var(--tab-count)) * ${i}) + ${initial_left})`);
 
+            secciones.height(active_tab[0].scrollHeight);
             active_tab.empty();
             var selected = inactive_tabs.children().eq(i);
             var copy = selected.clone(true, true).appendTo(active_tab);
@@ -68,7 +69,10 @@ $(document).ready(function() {
                 queue: false
             });
 
-            secciones.animate({height: active_tab[0].scrollHeight}, {duration: 300, queue: false});
+            secciones.css({height: active_tab[0].scrollHeight});
+            secciones.on('transitionend', function() {
+                $(this).css("height", "");
+            });
             $('html, body').animate({
                 scrollTop: $(".tabs-container").offset().top - 30
             }, {duration: 400, queue: false});
@@ -76,32 +80,46 @@ $(document).ready(function() {
             refresh_reviews_dropdown_visibility();
         });
     });
+    
+    function review_shave_update (quote, cnt) {
+        var max_height = parseInt(quote.css("max-height").replace(/[^0-9.]/g, "")) * cnt;
+        quote.find('.review-quote-body').shave(max_height);
+        quote.find('.review-quote-title').shave(max_height);
+    }
+
+    function getReviewLines() {
+        return $('body').css('--review-lines');
+    }
 
     function refresh_reviews_dropdown_visibility() {
+        // shrink back cards
+        $('.read-more-btn > i.expanded').each(function() {
+            $(this).click();
+        });
+
         // disable expand for short reviews
-        $('.review-quote').each(function() {
-            var btn = $(this).closest('.profile-review-card').find('.read-more-btn');
-            console.log("UH");
-            if ($(this)[0].offsetWidth < $(this)[0].scrollWidth) {
+        $('.profile-review-card').each(function() {
+            var container = $(this).find('.text-container');
+            if (container.length)
+                review_shave_update(container, container.is('.expanded') ? getReviewLines() : 1);
+            
+            var btn = $(this).find('.read-more-btn');
+            if ($(this).find('.js-shave-char').length > 0)
                 btn.css("visibility", "visible");
-            }
-            else {
+            else
                 btn.css("visibility", "hidden");
-            }
         });
     }
     
     $(window).resize(function(){
-        secciones.css("height", active_tab[0].scrollHeight);
         refresh_reviews_dropdown_visibility();
     });
 
-
     // show first tab on load
     inactive_tabs.children().eq(0).clone().appendTo(active_tab);
-    secciones.css({"height": active_tab[0].scrollHeight});
     active_tab.children().eq(0).css({"opacity": 1, "transform": "translateY(0px)"});
     refresh_reviews_dropdown_visibility();
+
 
     $('.read-more-btn > i').click(function() {
         var respective_quote = $(this).closest('.profile-review-text').find('.text-container .review-quote');
@@ -111,22 +129,21 @@ $(document).ready(function() {
         $('.read-more-btn > i.expanded').not($(this)).each(function() {
             $(this).click();
         });
-        if (respective_quote.hasClass('expanded')) {
+        if (quote_container.hasClass('expanded')) {
             quote_container.removeClass('expanded');
             quote_container.one('transitionend', function() {
-                respective_quote.removeClass('expanded');
+                review_shave_update(quote_container, 1);
             });
         }
         else {
             quote_container.addClass('expanded');
-            respective_quote.addClass('expanded');
+            review_shave_update(quote_container, getReviewLines());
 
             // preferably scroll on expand only
             my_card[0].scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
         }
         $(this).toggleClass('expanded');
 
-        // secciones.css("height", active_tab[0].scrollHeight);
     });
 
     $(document).mouseup(function(e) { // dismiss reviews when clicking away

@@ -1,6 +1,8 @@
 :root {
     --profile-width: 1000px;
     --tab-count: 3;
+    --review-lines: 5;
+    --review-lh: 1.4em;
 }
 
 /*BANNER*/
@@ -138,15 +140,9 @@
 .review-quote {
     font-style: italic;
     padding-right: 3px; /* AVOID ITALICS FONT CLIPPING */
-    text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
     margin: 0;
-}
-
-.review-quote.expanded {
-    white-space: normal;
 }
 
 .review-quote-title::after {
@@ -229,16 +225,16 @@
 }
 
 .text-container{
-    line-height: 1.4rem;
+    line-height: var(--review-lh);
     overflow: hidden;
-    max-height: 1.4em;
+    max-height: var(--review-lh);
     margin: 1em 10px;
     transition: all 0.3s ease-in-out;
     box-sizing: content-box;
 }
 
 .text-container.expanded {
-    max-height: 5.6em;
+    max-height: calc(var(--review-lines) * var(--review-lh)); /* Truncate at 5 lines (line-height: 1.4em) */
 }
 
 .read-more-text{
@@ -320,7 +316,6 @@
 
 .secciones {
 	width: 100%;
-    height: 0;
 	background: #174b8f;
     border-radius: 25px;
     margin-top: 25px;

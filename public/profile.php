@@ -13,9 +13,8 @@ $data = get_profile_data();
 <html>
     <?php include "header.php"; ?>
     <body>
-    <?php include "navbar.php"; ?>
+        <?php include "navbar.php"; ?>
         <div class="profile-header">
-
             <div class="profile-banner">
                 <img src="img/communities/chainsmoker.png" alt="banner">
             </div>
@@ -66,7 +65,7 @@ $data = get_profile_data();
                         <span class="fa fa-music"></span><span class="tab-text">Playlists</span>
                     </div>
                 </div>
-                <div class="tab-indicator" />
+                <div class="tab-indicator"></div>
             </div>
 
 		    <div class="secciones">
@@ -84,8 +83,8 @@ $data = get_profile_data();
                                             </div>
                                             <div class="profile-review-header-container">
                                                 <div class="profile-review-header-data-user">
-                                                <a href="<?php echo song_url($row['song_id']); ?>">
-                                                        <?php echo $row['song_name']; ?>
+                                                    <a href="<?php echo song_url($row['song_id']); ?>">
+                                                            <?php echo $row['song_name']; ?>
                                                     </a>
                                                 </div>
                                                 <div class="rating-stars">
@@ -100,16 +99,24 @@ $data = get_profile_data();
                                         </div>
                                     </div>
                                     <div class="profile-review-text">
+                                        <?php if(isset($row['title']) || isset($row['body'])): ?>
                                         <div class="text-container">
                                             <p class="review-quote">
-                                                <?php if (isset($row['title'])): ?>
+                                                <?php if(isset($row['title'])): ?>
                                                 <b class="review-quote-title">
                                                     <?php echo $row['title']; ?>
                                                 </b>
                                                 <?php endif; ?>
-                                                <?php echo $row['body']; ?>
+
+                                                <?php if(isset($row['body'])): ?>
+                                                <span class="review-quote-body">
+                                                    <?php echo $row['body']; ?>
+                                                </span>
+                                                <?php endif; ?>
                                             </p>
                                         </div>
+                                        <?php endif; ?>
+
                                         <div class="read-more-btn">
                                             <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
                                         </div>

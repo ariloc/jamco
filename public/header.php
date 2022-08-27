@@ -31,6 +31,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shave/5.0.0/jquery.shave.min.js" integrity="sha512-Hnpg/NnQLnyqCRvz4sMI4gSOAPe3JmQ7aPzAvE3VGudAvUVZTgsXbvuWrTJ6ak0/BIFZ/ArIIKb9dlE4CWlGLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src="js/navbar.js"></script>
     <?php $f = 'js/'.$filename_no_ext.'.js'; if(file_exists($f)) echo '<script src="'.$f.'" ></script>'; ?>
