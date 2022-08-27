@@ -279,9 +279,28 @@
                     </div>
                     </div>
                     <div style="padding: 10px;">
-                        <h1>Playlists</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea numquam odio voluptate. Aliquam incidunt similique, et quasi ducimus quos aut autem non dignissimos dicta sit provident, voluptatibus ut blanditiis perspiciatis cum, vel temporibus minima enim. Asperiores omnis placeat officiis a tenetur sit recusandae, reprehenderit neque. Tempora quibusdam, perferendis id ratione culpa dolorum! Nemo, animi?</p><br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum dignissimos at esse, ipsum rerum assumenda nisi obcaecati! Aliquam iure voluptatem incidunt, explicabo sit labore, perferendis eius ad vel quia. Praesentium, doloribus. Quisquam provident nostrum totam itaque debitis, minima, tempore dolores!</p>
+                        <div class="profile-playlist">
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 		    </div>

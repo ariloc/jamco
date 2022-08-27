@@ -437,3 +437,43 @@ a.music-tag {
 
 /*----------------*/
 
+.profile-playlist{
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.profile-playlist-cards{
+    display: flex; 
+    flex-basis: calc(25% - 40px);  
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.profile-playlist-cards{
+    background-color: #023061;
+    border-radius: 15px 15px 25px 25px;
+}
+
+.profile-playlist-cards img{
+    height: 90%;
+    width: 90%;
+    border-radius: 10px;
+    margin-top: -15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-playlist-cards h3{
+    margin-bottom: 0;
+}
+
+.profile-playlist-cards p{
+    margin-top: 0px;
+    padding: 6px;
+    color: #bfcbda;
+}
