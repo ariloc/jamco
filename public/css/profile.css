@@ -234,7 +234,7 @@
 }
 
 .text-container.expanded {
-    max-height: calc(var(--review-lines) * var(--review-lh)); /* Truncate at 5 lines (line-height: 1.4em) */
+    max-height: calc(var(--review-lines) * var(--review-lh));
 }
 
 .read-more-text{

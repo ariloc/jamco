@@ -3,8 +3,15 @@
 include_once '../src/url_getters.php';
 include_once '../src/session.php';
 include_once '../src/profile_operations.php';
+include_once '../src/load_env.php';
 
 list($user_id, $username) = retrieve_session();
+
+if ($user_id <= 0) {
+    header('Location: ' . URL_ROOT . '/login');
+    exit();    
+}
+
 $data = get_profile_data();
 
 ?>
