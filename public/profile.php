@@ -22,13 +22,23 @@ $data = get_profile_data();
     <body>
         <?php include "navbar.php"; ?>
         <div class="profile-header">
-            <div class="profile-banner">
-                <img src="img/communities/chainsmoker.png" alt="banner">
+            <div class="profile-banner-wrapper">
+                <div class="profile-banner">
+                    <img src="img/communities/chainsmoker.png" alt="banner">
+                    <div class="edit-btn">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                </div>
             </div>
 
             <div class="profile-pic-data">
-                <div class="profile-pic">
-                <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
+                <div class="profile-pic-wrapper">
+                    <div class="profile-pic">
+                        <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
+                        <div class="edit-btn">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="profile-data">

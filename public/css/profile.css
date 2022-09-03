@@ -3,19 +3,62 @@
     --tab-count: 3;
     --review-lines: 5;
     --review-lh: 1.4em;
+    --dark-color-hover: #5376c0;
+    --dark-color-active: #86a4f3;
 }
 
 /*BANNER*/
 
-.profile-banner img{
+.profile-banner-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-banner {
     max-width: 1300px;
     max-height: 250px;
     width: 90%;
+    position: relative;
+}
+
+.profile-banner img{
+    height: 100%;
+    width: 100%;
     border-radius: 0 0 25px 25px;
     object-fit: cover;
     object-position: top;
     display: block;
     margin: auto;
+}
+
+.profile-banner .edit-btn {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+    border-radius: 9999px;
+    background-color: rgb(0,0,0,0.2);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    transition: background 0.5s;
+}
+
+.profile-banner .edit-btn:hover {
+    background: rgb(255,255,255,0.2) radial-gradient(circle, transparent 1%, rgb(255,255,255,0.2) 1%) center/15000%;
+}
+
+.profile-banner .edit-btn:active {
+    background-color: rgb(255, 255, 255, 0.3);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.profile-banner .edit-btn i {
+    font-size: 20px;
 }
 
 /*PIC-DATA*/
@@ -26,7 +69,13 @@
     text-align: center;
 }
 
-.profile-header .profile-pic img{
+.profile-header .profile-pic-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-header .profile-pic {
+    position: relative;
     border-radius: 9999px;
     width: 180px;
     /*outline: solid white 5px;*/
@@ -35,9 +84,57 @@
 }
 
 @media(max-width:600px){
-    .profile-header .profile-pic img {
+    .profile-header .profile-pic {
         width: 150px;
         margin-top: 30px;
+    }
+}
+
+.profile-header .profile-pic img {
+    width: inherit;
+    border-radius: inherit;
+    transform: scale(1.01); /* circumvent background-color leak in rounded corners */
+}
+
+.profile-pic .edit-btn {
+    cursor: pointer;
+    position: absolute;
+    border: none;
+    bottom: 7px;
+    right: 7px;
+    padding: 5px;
+    border-radius: 9999px;
+    background-color: var(--dark-color);
+    background-position: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255, 0.9);
+    transition: background 0.5s,
+                color      0.5s;
+}
+
+.profile-pic .edit-btn i {
+    font-size: 22px;
+}
+
+.profile-pic .edit-btn:hover {
+    color: white;
+    background: var(--dark-color-hover) radial-gradient(circle, transparent 1%, var(--dark-color-hover) 1%) center/15000%;
+}
+
+.profile-pic .edit-btn:active {
+    background-color: var(--dark-color-active);
+    background-size: 100%;
+    transition: background 0s;
+}
+
+@media (max-width: 600px) {
+    .profile-pic .edit-btn {
+        bottom: 0;
+        right: 0;
     }
 }
 
