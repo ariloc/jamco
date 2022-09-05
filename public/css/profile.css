@@ -161,7 +161,7 @@
 
 /*-------------*/
 
-.profile-communities{
+/*.profile-communities{
     width: 55%;
     margin: auto;
     margin-top: 50px;
@@ -169,7 +169,7 @@
     text-align: center;
     background-color: #023061;
     border-radius: 25px;
-}
+}*/
 
 .profile-songs-wrapper {
     margin: 50px 0;
@@ -198,10 +198,10 @@
     box-shadow: 0px 0px 10px black;
 }
 
-.profile-communities p{
+/*.profile-communities p{
     padding-top: 20px;
     font-size: 20px;
-}
+}*/
 
 .slick-dots li button:before, .slick-dots li.slick-active button:before {
     color: white;
@@ -473,3 +473,106 @@
 }
 
 /*----------------*/
+
+.profile-communities{
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.profile-communities-cards{
+    display: flex; 
+    flex-basis: calc(33% - 40px);  
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 15px;
+    border: 4px solid #023061;
+}
+
+.profile-communities-cards{
+    background-color: #023061;
+    border-radius: 25px;
+    box-shadow: 3px 3px 10px -4px black;
+}
+
+.profile-communities-banner{
+    clip-path: polygon(0 0,100% 0, 100% 85%, 0 100%);
+}
+
+.profile-communities-banner img{
+    border-radius: 25px 25px 0 0;
+    height: 100%;
+    width: 100%;
+}
+
+.profile-communities-header{
+    margin: auto;
+    max-width: 250px;
+    padding: 10px 10px;
+}
+
+.tags-carousel {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    line-height: 2.25em;
+}
+
+a.music-tag {
+    background-color: var(--dark-color);
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.tab-text {
+    margin-left: 5px;
+}
+
+/*----------------*/
+
+.profile-playlist{
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.profile-playlist-cards{
+    display: flex; 
+    flex-basis: calc(25% - 40px);  
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin: 15px;
+}
+
+.profile-playlist-cards{
+    background-color: #023061;
+    border-radius: 15px 15px 25px 25px;
+}
+
+.profile-playlist-cards img{
+    height: 90%;
+    width: 90%;
+    border-radius: 10px;
+    margin-top: -15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-playlist-cards h3{
+    margin-bottom: 0;
+}
+
+.profile-playlist-cards p{
+    margin-top: 0px;
+    padding: 6px;
+    color: #bfcbda;
+}
