@@ -212,7 +212,38 @@ $data = get_profile_data();
                         </div>
                     </div>
                 </div>
-		    </div>
+            </div>
+        </div>
+
+        <div class="modal" id="profile-pic-upload-modal">
+            <div class="modal-dialog-wrapper">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="profile-pic">
+                            <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
+                        </div>
+                        <div class="profile-upload-btn-row row">
+                            <div class="wrapper w3-col s6">
+                                <div class="profile-upload-btn">
+                                    <p>
+                                        <i class="fa-solid fa-upload"></i>&nbsp;&nbsp;Subir
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="wrapper w3-col s6">
+                                <div class="profile-upload-btn">
+                                    <p>
+                                        <i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Eliminar
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-close">
+                        <span class="material-icons">close</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

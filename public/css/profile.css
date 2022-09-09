@@ -5,6 +5,7 @@
     --review-lh: 1.4em;
     --dark-color-hover: #5376c0;
     --dark-color-active: #86a4f3;
+    --main-color-shadow: #000837;
 }
 
 /*BANNER*/
@@ -65,7 +66,6 @@
 
 .profile-header .profile-pic-data{
     margin-top: -120px;
-    z-index: 10;
     text-align: center;
 }
 
@@ -96,7 +96,7 @@
     transform: scale(1.01); /* circumvent background-color leak in rounded corners */
 }
 
-.profile-pic .edit-btn {
+.profile-header .profile-pic .edit-btn {
     cursor: pointer;
     position: absolute;
     border: none;
@@ -116,23 +116,23 @@
                 color      0.5s;
 }
 
-.profile-pic .edit-btn i {
+.profile-header .profile-pic .edit-btn i {
     font-size: 22px;
 }
 
-.profile-pic .edit-btn:hover {
+.profile-header .profile-pic .edit-btn:hover {
     color: white;
     background: var(--dark-color-hover) radial-gradient(circle, transparent 1%, var(--dark-color-hover) 1%) center/15000%;
 }
 
-.profile-pic .edit-btn:active {
+.profile-header .profile-pic .edit-btn:active {
     background-color: var(--dark-color-active);
     background-size: 100%;
     transition: background 0s;
 }
 
 @media (max-width: 600px) {
-    .profile-pic .edit-btn {
+    .profile-header .profile-pic .edit-btn {
         bottom: 0;
         right: 0;
     }
@@ -575,4 +575,125 @@ a.music-tag {
     margin-top: 0px;
     padding: 6px;
     color: #bfcbda;
+}
+
+/****************/
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    cursor: default;
+}
+
+.modal-dialog-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0, 0.8);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.175s ease-in-out;
+}
+
+.modal-dialog-wrapper.visible {
+    opacity: 1;
+    transition: all 0.25s ease-in-out;
+}
+
+.modal-dialog {
+    position: relative;
+    max-width: 400px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: auto;
+    background: var(--main-color);
+    cursor: auto;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-20px);
+    transition: transform 0.175s ease-in-out;
+    box-shadow: 0 0 10px var(--main-color-shadow);
+}
+
+.modal-dialog.visible {
+    transform: translateY(0px);
+    transition: transform 0.25s ease-in-out;
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 18px;
+    width: 100%;
+}
+
+.modal-close {
+    position: absolute;
+    top: 17.5px;
+    right: 17.5px;
+    transition: color 0.1s ease-out;
+}
+
+.modal-close span {
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.modal-close span:hover {
+    color: var(--jamco-orange-color);
+}
+
+.modal-content .profile-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    margin-top: 18px;
+    margin-bottom: 36px;
+}
+
+.modal-content .profile-pic img {
+    border-radius: 9999px;
+    box-shadow: 0px 0px 30px var(--dark-color);
+    width: 100%;
+}
+
+@media (max-width: 300px) {
+    .modal-content .profile-pic {
+        width: 180px;
+    }
+}
+
+.modal-content .profile-upload-btn {
+    border-radius: 9999px;
+    background: var(--dark-color);
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.modal-content .profile-upload-btn p {
+    overflow: hidden;
+    height: 1.4em;
+    line-height: 1.4em;
+    margin: 0;
+}
+
+.profile-upload-btn-row .wrapper {
+    padding: 0 5px;
+}
+
+.modal-content .profile-upload-btn-row {
+    width: 90%;
 }

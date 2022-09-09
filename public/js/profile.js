@@ -154,4 +154,38 @@ $(document).ready(function() {
             }
         });
     });
+
+    function modal_show (modal) {
+        modal.show(0);
+        modal.find('.modal-dialog-wrapper').addClass("visible");
+        modal.find('.modal-dialog').addClass("visible");
+    }
+
+    function modal_hide (modal) {
+        var wrapper = modal.find('.modal-dialog-wrapper');
+        wrapper.removeClass('visible');
+        modal.find('.modal-dialog').removeClass("visible");
+        wrapper.one('transitionend', function() {
+            modal.hide(0);
+        });
+    }
+    
+    $('.profile-header .profile-pic .edit-btn').click(function() {
+        modal_show($('#profile-pic-upload-modal'));
+    });
+
+    $('.modal-close span').click(function() {
+        var parent_modal = $(this).closest('.modal');
+        modal_hide(parent_modal);
+    });
+
+    // Hide modal when clicking outside of window or pressing Esc button
+    $(document).mouseup(function(e) {
+        if ($('.modal').is(e.target) || $('.modal-dialog-wrapper').is(e.target))
+            modal_hide($('.modal'));
+    });
+    $(document).keyup(function(e){
+        if (e.key === "Escape")
+            modal_hide($('.modal'));
+    });
 });
