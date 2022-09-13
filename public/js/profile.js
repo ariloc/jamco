@@ -167,11 +167,13 @@ $(document).ready(function() {
         modal.find('.modal-dialog').removeClass("visible");
         wrapper.one('transitionend', function() {
             modal.hide(0);
+            modal.find('.modal-content').empty();
         });
     }
     
     $('.profile-header .profile-pic .edit-btn').click(function() {
-        modal_show($('#profile-pic-upload-modal'));
+        $('#profile-pic-upload-modal').children().clone(true, true).appendTo('.modal-content');
+        modal_show($('.modal'));
     });
 
     $('.modal-close span').click(function() {
@@ -187,5 +189,24 @@ $(document).ready(function() {
     $(document).keyup(function(e){
         if (e.key === "Escape")
             modal_hide($('.modal'));
+    });
+
+
+    $('#delete-profile-pic-btn').click(function() {
+        $(this).closest('.wrapper').addClass('icon-btn');
+        $('#upload-profile-pic-btn').css("opacity", "0");
+        $('#upload-profile-pic-btn').one('transitionend', function() {
+            $(this).css('visibility', 'hidden');
+        });
+        $('#delete-profile-pic-cancel-btn').show(0);
+    });
+
+
+    $('#delete-profile-pic-cancel-btn').click(function() {
+        $(this).closest('.wrapper').removeClass('icon-btn');
+        $('#upload-profile-pic-btn').css({"visibility": "visible", "opacity": "1"});
+        $('#delete-profile-pic-cancel-btn').one('transitionend', function() {
+            $(this).hide(0);
+        });
     });
 });

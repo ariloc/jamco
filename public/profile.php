@@ -215,32 +215,39 @@ $data = get_profile_data();
             </div>
         </div>
 
-        <div class="modal" id="profile-pic-upload-modal">
+        <div class="modal">
             <div class="modal-dialog-wrapper">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="profile-pic">
-                            <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
-                        </div>
-                        <div class="profile-upload-btn-row row">
-                            <div class="wrapper w3-col s6">
-                                <div class="profile-upload-btn">
-                                    <p>
-                                        <i class="fa-solid fa-upload"></i>&nbsp;&nbsp;Subir
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="wrapper w3-col s6">
-                                <div class="profile-upload-btn">
-                                    <p>
-                                        <i class="fa-solid fa-trash"></i>&nbsp;&nbsp;Eliminar
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="modal-content"></div>
                     <div class="modal-close">
                         <span class="material-icons">close</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: none;" id="profile-pic-upload-modal">
+            <div class="profile-pic">
+                <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
+            </div>
+            <div class="profile-upload-btn-row row">
+                <div class="wrapper w3-col s6">
+                    <div class="profile-upload-btn positive-btn" id="upload-profile-pic-btn">
+                        <p>
+                            <i class="fa-solid fa-upload"></i><span class="btn-txt">&nbsp;&nbsp;Subir</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="wrapper w3-col s6">
+                    <div class="profile-upload-btn neutral-btn" id="delete-profile-pic-cancel-btn">
+                        <p>
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </p>
+                    </div>
+                    <div class="profile-upload-btn negative-btn" id="delete-profile-pic-btn">
+                        <p>
+                            <i class="fa-solid fa-trash"></i><span class="btn-txt">&nbsp;&nbsp;Eliminar</span>
+                        </p>
                     </div>
                 </div>
             </div>

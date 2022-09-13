@@ -677,10 +677,30 @@ a.music-tag {
 
 .modal-content .profile-upload-btn {
     border-radius: 9999px;
-    background: var(--dark-color);
     padding: 10px;
     text-align: center;
     cursor: pointer;
+    transition: box-shadow 0.1s ease-in,
+                all 0.2s;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content .profile-upload-btn:hover {
+    box-shadow: 3px 3px 5px -3px black;
+}
+
+.negative-btn {
+    background-color: #ba000d;
+}
+
+.positive-btn {
+    background-color: #087f23;
+}
+
+.neutral-btn {
+    background-color: #546e7a;
 }
 
 .modal-content .profile-upload-btn p {
@@ -688,12 +708,54 @@ a.music-tag {
     height: 1.4em;
     line-height: 1.4em;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.profile-upload-btn-row .wrapper {
-    padding: 0 5px;
+.profile-upload-btn-row .wrapper .profile-upload-btn {
+    margin: 0 7.5px;
 }
 
 .modal-content .profile-upload-btn-row {
     width: 90%;
+}
+
+.profile-upload-btn-row .wrapper .btn-txt {
+   display: inline-block;
+   overflow: hidden;
+   transition: all 0.2s;
+}
+
+.profile-upload-btn-row .wrapper.icon-btn .btn-txt {
+   max-width: 0; 
+}
+
+.profile-upload-btn-row .wrapper.icon-btn .profile-upload-btn {
+    width: 50% !important;
+}
+
+.profile-upload-btn-row .wrapper {
+    justify-content: right;
+    display: flex;
+}
+
+@keyframes leftright {
+    0% {
+        max-width: 0%;
+        padding: 10px 0;
+    }
+    100% {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
+#delete-profile-pic-cancel-btn {
+    width: 0;
+    margin: 0;
+    padding: 10px 0px;
+    overflow: hidden;
+    display: none;
+    animation: leftright 0.2s;
 }
