@@ -165,9 +165,11 @@ $(document).ready(function() {
         var wrapper = modal.find('.modal-dialog-wrapper');
         wrapper.removeClass('visible');
         modal.find('.modal-dialog').removeClass("visible");
-        wrapper.one('transitionend', function() {
+        wrapper.on('transitionend', function(e) {
+            if (!$(e.target).is(this)) return;
             modal.hide(0);
             modal.find('.modal-content').empty();
+            $(this).off('transitionend');
         });
     }
     
@@ -191,22 +193,87 @@ $(document).ready(function() {
             modal_hide($('.modal'));
     });
 
+    
+    $('.profile-upload-btn-row.main-buttons .delete').click(function() {
+        if ($(this).closest('.icon-btn').length == 0) {
+            $(this).closest('.wrapper').addClass('icon-btn');
 
-    $('#delete-profile-pic-btn').click(function() {
-        $(this).closest('.wrapper').addClass('icon-btn');
-        $('#upload-profile-pic-btn').css("opacity", "0");
-        $('#upload-profile-pic-btn').one('transitionend', function() {
-            $(this).css('visibility', 'hidden');
-        });
-        $('#delete-profile-pic-cancel-btn').show(0);
+            var row_container = $(this).closest('.profile-upload-btn-row.main-buttons');
+            row_container.find('.delete-pic-alert').addClass('icon-btn');
+
+            var upload_btn = row_container.find('.upload');
+            upload_btn.css("opacity", "0");
+            upload_btn.on('transitionend', function() {
+                if ($(this).css('opacity') == "0") {
+                    $(this).css('visibility', 'hidden');
+                    $(this).off('transitionend');
+                }
+            });
+            row_container.find('.cancel-delete').show(0);
+        }
+        else {
+            var btn_icon = $(this).find('i');
+            btn_icon.removeClass();
+            btn_icon.addClass("fa-solid fa-cog fa-spin");
+            $.ajax({
+                method: "POST",
+                url: 'entrypoint',
+                data: 'q=delete_profile_pic',
+                success: function(data, textStatus, xhr) {
+                    location.reload();
+                }
+            });
+        }
     });
 
 
-    $('#delete-profile-pic-cancel-btn').click(function() {
+    $('.profile-upload-btn-row.main-buttons .cancel-delete').click(function() {
         $(this).closest('.wrapper').removeClass('icon-btn');
-        $('#upload-profile-pic-btn').css({"visibility": "visible", "opacity": "1"});
-        $('#delete-profile-pic-cancel-btn').one('transitionend', function() {
-            $(this).hide(0);
+
+        var row_container = $(this).closest('.profile-upload-btn-row.main-buttons');
+        row_container.find('.delete-pic-alert').removeClass('icon-btn');
+        row_container.find('.upload').css({"visibility": "visible", "opacity": "1"});
+        $(this).on('transitionend', function() {
+            if ($(this).css("width") == "0") {
+                $(this).hide(0);
+                $(this).off('transitionend');
+            }
+        });
+    });
+
+    $('.profile-upload-btn-row.main-buttons .upload').click(function() {
+        $(this).closest('.profile-upload-btn-row.main-buttons').find('.profile-pic-file-upload').trigger('click');
+    });
+
+    $('.profile-pic-file-upload').change(function() {
+        $(this).closest('.profile-upload-btn-row.main-buttons').addClass("hidden");
+        var upload_wrapper = $(this).closest('.profile-pic-modal-footer').find('.profile-upload-btn-row.upload-bar');
+        upload_wrapper.removeClass("hidden");
+        upload_wrapper.find(".filename p").text($('.profile-pic-file-upload')[0].files[0]['name']);
+    });
+
+    $('.profile-upload-btn-row.upload-bar .back-btn').click(function() {
+        var row_container = $(this).closest('.profile-upload-btn-row.upload-bar');
+        var upload_btn = row_container.find('.upload-btn');
+
+        $(this).addClass("morph-to-upload-btn").css("left", "0").removeClass("neutral-btn").addClass("positive-btn");
+        $(this).find("i").removeClass().addClass("fa-solid fa-upload");
+
+        upload_btn.addClass("morph-to-upload-btn").css("right", "0").removeClass('positive-btn').addClass('negative-btn');
+        upload_btn.find("i").removeClass().addClass("fa-solid fa-trash");
+
+        row_container.find('.filename').fadeOut(200);
+
+        $(this).on('transitionend', function(e) {
+            if (!$(e.target).is(this)) return;
+            row_container.closest('.profile-pic-modal-footer').find('.profile-upload-btn-row.main-buttons').removeClass("hidden");
+            row_container.addClass("hidden");
+            row_container.on('transitionend', function(ev) {
+                if (!$(ev.target).is(this)) return;
+                $(this).replaceWith($('#profile-pic-upload-modal').find('.profile-upload-btn-row.upload-bar').clone(true, true));
+            });
+
+            $(this).off('transitionend');
         });
     });
 });

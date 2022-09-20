@@ -4,6 +4,7 @@ include_once '../src/url_getters.php';
 include_once '../src/session.php';
 include_once '../src/profile_operations.php';
 include_once '../src/load_env.php';
+include_once '../src/db_connect.php';
 
 list($user_id, $username) = retrieve_session();
 
@@ -12,7 +13,7 @@ if ($user_id <= 0) {
     exit();    
 }
 
-$data = get_profile_data();
+$data = get_profile_data(db_connect());
 
 ?>
 
@@ -230,24 +231,41 @@ $data = get_profile_data();
             <div class="profile-pic">
                 <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
             </div>
-            <div class="profile-upload-btn-row row">
-                <div class="wrapper w3-col s6">
-                    <div class="profile-upload-btn positive-btn" id="upload-profile-pic-btn">
-                        <p>
-                            <i class="fa-solid fa-upload"></i><span class="btn-txt">&nbsp;&nbsp;Subir</span>
-                        </p>
+            <div class="profile-pic-modal-footer">
+                <div class="profile-upload-btn-row row main-buttons">
+                    <input class="profile-pic-file-upload" type="file" accept="image/gif, image/png, image/jpeg"></input>
+                    <div class="wrapper w3-col s6">
+                        <div class="delete-pic-alert"> 
+                            <b>¿Eliminar foto?</b>
+                        </div>
+                        <div class="profile-upload-btn positive-btn upload">
+                            <p>
+                                <i class="fa-solid fa-upload"></i><span class="btn-txt">&nbsp;&nbsp;Subir</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="wrapper w3-col s6">
+                        <div class="profile-upload-btn neutral-btn cancel-delete" id="delete-profile-pic-cancel-btn">
+                            <p>
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </p>
+                        </div>
+                        <div class="profile-upload-btn negative-btn delete" id="delete-profile-pic-btn">
+                            <p>
+                                <i class="fa-solid fa-trash"></i><span class="btn-txt">&nbsp;&nbsp;Eliminar</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="wrapper w3-col s6">
-                    <div class="profile-upload-btn neutral-btn" id="delete-profile-pic-cancel-btn">
-                        <p>
-                            <i class="fa-solid fa-arrow-left"></i>
-                        </p>
+                <div class="profile-upload-btn-row upload-bar hidden">
+                    <div class="profile-upload-btn neutral-btn back-btn">
+                        <i class="fa-solid fa-arrow-left"></i>
                     </div>
-                    <div class="profile-upload-btn negative-btn" id="delete-profile-pic-btn">
-                        <p>
-                            <i class="fa-solid fa-trash"></i><span class="btn-txt">&nbsp;&nbsp;Eliminar</span>
-                        </p>
+                    <div class="filename">
+                        <p>Archivo.jpg</p>
+                    </div>
+                    <div class="profile-upload-btn positive-btn upload-btn">
+                        <i class="fa-solid fa-upload"></i>
                     </div>
                 </div>
             </div>

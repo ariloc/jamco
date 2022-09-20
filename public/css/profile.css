@@ -718,7 +718,7 @@ a.music-tag {
 }
 
 .modal-content .profile-upload-btn-row {
-    width: 90%;
+    width: 100%;
 }
 
 .profile-upload-btn-row .wrapper .btn-txt {
@@ -728,7 +728,7 @@ a.music-tag {
 }
 
 .profile-upload-btn-row .wrapper.icon-btn .btn-txt {
-   max-width: 0; 
+    max-width: 0; 
 }
 
 .profile-upload-btn-row .wrapper.icon-btn .profile-upload-btn {
@@ -738,6 +738,7 @@ a.music-tag {
 .profile-upload-btn-row .wrapper {
     justify-content: right;
     display: flex;
+    position: relative;
 }
 
 @keyframes leftright {
@@ -751,11 +752,96 @@ a.music-tag {
     }
 }
 
-#delete-profile-pic-cancel-btn {
+.profile-upload-btn-row.main-buttons .cancel-delete {
     width: 0;
     margin: 0;
     padding: 10px 0px;
     overflow: hidden;
     display: none;
     animation: leftright 0.2s;
+}
+
+.profile-upload-btn-row.main-buttons .delete-pic-alert {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s,
+                transform 0.2s;
+    transform: translateX(-10px);
+}
+
+.profile-upload-btn-row.main-buttons .delete-pic-alert.icon-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0px);
+}
+
+.profile-pic-file-upload {
+    display: none;
+}
+
+.profile-upload-btn-row.upload-bar.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.profile-upload-btn-row.upload-bar {
+    display: flex;
+    flex-direction: row;
+    margin: 0 7.5px;
+    position: absolute;
+    width: calc(100% - 15px);
+    height: 100%;
+    opacity: 1;
+    transition: all 0.2s;
+}
+
+.profile-upload-btn-row.upload-bar .profile-upload-btn {
+    width: calc(1.4em + 20px);
+    height: calc(1.4em + 20px);
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.profile-upload-btn-row.upload-bar .filename {
+    padding: 0 10px;
+    text-align: center;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-upload-btn-row.upload-bar .filename p {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-upload-btn-row.main-buttons.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+.profile-upload-btn-row.upload-bar .morph-to-upload-btn {
+    position: absolute;
+    width: calc(50% - 7.5px);
+}
+
+.profile-pic-modal-footer {
+    width: 90%;
+    position: relative;
 }

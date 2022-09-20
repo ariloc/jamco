@@ -34,23 +34,18 @@ function back_to_login (int $code) {
     exit();
 }
 
-function activate_by_id (int $id, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect())) return false;
-
+function activate_by_id (int $id, $db) {
     $stmt = $db->prepare('UPDATE users SET activation_token = NULL, activation_expiry = NULL, valid_state = 1 WHERE id = ?');
     
     $stmt->bind_param('i', $id);
-    return $stmt->execute();
+    $stmt->execute();
 }
 
-function activate_db (int $id, string $token) {
-    if (!($db = db_connect())) return -1; // database error
-
+function activate_db (int $id, string $token, $db) {
     $stmt = $db->prepare("SELECT activation_token, activation_expiry < now() FROM users WHERE id = ?");
     $stmt->bind_param('i', $id);
 
-    if(!$stmt->execute())
-        return -1;
+    $stmt->execute();
 
     $stmt->bind_result($hashed_token_aux, $expired_aux);
 
@@ -77,8 +72,14 @@ function activate_db (int $id, string $token) {
 
 // TODO: Refactor such that db is an optional argument, and is only renewed if invalid (?)
 function activate (int $id, string $token) {
-    $ret_code = activate_db($id, $token);
-    back_to_login($ret_code);
+    $db = db_connect();
+    try {
+        $ret_code = activate_db($id, $token, $db);
+        back_to_login($ret_code);
+    }
+    catch (Exception $e) {
+        back_to_login(-1);
+    }
 }
 
 ?>

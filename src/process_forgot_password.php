@@ -21,22 +21,17 @@ function obfuscate_email ($email) {
     return implode('@', $em);
 }
 
-function set_recovery_token (int $id, string $token, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect()))
-        return false;
-
+function set_recovery_token (int $id, string $token, $db) {
     global $recovery_expiry_period;
     $expiry_timestamp = date("Y-m-d H:i:s", time() + $recovery_expiry_period);
 
     $stmt = $db->prepare('UPDATE users SET activation_token = ?, activation_expiry = ? WHERE id = ?');
     
     $stmt->bind_param('ssi', $token, $expiry_timestamp, $id);
-    return $stmt->execute();
+    $stmt->execute();
 }
 
-function recover_account (string $username) {
-    if (!($db = db_connect())) return '-1'; // db error
-
+function recover_account (string $username, $db) {
     $stmt = new stdClass();
     if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
         $stmt = $db->prepare('SELECT id, email, valid_state, COALESCE(activation_expiry, "") FROM users WHERE email = ?');
@@ -46,8 +41,7 @@ function recover_account (string $username) {
     }
 
     $stmt->bind_param('s', $username);
-    if (!$stmt->execute()) return '-1'; // db error
-
+    $stmt->execute();
     $stmt->bind_result($id, $email, $account_state, $prv_expiry);
 
     $no_results = 1;
@@ -73,8 +67,7 @@ function recover_account (string $username) {
     // we'll reuse the token field for password recovery
     $token = generate_random_token();
 
-    if (!set_recovery_token($id, password_hash($token, PASSWORD_DEFAULT), $db))
-        return '-1'; // db error
+    set_recovery_token($id, password_hash($token, PASSWORD_DEFAULT), $db);
 
     if (!send_recover_email($id, $email, $token))
         return '-1'; // server email error

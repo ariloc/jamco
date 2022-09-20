@@ -4,9 +4,7 @@ include_once 'db_connect.php';
 include_once 'field_compliance.php';
 include_once 'forgot_token_valid.php';
 
-function confirm_forgot_pass (int $id, string $token, string $new_password) {
-    if (!($db = db_connect())) return -1;
-
+function confirm_forgot_pass (int $id, string $token, string $new_password, $db) {
     if (!password_complies($new_password))
         return -3;
 
@@ -24,7 +22,7 @@ function confirm_forgot_pass (int $id, string $token, string $new_password) {
     $stmt = $db->prepare('UPDATE users SET password = ?, activation_token = NULL, activation_expiry = NULL WHERE id = ?');
     $stmt->bind_param('si', $hashed_new_password, $id);
 
-    if (!$stmt->execute()) return -1;
+    $stmt->execute();
 
     return 0;
 }
