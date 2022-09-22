@@ -1,3 +1,5 @@
+import Cropper from 'cropperjs';
+
 $(document).ready(function() {
     $('.profile-songs').slick({
         dots: true,
@@ -245,16 +247,37 @@ $(document).ready(function() {
         $(this).closest('.profile-upload-btn-row.main-buttons').find('.profile-pic-file-upload').trigger('click');
     });
 
+    // TODO: Replace alert with something fancier?
+    function validate_selected_file (field) {
+        var file_ext = field.val().split('.').pop().toLowerCase();
+        if ($.inArray(file_ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+            alert('Extensión de archivo no soportada');
+            return false;
+        }
+        if (field[0].files[0].size > 2097152) {
+            alert('El tamaño del archivo excede los 2MiB');
+            return false;
+        }
+        return true;
+    }
+
     $('.profile-pic-file-upload').change(function() {
+        if (!validate_selected_file($(this))) {
+            $(this)[0].value = "";
+            return;
+        }
+
         $(this).closest('.profile-upload-btn-row.main-buttons').addClass("hidden");
         var upload_wrapper = $(this).closest('.profile-pic-modal-footer').find('.profile-upload-btn-row.upload-bar');
         upload_wrapper.removeClass("hidden");
-        upload_wrapper.find(".filename p").text($('.profile-pic-file-upload')[0].files[0]['name']);
+        upload_wrapper.find(".filename p").text($(this)[0].files[0]['name']);
     });
 
     $('.profile-upload-btn-row.upload-bar .back-btn').click(function() {
         var row_container = $(this).closest('.profile-upload-btn-row.upload-bar');
         var upload_btn = row_container.find('.upload-btn');
+
+        $(this).closest('.profile-pic-modal-footer').find('.profile-pic-file-upload')[0].value = "";
 
         $(this).addClass("morph-to-upload-btn").css("left", "0").removeClass("neutral-btn").addClass("positive-btn");
         $(this).find("i").removeClass().addClass("fa-solid fa-upload");
@@ -274,6 +297,42 @@ $(document).ready(function() {
             });
 
             $(this).off('transitionend');
+        });
+    });
+
+    // TODO: TEST ALL OF THIS, check if it's possible NOT to upload file before cropping
+    $('.profile-upload-btn-row.upload-bar .upload-btn').click(function() {A
+        var form_data = new FormData();
+        var upload_field = $(this).closest('.profile-pic-modal-footer').find('.profile-pic-file-upload');
+
+        $(this).find('i').removeClass().addClass('fa-solid fa-cog');
+        forn_data.append('q', 'upload_tmp_pic');
+        form_data.append('file', upload_field.files[0]);
+
+        $.ajax({
+            url: 'entrypoint',
+            datatype: 'text',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            type: 'POST',
+            success: function(response) {
+                $(this).find('i').removeClass().addClass('fa-solid fa-check');
+                async function() {
+                    await modal_hide($(this).closest('.modal'));
+                    $('#crop-image-modal').children().clone().appendTo('.modal-content');
+                    $('.modal .image-cropper').attr("src",)
+                    modal_show('.modal');
+
+                    var cropper = new Cropper($('.modal .image-cropper'))
+                }
+            },
+            error: function() {
+                // TODO: Include custom error codes for server side stuff
+                $(this).find('i').removeClass().addClass('fa-solid fa-upload');
+                alert('Se produjo un error subiendo el archivo');
+            }
         });
     });
 });

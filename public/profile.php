@@ -227,6 +227,10 @@ $data = get_profile_data(db_connect());
             </div>
         </div>
 
+        <div id="crop-image-modal">
+            <img class="image-cropper" style="max-width: 800px" src="img/profile_pic/0"></img>
+        </div>
+
         <div style="display: none;" id="profile-pic-upload-modal">
             <div class="profile-pic">
                 <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
