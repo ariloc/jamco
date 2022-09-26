@@ -227,8 +227,10 @@ $data = get_profile_data(db_connect());
             </div>
         </div>
 
-        <div id="crop-image-modal">
-            <img class="image-cropper" style="max-width: 800px" src="img/profile_pic/0"></img>
+        <div id="crop-image-modal" style="display: none;">
+            <div class="image-cropper-wrapper">
+                <img class="image-cropper" src="img/profile_pic/0"></img>
+            </div>
         </div>
 
         <div style="display: none;" id="profile-pic-upload-modal">

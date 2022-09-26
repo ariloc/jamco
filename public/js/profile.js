@@ -1,4 +1,3 @@
-import Cropper from 'cropperjs';
 
 $(document).ready(function() {
     $('.profile-songs').slick({
@@ -157,13 +156,15 @@ $(document).ready(function() {
         });
     });
 
-    function modal_show (modal) {
+    function modal_show (modal, wide = false) {
         modal.show(0);
         modal.find('.modal-dialog-wrapper').addClass("visible");
         modal.find('.modal-dialog').addClass("visible");
+        if (wide) 
+            modal.find('.modal-dialog').addClass('wide');
     }
 
-    function modal_hide (modal) {
+    function modal_hide (modal, callback = null) {
         var wrapper = modal.find('.modal-dialog-wrapper');
         wrapper.removeClass('visible');
         modal.find('.modal-dialog').removeClass("visible");
@@ -171,7 +172,11 @@ $(document).ready(function() {
             if (!$(e.target).is(this)) return;
             modal.hide(0);
             modal.find('.modal-content').empty();
+            modal.find('.modal-dialog').removeClass('wide');
             $(this).off('transitionend');
+
+            if (callback != null)
+                callback();
         });
     }
     
@@ -301,7 +306,25 @@ $(document).ready(function() {
     });
 
     // TODO: TEST ALL OF THIS, check if it's possible NOT to upload file before cropping
-    $('.profile-upload-btn-row.upload-bar .upload-btn').click(function() {A
+    $('.profile-upload-btn-row.upload-bar .upload-btn').click(function() {
+        var reader = new FileReader();
+        var upload_field = $(this).closest('.profile-pic-modal-footer').find('.profile-pic-file-upload');
+
+        reader.onload = function() {
+                modal_hide($('.modal'), function() { // execute on callback
+                $('#crop-image-modal').children().clone().appendTo('.modal-content');
+                $('.modal .image-cropper').attr('src', reader.result);
+                modal_show($('.modal'), true);
+
+                var cropper = new Cropper($('.modal .image-cropper')[0], {
+                    aspectRatio: 1,
+                    viewMode: 3
+                });
+            });
+        }
+
+        reader.readAsDataURL(upload_field[0].files[0]);
+        /*
         var form_data = new FormData();
         var upload_field = $(this).closest('.profile-pic-modal-footer').find('.profile-pic-file-upload');
 
@@ -334,5 +357,6 @@ $(document).ready(function() {
                 alert('Se produjo un error subiendo el archivo');
             }
         });
+        */
     });
 });
