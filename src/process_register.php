@@ -15,19 +15,13 @@ $resend_register_period = 5 * 60; // one mail per 5 minutes
 $register_expiry_period = 120 * 60;
 
 // TODO: Delete unused users automatically to clean the tables (schedule)
-function delete_unused_conflict_users (string $username, string $email, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect()))
-        return false;
-
+function delete_unused_conflict_users (string $username, string $email, $db) {
     $stmt = $db->prepare('DELETE FROM users WHERE (username = ? OR email = ?) AND valid_state = 0 AND activation_expiry < now()');
     $stmt->bind_param('ss', $username, $email);
-
-    return $stmt->execute();
+    $stmt->execute();
 }
 
-function register (string $username, string $email, string $password) {
-    if (!($db = db_connect())) return -1; // database error
-
+function register (string $username, string $email, string $password, $db) {
     // invalid email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL))
         return -2;
@@ -60,9 +54,10 @@ function register (string $username, string $email, string $password) {
                                $expiry_timestamp
     );
 
-    if (!$stmt->execute()) {
-        if ($stmt->errno == 1062) return -3; // duplicate entry 
-        return -1; // error with database
+    try { $stmt->execute(); }
+    catch (Exception $e) {
+        if ($stmt->errno == 1062) return -3; // duplicate entry
+        throw new Exception($e->getMessage()); // otherwise continue propagating
     }
 
     // TODO: revert changes in database? (on fail)

@@ -68,11 +68,11 @@ input.search-field {
     display: none;
 }
 
-.profile-pic {
+.navbar .profile-pic {
     height: 48px;
 }
 
-.profile-pic a {
+.navbar .profile-pic a {
     background-color: var(--light-color);
     outline: none;
     border: none;
@@ -82,7 +82,7 @@ input.search-field {
     height: 100%;
 }
 
-.profile-pic img {
+.navbar .profile-pic img {
     height: 100%;
     border-radius: 50%;
 }
@@ -90,7 +90,7 @@ input.search-field {
 #filter-window-wrapper {
     position: absolute;
     width: 100%;
-/*    margin-top: -16px; */
+    z-index: 2;
 }
 
 #filter-window {
@@ -143,7 +143,7 @@ input.search-field {
     border-color: transparent transparent var(--light-color) transparent;
 }
 
-.profile-wrapper {
+.navbar .profile-wrapper {
     display: flex;
     justify-content: end;   
 }

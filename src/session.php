@@ -1,15 +1,15 @@
 <?php
 
-// TODO: refactor? en otro lugar?
+// Even though this is in header.php as well,
+// pages like the login handler don't include it.
+// The if statement should be enough to avoid issues.
 if (session_status() === PHP_SESSION_NONE) { 
     session_start(); 
 }
 
 include_once 'db_connect.php';
 
-function create_session (int $id, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect())) return -1;
-
+function create_session (int $id, $db) {
     $stmt = $db->prepare('SELECT username FROM users WHERE id = ?');
     $stmt->bind_param('d', $id);
     $stmt->execute();
@@ -20,7 +20,7 @@ function create_session (int $id, $db = NULL) {
     while ($stmt->fetch()) $username = $user_aux;
 
     if (empty($username))
-        return -1; // internal error
+        throw new Exception("User invalid");
 
     // TODO: Also check if regeneration is successful? See next comment!
     session_regenerate_id();
@@ -31,9 +31,7 @@ function create_session (int $id, $db = NULL) {
     // https://stackoverflow.com/questions/10165424/how-secure-are-php-sessions
     // https://www.php.net/manual/en/function.session-regenerate-id.php
     $_SESSION['id'] = $id;
-    $_SESSION['username'] = $username;
-
-    return 0;
+    $_SESSION['username'] = $username; // TODO: Is this really necessary? Use nickname?
 }
 
 function retrieve_session() {

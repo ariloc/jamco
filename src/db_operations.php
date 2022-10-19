@@ -5,14 +5,10 @@
 include_once 'db_connect.php';
 
 // Given an id, deletes the user that matches the id
-function delete_by_id (int $id, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect())) return false;
-
+function delete_by_id (int $id, $db) {
     $stmt = $db->prepare('DELETE FROM users WHERE id = ?');
     $stmt->bind_param('i', $id);
-    return $stmt->execute();
+    $stmt->execute();
 }
-
-// Given an id, wipes the token and expiry, while also turning an account as valid (valid_state = 1)
 
 ?>
