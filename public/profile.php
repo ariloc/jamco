@@ -228,9 +228,12 @@ $data = get_profile_data(db_connect());
         </div>
 
         <div id="crop-image-modal" style="display: none;">
-            <div class="image-cropper-wrapper">
-                <img class="image-cropper" src="img/profile_pic/0"></img>
-            </div>
+                <div class="image-cropper-wrapper">
+                    <img class="image-cropper" src="img/profile_pic/0"></img>
+                </div>
+                <button class="profile-upload-btn positive-btn confirm-crop">
+                    <i class="fa-solid fa-check"></i>
+                </button>
         </div>
 
         <div style="display: none;" id="profile-pic-upload-modal">
@@ -244,35 +247,35 @@ $data = get_profile_data(db_connect());
                         <div class="delete-pic-alert"> 
                             <b>¿Eliminar foto?</b>
                         </div>
-                        <div class="profile-upload-btn positive-btn upload">
+                        <button class="profile-upload-btn positive-btn upload">
                             <p>
                                 <i class="fa-solid fa-upload"></i><span class="btn-txt">&nbsp;&nbsp;Subir</span>
                             </p>
-                        </div>
+                        </button>
                     </div>
                     <div class="wrapper w3-col s6">
-                        <div class="profile-upload-btn neutral-btn cancel-delete" id="delete-profile-pic-cancel-btn">
+                        <button class="profile-upload-btn neutral-btn cancel-delete" id="delete-profile-pic-cancel-btn">
                             <p>
                                 <i class="fa-solid fa-arrow-left"></i>
                             </p>
-                        </div>
-                        <div class="profile-upload-btn negative-btn delete" id="delete-profile-pic-btn">
+                        </button>
+                        <button class="profile-upload-btn negative-btn delete" id="delete-profile-pic-btn">
                             <p>
                                 <i class="fa-solid fa-trash"></i><span class="btn-txt">&nbsp;&nbsp;Eliminar</span>
                             </p>
-                        </div>
+                        </button>
                     </div>
                 </div>
                 <div class="profile-upload-btn-row upload-bar hidden">
-                    <div class="profile-upload-btn neutral-btn back-btn">
+                    <button class="profile-upload-btn neutral-btn back-btn">
                         <i class="fa-solid fa-arrow-left"></i>
-                    </div>
+                    </button>
                     <div class="filename">
                         <p>Archivo.jpg</p>
                     </div>
-                    <div class="profile-upload-btn positive-btn upload-btn">
+                    <button class="profile-upload-btn positive-btn upload-btn">
                         <i class="fa-solid fa-upload"></i>
-                    </div>
+                    </button>
                 </div>
             </div>
         </div>

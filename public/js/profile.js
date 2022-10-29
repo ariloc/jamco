@@ -156,12 +156,10 @@ $(document).ready(function() {
         });
     });
 
-    function modal_show (modal, wide = false) {
+    function modal_show (modal) {
         modal.show(0);
         modal.find('.modal-dialog-wrapper').addClass("visible");
         modal.find('.modal-dialog').addClass("visible");
-        if (wide) 
-            modal.find('.modal-dialog').addClass('wide');
     }
 
     function modal_hide (modal, callback = null) {
@@ -172,7 +170,7 @@ $(document).ready(function() {
             if (!$(e.target).is(this)) return;
             modal.hide(0);
             modal.find('.modal-content').empty();
-            modal.find('.modal-dialog').removeClass('wide');
+            $(this).find('.modal-dialog').removeClass('img-mode');
             $(this).off('transitionend');
 
             if (callback != null)
@@ -219,9 +217,11 @@ $(document).ready(function() {
             row_container.find('.cancel-delete').show(0);
         }
         else {
+            $(this).prop('disabled', true);
             var btn_icon = $(this).find('i');
             btn_icon.removeClass();
             btn_icon.addClass("fa-solid fa-cog fa-spin");
+
             $.ajax({
                 method: "POST",
                 url: 'entrypoint',
@@ -305,32 +305,41 @@ $(document).ready(function() {
         });
     });
 
-    // TODO: TEST ALL OF THIS, check if it's possible NOT to upload file before cropping
+    var cropper;
     $('.profile-upload-btn-row.upload-bar .upload-btn').click(function() {
+        $(this).prop('disabled', true);
+        $(this).find('i').removeClass().addClass('fa-solid fa-cog fa-spin');
+
         var reader = new FileReader();
         var upload_field = $(this).closest('.profile-pic-modal-footer').find('.profile-pic-file-upload');
+        
+        reader.readAsDataURL(upload_field[0].files[0]);
 
         reader.onload = function() {
-                modal_hide($('.modal'), function() { // execute on callback
-                $('#crop-image-modal').children().clone().appendTo('.modal-content');
+            modal_hide($('.modal'), function() { // execute on callback
+                $('#crop-image-modal').children().clone(true, true).appendTo('.modal-content');
                 $('.modal .image-cropper').attr('src', reader.result);
-                modal_show($('.modal'), true);
+                modal_show($('.modal'));
 
-                var cropper = new Cropper($('.modal .image-cropper')[0], {
+                $('.modal-dialog').addClass("img-mode")
+
+                cropper = new Cropper($('.modal .image-cropper')[0], {
                     aspectRatio: 1,
-                    viewMode: 3
+                    viewMode: 2
                 });
             });
         }
+    });
 
-        reader.readAsDataURL(upload_field[0].files[0]);
-        /*
+    $('.profile-upload-btn.confirm-crop').click(function() {
+        $(this).prop('disabled', true);
+        $(this).find('i').removeClass().addClass('fa-solid fa-cog fa-spin');
+
+        var cropped_img = cropper.getCroppedCanvas().toDataURL("image/png");
         var form_data = new FormData();
-        var upload_field = $(this).closest('.profile-pic-modal-footer').find('.profile-pic-file-upload');
 
-        $(this).find('i').removeClass().addClass('fa-solid fa-cog');
-        forn_data.append('q', 'upload_tmp_pic');
-        form_data.append('file', upload_field.files[0]);
+        form_data.append('q', 'upload_profile_pic');
+        form_data.append('image_data', cropped_img);
 
         $.ajax({
             url: 'entrypoint',
@@ -342,14 +351,7 @@ $(document).ready(function() {
             type: 'POST',
             success: function(response) {
                 $(this).find('i').removeClass().addClass('fa-solid fa-check');
-                async function() {
-                    await modal_hide($(this).closest('.modal'));
-                    $('#crop-image-modal').children().clone().appendTo('.modal-content');
-                    $('.modal .image-cropper').attr("src",)
-                    modal_show('.modal');
-
-                    var cropper = new Cropper($('.modal .image-cropper'))
-                }
+                window.location.reload()
             },
             error: function() {
                 // TODO: Include custom error codes for server side stuff
@@ -357,6 +359,5 @@ $(document).ready(function() {
                 alert('Se produjo un error subiendo el archivo');
             }
         });
-        */
     });
 });
