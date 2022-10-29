@@ -3,9 +3,7 @@
 include_once 'db_connect.php';
 include_once 'session.php';
 
-function check_creds_username (string $username, string $password, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect())) return -1;
-
+function check_creds_username (string $username, string $password, $db) {
     // login by email
     $stmt = new stdClass();
     if (filter_var($username, FILTER_VALIDATE_EMAIL))
@@ -15,8 +13,7 @@ function check_creds_username (string $username, string $password, $db = NULL) {
     
     $stmt->bind_param('s',$username);
     
-    if (!$stmt->execute())
-        return -1;
+    $stmt->execute();
 
     $stmt->bind_result($id, $hashed_password, $account_state);
     
@@ -40,18 +37,14 @@ function check_creds_username (string $username, string $password, $db = NULL) {
 }
 
 // true-false if successful or not
-function update_login_stats (int $id, $db = NULL) {
-    if ((!$db || $db->connect_errno) && !($db = db_connect())) return false;
-
+function update_login_stats (int $id, $db) {
     $stmt = $db->prepare('UPDATE users SET last_login = now(), login_times = login_times + 1 WHERE id = ?');
     $stmt->bind_param('i', $id);
-    return $stmt->execute();
+    $stmt->execute();
 }
 
 // returns >= 0 if successful, < 0 otherwise (with certain error codes)
-function login(string $username, string $password) {
-    if (!($db = db_connect())) return -1;
-    
+function login(string $username, string $password, $db) {
     $usr_id = check_creds_username($username, $password, $db);
 
     // invalid input and/or credentials
@@ -59,9 +52,6 @@ function login(string $username, string $password) {
 
     // valid credentials, create session
     $session = create_session($usr_id, $db);
-
-    // error while creating session
-    if ($session < 0) return $session;
 
     // if successful, TRY to update database with login date and
     // last logged in time

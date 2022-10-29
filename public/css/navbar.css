@@ -90,7 +90,7 @@ input.search-field {
 #filter-window-wrapper {
     position: absolute;
     width: 100%;
-/*    margin-top: -16px; */
+    z-index: 2;
 }
 
 #filter-window {

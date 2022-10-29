@@ -7,12 +7,9 @@ function db_connect() {
     $password = $ini_array['password'];
     $dbname = $ini_array['dbname'];
     
+    // Now use exceptions for internal errors
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // TODO: Manage errors in a better way?
-    if ($conn->connect_error) {
-        return NULL;
-    }
 
     // For proper safety reasons (TODO: is it ok?)
     $conn->set_charset('utf8mb4');

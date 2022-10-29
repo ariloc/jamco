@@ -1,11 +1,12 @@
 <?php
 
-include '../src/load_env.php';
-include '../src/forgot_token_valid.php';
+include_once '../src/load_env.php';
+include_once '../src/forgot_token_valid.php';
+include_once '../src/db_connect.php';
 
 $confirm_pass = false;
 if (!empty($_GET['user_id']) && !empty($_GET['token'])) {
-    if (!forgot_token_valid(intval($_GET['user_id']), $_GET['token'])) {
+    if (!forgot_token_valid(intval($_GET['user_id']), $_GET['token'], db_connect())) {
         $msg = 'El enlace de cambio de contraseña utilizado es inválido o ha expirado. Intente solicitar uno nuevo.';
         header('Location: ' . URL_ROOT . '/login?msg_iserror=1&message=' . $msg);
         exit();

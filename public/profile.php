@@ -1,82 +1,74 @@
+<?php 
+
+include_once '../src/url_getters.php';
+include_once '../src/session.php';
+include_once '../src/profile_operations.php';
+include_once '../src/load_env.php';
+include_once '../src/db_connect.php';
+
+list($user_id, $username) = retrieve_session();
+
+if ($user_id <= 0) {
+    header('Location: ' . URL_ROOT . '/login');
+    exit();    
+}
+
+$data = get_profile_data(db_connect());
+
+?>
+
 <!DOCTYPE html>
 <html>
     <?php include "header.php"; ?>
     <body>
-    <?php include "navbar.php"; ?>
+        <?php include "navbar.php"; ?>
         <div class="profile-header">
-
-            <div class="profile-banner">
-                <img src="img/communities/chainsmoker.png" alt="banner">
+            <div class="profile-banner-wrapper">
+                <div class="profile-banner">
+                    <img src="img/communities/chainsmoker.png" alt="banner">
+                    <div class="edit-btn">
+                        <i class="fa-solid fa-image"></i>
+                    </div>
+                </div>
             </div>
 
             <div class="profile-pic-data">
-                <div class="profile-pic">
-                    <img src="img/communities/chainsmoker.png" alt="perfil">
+                <div class="profile-pic-wrapper">
+                    <div class="profile-pic">
+                        <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
+                        <div class="edit-btn">
+                            <i class="fa-solid fa-camera"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="profile-data">
-                    <h3>Nombre de usuario</h3>
+                <h3><?php echo $data['nickname'] ?? "Nickname"; ?></h3>
                     <ul class="profile-data-info">
+                        <li><?php echo $data['review_cnt']; ?> Reviews</li>
                         <li>134 Comunidades</li>
-                        <li>134 Comunidades</li>
-                        <li>134 Comunidades</li>
+                        <li>134 Playlists</li>
                     </ul>
                 </div>
             </div>
         </div>
 
+        <?php if (!empty($data['song_exb'])): ?>
         <div class="profile-songs-wrapper">
             <div class="profile-songs">
+                <?php foreach ($data['song_exb'] as $song): ?>
                 <div>
                     <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
+                    <a href="<?php echo song_url($song['song_id']); ?>">
+                            <img src="<?php echo album_cover_url($song['album_id']); ?>">
                         </a>
-                        <h6>Chainsmokers</h6>
+                        <h6><?php echo $song['song_name']; ?></h6>
                     </div>
                 </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Chainsmokers</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Chainsmokers</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Me dueles</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>La vecinita</h6>
-                    </div>
-                </div>
-                <div>
-                    <div class="profile-slide-content">
-                        <a href="/chainsmoker">
-                            <img src="img/communities/chainsmoker.png">
-                        </a>
-                        <h6>Never Gonna Give You Up</h6>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
+        <?php endif; ?>
 
         <div class="tabs-container">
             <div class="tabs-wrapper">
@@ -91,7 +83,7 @@
                         <span class="fa fa-music"></span><span class="tab-text">Playlists</span>
                     </div>
                 </div>
-                <div class="tab-indicator" />
+                <div class="tab-indicator"></div>
             </div>
 
 		    <div class="secciones">
@@ -99,152 +91,193 @@
                 <div class="inactive">
                     <div>
                         <div class="profile-review w3-row">
+                            <?php foreach($data['reviews'] as $row): ?>
+                            <div class="profile-review-card-wrapper w3-col l6">
+                                <div class="profile-review-card">
+                                    <div class="profile-review-header">
+                                        <div class="profile-review-header-data">
+                                            <div class="profile-review-image">
+                                                <img src="<?php echo album_cover_url($row['album_id']); ?>">
+                                            </div>
+                                            <div class="profile-review-header-container">
+                                                <div class="profile-review-header-data-user">
+                                                    <a href="<?php echo song_url($row['song_id']); ?>">
+                                                            <?php echo $row['song_name']; ?>
+                                                    </a>
+                                                </div>
+                                                <div class="rating-stars">
+                                                    <?php for ($star = 1; $star <= 5; $star++): ?>
+                                                    <i class="material-icons">
+                                                        <?php $v = ($row['stars']-$star); ?>
+                                                        <?php echo ($v >= 0) ? "star" : (($v > -1) ? "star_half" : "star_border"); ?>
+                                                    </i>
+                                                    <?php endfor; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-review-text">
+                                        <?php if(isset($row['title']) || isset($row['body'])): ?>
+                                        <div class="text-container">
+                                            <p class="review-quote">
+                                                <?php if(isset($row['title'])): ?>
+                                                <b class="review-quote-title">
+                                                    <?php echo $row['title']; ?>
+                                                </b>
+                                                <?php endif; ?>
 
-                        <div class="profile-review-card-wrapper w3-col l6">
-                            <div class="profile-review-card">
-                                
-                                <div class="profile-review-header">
-                                    <div class="profile-review-header-data">
-                                        <div class="profile-review-image">
-                                            <img src="img/communities/chainsmoker.png">
-                                        </div>
-                                        <div class="profile-review-header-container">
-                                            <div class="profile-review-header-data-user">
-                                                <a style="text-align: right" href="/profile">nombre_de_la_canción</a>
-                                            </div>
-                                            <div class="rating-stars">
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star_border</i>
-                                                <i class="material-icons">star_border</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile-review-text">
-                                    <div class="text-container">
-                                        <p class="review-quote">
-                                            lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                        </p>
-                                            <!--
-                                            <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
-                                            <p class="review-quote">
-                                                    lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
+                                                <?php if(isset($row['body'])): ?>
+                                                <span class="review-quote-body">
+                                                    <?php echo $row['body']; ?>
+                                                </span>
+                                                <?php endif; ?>
                                             </p>
-                                            <span class="read-more-text">
-                                                lorem ipsum dolor sit amet consectetur adipisicing elit. delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. libero aperiam minima adipisci dolorem
-                                            </span>
-                                            <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                                            !-->
-                                    </div>
-                                    <div class="read-more-btn">
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                                        </div>
+                                        <?php endif; ?>
+
+                                        <div class="read-more-btn">
+                                            <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php endforeach; ?>
                         </div>
-                        <div class="profile-review-card-wrapper w3-col l6">
-                            <div class="profile-review-card">
-                                
-                                <div class="profile-review-header">
-                                    <div class="profile-review-header-data">
-                                        <div class="profile-review-image">
-                                            <img src="img/communities/chainsmoker.png">
-                                        </div>
-                                        <div class="profile-review-header-container">
-                                            <div class="profile-review-header-data-user">
-                                                <a style="text-align: right" href="/profile">nombre_de_la_canción</a>
-                                            </div>
-                                            <div class="rating-stars">
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star_border</i>
-                                                <i class="material-icons">star_border</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile-review-text">
-                                    <div class="text-container">
-                                        <p class="review-quote">
-                                            lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                        </p>
-                                            <!--
-                                            <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
-                                            <p class="review-quote">
-                                                    lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                            </p>
-                                            <span class="read-more-text">
-                                                lorem ipsum dolor sit amet consectetur adipisicing elit. delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. libero aperiam minima adipisci dolorem
-                                            </span>
-                                            <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                                            !-->
-                                    </div>
-                                    <div class="read-more-btn">
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                                    </div>
+                    </div>
+                    <div style="padding: 10px;">
+                    <div class ="profile-communities">
+
+                    <div class="profile-communities-cards">
+                            <div class="profile-communities-banner">
+                                <img src="img/communities/chainsmoker.png">
+                            </div>
+                            <div class="profile-communities-header">
+                                <h3>Nombre_Comunidad</h3>
+                                <span class="fa fa-user"></span><span class="tab-text">1625</span>
+                                <div class="tags-carousel">
+                                    <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="profile-review-card-wrapper w3-col l6">
-                            <div class="profile-review-card">
-                                
-                                <div class="profile-review-header">
-                                    <div class="profile-review-header-data">
-                                        <div class="profile-review-image">
-                                            <img src="img/communities/chainsmoker.png">
-                                        </div>
-                                        <div class="profile-review-header-container">
-                                            <div class="profile-review-header-data-user">
-                                                <a style="text-align: right" href="/profile">nombre_de_la_canción</a>
-                                            </div>
-                                            <div class="rating-stars">
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star</i>
-                                                <i class="material-icons">star_border</i>
-                                                <i class="material-icons">star_border</i>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                        <div class="profile-communities-cards">
+                            <div class="profile-communities-banner">
+                                <img src="img/communities/chainsmoker.png">
+                            </div>
+                            <div class="profile-communities-header">
+                                <h3>Nombre_Comunidad</h3>
+                                <span class="fa fa-user"></span><span class="tab-text">1625</span>
+                                <div class="tags-carousel">
+                                    <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
                                 </div>
-                                <div class="profile-review-text">
-                                    <div class="text-container">
-                                        <p class="review-quote">
-                                            lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                        </p>
-                                            <!--
-                                            <p style="text-align:left"><i class="fa fa-quote-left" aria-hidden="true"></i></p>
-                                            <p class="review-quote">
-                                                    lorem ipsum dolor sit amet consectetur adipisicing elit. voluptatibus, harum? omnis eveniet sequi ut, eius tempore veritatis rem consectetur, perspiciatis eaque sed, vero animi dolorum illum provident repellendus pariatur qui!
-                                            </p>
-                                            <span class="read-more-text">
-                                                lorem ipsum dolor sit amet consectetur adipisicing elit. delectus natus, illum perferendis repellat dolor doloremque magnam quas dolorum cum placeat autem. libero aperiam minima adipisci dolorem
-                                            </span>
-                                            <p style="text-align:right"><i class="fa fa-quote-right" aria-hidden="true"></i></p>
-                                            !-->
-                                    </div>
-                                    <div class="read-more-btn">
-                                        <i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-                                    </div>
+                            </div>
+                        </div>
+
+
+                        <div class="profile-communities-cards">
+                            <div class="profile-communities-banner">
+                                <img src="img/communities/chainsmoker.png">
+                            </div>
+                            <div class="profile-communities-header">
+                                <h3>Nombre_Comunidad</h3>
+                                <span class="fa fa-user"></span><span class="tab-text">1625</span>
+                                <div class="tags-carousel">
+                                    <a href="tags/clasica" class="music-tag">clásica</a> <a href="tags/Mundo" class="music-tag">Mundo</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </div>
                     <div style="padding: 10px;">
-                        <h1>Comunidades</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel voluptates unde, consequuntur aliquid architecto rem numquam expedita minima dolorem pariatur recusandae, eius quod quia aspernatur id impedit, tenetur! Aspernatur incidunt molestiae dolores animi ea praesentium ipsam tenetur voluptas cupiditate perspiciatis eum nihil, natus exercitationem libero earum fuga dignissimos impedit numquam, quasi, placeat officiis voluptates, ad reprehenderit fugiat? Fugiat aperiam et magni, molestiae, numquam consectetur vitae sapiente cupiditate totam laboriosam voluptate obcaecati, aliquam placeat? Suscipit dolores fuga laudantium sed, qui magni iusto dolore quia. Quis fugit exercitationem porro. Rerum nihil omnis recusandae ratione fuga alias eligendi, earum sunt veritatis praesentium eum perspiciatis. Molestias deserunt, iure neque animi quod! Impedit reprehenderit cumque, numquam velit quae cum eius quidem similique laudantium hic deleniti!</p>
-                    </div>
-                    <div style="padding: 10px;">
-                        <h1>Playlists</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea numquam odio voluptate. Aliquam incidunt similique, et quasi ducimus quos aut autem non dignissimos dicta sit provident, voluptatibus ut blanditiis perspiciatis cum, vel temporibus minima enim. Asperiores omnis placeat officiis a tenetur sit recusandae, reprehenderit neque. Tempora quibusdam, perferendis id ratione culpa dolorum! Nemo, animi?</p><br>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum dignissimos at esse, ipsum rerum assumenda nisi obcaecati! Aliquam iure voluptatem incidunt, explicabo sit labore, perferendis eius ad vel quia. Praesentium, doloribus. Quisquam provident nostrum totam itaque debitis, minima, tempore dolores!</p>
+                        <div class="profile-playlist">
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                            <div class="profile-playlist-cards">
+                                <img src="img/communities/chainsmoker.png">
+                                <h3>Nombre_Playlist</h3>
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-		    </div>
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="modal-dialog-wrapper">
+                <div class="modal-dialog">
+                    <div class="modal-content"></div>
+                    <div class="modal-close">
+                        <span class="material-icons">close</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="crop-image-modal" style="display: none;">
+                <div class="image-cropper-wrapper">
+                    <img class="image-cropper" src="img/profile_pic/0"></img>
+                </div>
+                <button class="profile-upload-btn positive-btn confirm-crop">
+                    <i class="fa-solid fa-check"></i>
+                </button>
+        </div>
+
+        <div style="display: none;" id="profile-pic-upload-modal">
+            <div class="profile-pic">
+                <img src="<?php echo profile_pic_url($user_id); ?>" alt="perfil">
+            </div>
+            <div class="profile-pic-modal-footer">
+                <div class="profile-upload-btn-row row main-buttons">
+                    <input class="profile-pic-file-upload" type="file" accept="image/gif, image/png, image/jpeg"></input>
+                    <div class="wrapper w3-col s6">
+                        <div class="delete-pic-alert"> 
+                            <b>¿Eliminar foto?</b>
+                        </div>
+                        <button class="profile-upload-btn positive-btn upload">
+                            <p>
+                                <i class="fa-solid fa-upload"></i><span class="btn-txt">&nbsp;&nbsp;Subir</span>
+                            </p>
+                        </button>
+                    </div>
+                    <div class="wrapper w3-col s6">
+                        <button class="profile-upload-btn neutral-btn cancel-delete" id="delete-profile-pic-cancel-btn">
+                            <p>
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </p>
+                        </button>
+                        <button class="profile-upload-btn negative-btn delete" id="delete-profile-pic-btn">
+                            <p>
+                                <i class="fa-solid fa-trash"></i><span class="btn-txt">&nbsp;&nbsp;Eliminar</span>
+                            </p>
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-upload-btn-row upload-bar hidden">
+                    <button class="profile-upload-btn neutral-btn back-btn">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <div class="filename">
+                        <p>Archivo.jpg</p>
+                    </div>
+                    <button class="profile-upload-btn positive-btn upload-btn">
+                        <i class="fa-solid fa-upload"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </body>
 </html>
