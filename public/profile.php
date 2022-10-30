@@ -43,7 +43,15 @@ $data = get_profile_data(db_connect());
                 </div>
 
                 <div class="profile-data">
-                <h3><?php echo $data['nickname'] ?? "Nickname"; ?></h3>
+                    <div class="nickname-container">
+                        <textarea maxlength="128" id="textarea-nickname" type="text" spellcheck="false" rows="1" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'"></textarea>
+                        <h3 id="nickname" class="visible">
+                            <?php echo $data['nickname'] ?? "Nickname"; ?>
+                        </h3>
+                        <button id="edit-nickname" class="fa-solid fa-pen visible"></i>
+                        <button id="confirm-edit-nickname" class="fa-solid fa-check"></i>
+                        <button id="cancel-edit-nickname" class="fa-solid fa-xmark"></i>
+                    </div>
                     <ul class="profile-data-info">
                         <li><?php echo $data['review_cnt']; ?> Reviews</li>
                         <li>134 Comunidades</li>

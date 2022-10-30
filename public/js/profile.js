@@ -360,4 +360,56 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#edit-nickname').click(function() {
+        $(this).add('#nickname').removeClass("visible");
+
+        var textarea = $('#textarea-nickname')[0]
+        textarea.value = $.trim($('#nickname').text());
+
+        $('#confirm-edit-nickname, #cancel-edit-nickname, #textarea-nickname').addClass("visible");
+        requestAnimationFrame(() => textarea.style.height = textarea.scrollHeight + 3 + 'px');
+    });
+
+    $('#cancel-edit-nickname').click(function() {
+        $(this).add('#confirm-edit-nickname, #textarea-nickname').removeClass("visible");
+        $('#nickname, #edit-nickname').addClass("visible");
+        $('#edit-textarea').height('');
+    });
+
+    // for better or for worse, we'll try to disallow newlines (at least client side)
+    $('#textarea-nickname').keypress(function(event) {
+        if (event.keyCode == 13)
+            event.preventDefault();
+    });
+
+    $('#confirm-edit-nickname').click(function() {
+        var me = $(this);
+        var edit_btns = $(this).add('#cancel-edit-nickname')
+        edit_btns.prop('disabled', true);
+        $(this).removeClass('fa-check').addClass('fa-cog fa-spin');
+
+        var new_nickname = $('#textarea-nickname')[0].value;
+        $.ajax({
+            url: 'entrypoint',
+            datatype: 'text',
+            cache: false,
+            data: {
+                q: 'change_nickname',
+                nickname: new_nickname
+            },
+            type: 'POST',
+            success: function() {
+                $('#nickname').text(new_nickname);
+                $('#cancel-edit-nickname').click();
+            },
+            error: function() {
+                alert('Se produjo un error cambiando el nombre de usuario, inténtelo nuevamente');
+            },
+            complete: function() {
+                me.removeClass(['fa-cog', 'fa-spin']).addClass('fa-check');
+                edit_btns.prop('disabled', false);
+            }
+        });
+    });
 });

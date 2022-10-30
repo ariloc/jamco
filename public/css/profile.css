@@ -874,3 +874,55 @@ a.music-tag {
     margin-top: auto;
     width: 90%;
 }
+
+/* NICKNAME */
+
+.nickname-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+}
+
+.nickname-container h3 {
+    margin: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: auto;
+}
+
+.nickname-container button {
+    margin-left: 10px;
+    opacity: 50%;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.25em;
+    background: none;
+    border: none;
+    color: white;
+    display: none;
+}
+
+.nickname-container .visible {
+    display: inline;
+}
+
+.nickname-container button:hover {
+    opacity: 100%;
+}
+
+.nickname-container textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white; 
+    font-size: 1.5em;
+    text-align: center;
+    resize: none;
+}
+
+.nickname-container * {
+    display: none;
+}
+
