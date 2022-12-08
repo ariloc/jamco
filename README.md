@@ -1,4 +1,7 @@
-# Jamco
+<div align="center">
+<img src="/public/img/assets/logo.svg" width="128" />
+<h1>Jamco</h1>
+</div>
 
 Jamco is a high school project started by four students with the idea to develop a social media website focused on communities. Communities being groups of people with common musical taste, that would allow them to interact between each other sharing playlists, chatting, and reviewing songs. This isn't really a new idea, but we thought that if the result ever got to a reasonably mature state, it would've definitely been fun to test it inside the school.
 
